@@ -181,7 +181,15 @@
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
 
-
+    <!-- profile -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+            <img src="" width="100" class="img-circle elevation-2" alt="User Image">
+         </div>
+        <div class="info">
+          <a href="{{ route('admin.profile') }}" class="d-block">Alexander Pierce</a>
+        </div>
+      </div>
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
@@ -279,8 +287,6 @@
 <script src="{{ asset('lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('lte/dist/js/adminlte.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('lte/dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('lte/dist/js/pages/dashboard.js') }}"></script>
 
