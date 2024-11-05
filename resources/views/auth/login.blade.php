@@ -19,7 +19,7 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href=".{{ route('login') }}" class="h1"><b>Absensi</b>MAGANG</a>
+      <a href=".{{ route('login') }}" class="h1"><b>Aktivitas Magang</b></a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Halaman Login</p>

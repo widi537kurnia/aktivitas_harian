@@ -16,7 +16,7 @@ class HomeController extends Controller
     }
 
     public function index() {
-        
+
         $data = User::get();
 
         return view('index', compact('data'));
@@ -29,10 +29,10 @@ class HomeController extends Controller
     public function store(Request $request) {
 
         $validator = Validator::make($request->all(),[
-            'photo' => 'required|mimes:png,jpg,jpeg|max:2048',
-            'email' => 'required|email',
-            'nama'  => 'required',
-            'password' => 'required',
+            'photo'     => 'required|mimes:png,jpg,jpeg|max:2048',
+            'email'     => 'required|email',
+            'nama'      => 'required',
+            'password'  => 'required',
         ]);
 
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
@@ -65,7 +65,7 @@ class HomeController extends Controller
             'nama'       => 'required',
             'password'   => 'nullable',
         ]);
-        
+
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
         $data['email']     = $request->email;
@@ -73,9 +73,9 @@ class HomeController extends Controller
 
         if($request->password){
             $data['password']  = Hash::make($request->password);
-        
+
         }
-        
+
         User::whereId($id)->update($data);
 
         return redirect()->route('admin.index');
