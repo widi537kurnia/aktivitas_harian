@@ -36,6 +36,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
 
     Route::get('/profile',[HomeController::class,'profile'])->name('profile');
+    Route::get('/edit-profile',[HomeController::class,'edit_profile'])->name('edit-profile');
 
     Route::get('/edit/{id}',[HomeController::class,'edit'])->name('user.edit');
     Route::put('/update/{id}',[HomeController::class,'update'])->name('user.update');
