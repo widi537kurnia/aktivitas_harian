@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //   echo "hello world";
 //});
-Route::get('/login',[LoginController::class,'index'])->name('login');
+Route::get('/',[LoginController::class,'index'])->name('login');
 Route::post('/login-proses',[LoginController::class,'login_proses'])->name('login-proses');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
@@ -34,6 +34,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::post('/store',[HomeController::class,'store'])->name('user.store');
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
+
+    Route::get('/profile',[HomeController::class,'profile'])->name('profile');
 
     Route::get('/edit/{id}',[HomeController::class,'edit'])->name('user.edit');
     Route::put('/update/{id}',[HomeController::class,'update'])->name('user.update');
