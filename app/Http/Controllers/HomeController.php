@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Validator;
 class HomeController extends Controller
 {
 
+    public function dashboard(){
+        $data = Auth::user();
+
+        return view ('dashboard', compact('data'));
+    }
+
     public function index() {
 
         $data = User::get();
@@ -27,6 +33,11 @@ class HomeController extends Controller
         $data = Auth::user();
 
         return view('auth.profile', compact('data'));
+    }
+    public function edit_profile(){
+        $data = Auth::user();
+
+        return view('auth.edit_profile',compact('data'));
     }
 
     public function store(Request $request) {
@@ -63,23 +74,27 @@ class HomeController extends Controller
 
     public function update(Request $request,$id){
         $validator = Validator::make($request->all(),[
+            'photo'     => 'required|mimes:png,jpg,jpeg|max:2048',
             'email'      => 'required|email',
             'nama'       => 'required',
             'password'   => 'nullable',
         ]);
+        $photo                  = $request->file('photo');
+        $filename               = date('Y-m-d').$photo->getClientOriginalName();
+        $path                   = 'photo-user/'.$filename;
 
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
         $data['email']     = $request->email;
         $data['name']      = $request->nama;
+        $data['image']     = $filename;
+
 
         if($request->password){
             $data['password']  = Hash::make($request->password);
 
         }
-
         User::whereId($id)->update($data);
-
         return redirect()->route('admin.index');
     }
 

@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | Dashboard</title>
 
+  <!--Bootstrap 5-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="{{ asset('lte/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -182,14 +185,18 @@
     </a>
 
     <!-- profile -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-            <img src="" width="100" class="img-circle elevation-2" alt="User Image">
+    <div class="user-panel mt-3 pb-1 mb-3 d-flex mr-2">
+        <div class="image" >
+            <img src="https://avatars.githubusercontent.com/u/134774984?v=4" width="100" class="img-circle elevation-2" alt="User Image">
          </div>
         <div class="info">
-          <a href="{{ route('admin.profile') }}" class="d-block">Alexander Pierce</a>
+          <a href="{{route('admin.profile')}}" class="d-block text-white text-decoration-none hover:text-light">
+            <p>
+                Alexander Pierce
+            </p>
+        </a>
         </div>
-      </div>
+    </div>
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
@@ -212,6 +219,12 @@
               <i class="nav-icon fas fa-clock"></i>
               <p>
                 Riwayat Aktivitas Harian
+            <a href="{{ route('admin.dashboard') }}" class="nav-link">
+              <i class="nav-icon fas fa-clock"></i>
+              <p>
+                <b>
+                    Riwayat Aktivitas Harian
+                </b>
               </p>
             </a>
           </li>
@@ -220,14 +233,19 @@
               <i class="nav-icon fas fa-pen"></i>
               <p>
                 Tambah Data Aktivitas Harian
+                <b>
+                    Tambah Aktivitas Harian
+                </b>
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
-                Logout
+                <b>
+                    Logout
+                </b>
               </p>
             </a>
           </li>
