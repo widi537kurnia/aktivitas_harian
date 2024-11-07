@@ -43,7 +43,6 @@ class HomeController extends Controller
     public function store(Request $request) {
 
         $validator = Validator::make($request->all(),[
-            'photo' => 'required|mimes:png,jpg,jpeg|max:2048',
             'email' => 'required|email',
             'nama'  => 'required',
             'password' => 'required',
@@ -107,5 +106,37 @@ class HomeController extends Controller
         }
 
         return redirect()->route('admin.index');
+    }
+    
+    public function update_user(Request $request,$id){
+        $validator = Validator::make($request->all(),[
+            'email'      => 'required|email',
+            'nama'       => 'required',
+            'password'   => 'nullable',
+        ]);
+
+        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        $data['email']     = $request->email;
+        $data['name']      = $request->nama;
+
+        if($request->password){
+            $data['password']  = Hash::make($request->password);
+
+        }
+
+        User::whereId($id)->update($data);
+
+        return redirect()->route('admin.dashboard_user');
+    }
+
+    public function delete_user(Request $request,$id){
+        $data = User::find($id);
+
+        if($data){
+            $data->delete();
+        }
+
+        return redirect()->route('admin.dashboard_user');
     }
 }
