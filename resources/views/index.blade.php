@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">User</h1>
+            <h1 class="m-0">Pengguna</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data User</li>
+              <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+              <li class="breadcrumb-item active">Data Pengguna</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -27,7 +27,7 @@
             <a href="{{ route('admin.user.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Daftar Tabel User</h3>
+                <h3 class="card-title">Daftar Tabel Pengguna</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -47,7 +47,7 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Photo</th>
+                      <th>Foto</th>
                       <th>Nama</th>
                       <th>Email</th>
                       <th>Action</th>
@@ -74,7 +74,7 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                            <p>Apakah kamu yakin ingin menghapus data user <b>{{ $d->name }}</b></p>
+                            <p>Apakah kamu yakin ingin menghapus data pengguna <b>{{ $d->name }}</b></p>
                           </div>
                           <div class="modal-footer justify-content-between">
                               <form action="{{ route('admin.user.delete',['id' => $d->id]) }}" method="POST">

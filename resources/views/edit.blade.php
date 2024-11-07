@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">User</h1>
+            <h1 class="m-0">Pengguna</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Edit User</li>
+              <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+              <li class="breadcrumb-item active">Edit Pengguna</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -37,21 +37,21 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" value="{{ $data->email }}" placeholder="Enter email">
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" value="{{ $data->email }}" placeholder="Masukkan Email">
                     @error('email')
                         <small>{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nama</label>
-                    <input type="text" name="nama" class="form-control" id="exampleInputEmail1" value="{{ $data->name }}" placeholder="Enter name">
+                    <input type="text" name="nama" class="form-control" id="exampleInputEmail1" value="{{ $data->name }}" placeholder="Masukkan Nama">
                     @error('nama')
                         <small>{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="exampleInputPassword1">Kata Sandi</label>
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Kata Sandi">
                     @error('password')
                         <small>{{ $message }}</small>
                     @enderror
@@ -60,7 +60,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Kirim</button>
                 </div>
               </form>
             </div>
@@ -72,7 +72,7 @@
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
- 
+
   </div>
 
 @endsection
