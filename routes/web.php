@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //   echo "hello world";
 //});
-Route::get('/login',[LoginController::class,'index'])->name('login');
+Route::get('/',[LoginController::class,'index'])->name('login');
 Route::post('/login-proses',[LoginController::class,'login_proses'])->name('login-proses');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
@@ -32,6 +32,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::get('/jumlah_sekolah',[HomeController::class,'jumlah_sekolah'])->name('jumlah_sekolah');
     Route::get('/jumlah_anak_magang',[HomeController::class,'jumlah_anak_magang'])->name('jumlah_anak_magang');
     Route::get('/jumlah_admin',[HomeController::class,'jumlah_admin'])->name('jumlah_admin');
+    Route::get('/dashboard_user',[HomeController::class,'dashboard_user'])->name('dashboard_user');
+
 
     Route::get('/user',[HomeController::class,'index'])->name('index');
     Route::get('/create',[HomeController::class,'create'])->name('user.create');
@@ -39,7 +41,14 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
 
+    Route::get('/profile',[HomeController::class,'profile'])->name('profile');
+    Route::get('/edit-profile',[HomeController::class,'edit_profile'])->name('edit-profile');
+
     Route::get('/edit/{id}',[HomeController::class,'edit'])->name('user.edit');
     Route::put('/update/{id}',[HomeController::class,'update'])->name('user.update');
     Route::delete('/delete/{id}',[HomeController::class,'delete'])->name('user.delete');
+});
+
+Route::group(['prefix' => 'writer', 'middleware' => ['auth'], 'as' => 'writer.'], function() {
+
 });
