@@ -187,15 +187,15 @@
     <!-- profile -->
     <div class="user-panel mt-3 pb-1 mb-3 d-flex mr-2">
         <div class="image" >
-            <img src="https://avatars.githubusercontent.com/u/134774984?v=4" width="100" class="img-circle elevation-2" alt="User Image">
+            <img src="" width="100" class="img-circle elevation-2" alt="User Image">
          </div>
-        <div class="info">
-          <a href="{{route('admin.profile')}}" class="d-block text-white text-decoration-none hover:text-light">
-            <p>
-                Alexander Pierce
-            </p>
-        </a>
-        </div>
+         <div class="info">
+           <a href="{{route('admin.profile')}}" class="d-block text-white text-decoration-none hover:text-light">
+             <p>
+                 Haechan
+             </p>
+         </a>
+         </div>
     </div>
       <!-- SidebarSearch Form -->
       <div class="form-inline">

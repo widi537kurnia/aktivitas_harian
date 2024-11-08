@@ -26,16 +26,15 @@
                 <div class="card text-center p-5 shadow">
                     <div class="card-body">
                         @if($data)
-                        <img src="https://avatars.githubusercontent.com/u/134774984?v=4" alt="profile" class="img img-thumbnail rounded-circle w-50">
+                        <img src="{{asset('storage/photo-user/'.$data->image)}}" alt="profile" class="img img-thumbnail rounded-circle w-50" width="100">
                         <h2>{{$data->name}}</h2>
                         <p class="card-text text-muted">
-                            blabababababbbababbabababbabababababa
+                            {{$data->bio}}
                         </p>
                         <button class="btn btn-warning btn-sm">
                             <i class="fas fa-pen"></i>
-
                             <a href="{{route('admin.edit-profile')}}" class="link-muted">
-                                Ubah profil
+                                Ubah
                             </a>
                         </button>
                     </div>
@@ -45,9 +44,8 @@
                 <div class="card shadow border rounded p-5 mb-4 pl-3">
                     <h2>About Me</h2>
 
-                    <p>aku pacar jeno aku pacar jeno aku pacar jeno aku pacar jeno aku pacar jeno aku pacar jeno
-                         aku pacar jeno aku pacar jeno aku pacar jeno aku pacar jeno aku pacar jeno aku pacar jeno aku pacar jeno
-                         aku pacar jeno aku pacar jeno
+                    <p>
+                        {{$data->about}}
                     </p>
                 </div>
                 <div class="card shadow border rounded p-5 mb-4">
@@ -68,7 +66,7 @@
                             <span class="text-muted mb-1 d-block">Website</span>
                             <a href="https://github.com/TiraMutiar" target="_blank" class="text-decoration-none link-warning">
                                 <i class="fas fa-globe mr-2"></i>
-                                www.akupacarjeno.id
+                                https://www.rumahmesin.com
                             </a>
 
                         </p>

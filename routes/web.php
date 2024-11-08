@@ -37,6 +37,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     Route::get('/profile',[HomeController::class,'profile'])->name('profile');
     Route::get('/edit-profile',[HomeController::class,'edit_profile'])->name('edit-profile');
+    Route::post('/update-profile',[HomeController::class,'update_profile'])->name('update-profile');
 
     Route::get('/edit/{id}',[HomeController::class,'edit'])->name('user.edit');
     Route::put('/update/{id}',[HomeController::class,'update'])->name('user.update');
