@@ -3,6 +3,7 @@
 use App\Http\Controllers\DataTableController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\WriterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +33,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::get('/jumlah_sekolah',[HomeController::class,'jumlah_sekolah'])->name('jumlah_sekolah');
     Route::get('/jumlah_anak_magang',[HomeController::class,'jumlah_anak_magang'])->name('jumlah_anak_magang');
     Route::get('/jumlah_admin',[HomeController::class,'jumlah_admin'])->name('jumlah_admin');
-    Route::get('/dashboard_user',[HomeController::class,'dashboard_user'])->name('dashboard_user');
+    Route::get('/dashboard_user',[HomeController::class,'dashboard_user'])->name('dashboard_user')
 
 
     Route::get('/user',[HomeController::class,'index'])->name('index');
@@ -50,5 +51,5 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 });
 
 Route::group(['prefix' => 'writer', 'middleware' => ['auth'], 'as' => 'writer.'], function() {
-
+    Route::get('/dashboard_user',[WriterController::class,'dashboard_user'])->name('dashboard_user');
 });
