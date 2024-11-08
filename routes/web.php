@@ -28,6 +28,13 @@ Route::get('/register',[LoginController::class,'register'])->name('register');
 Route::post('/register-proses',[LoginController::class,'register_proses'])->name('register-proses');
 
 Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , function(){
+    Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
+    Route::get('/dashboard_admin',[HomeController::class,'dashboard_admin'])->name('dashboard_admin');
+    Route::get('/jumlah_sekolah',[HomeController::class,'jumlah_sekolah'])->name('jumlah_sekolah');
+    Route::get('/jumlah_anak_magang',[HomeController::class,'jumlah_anak_magang'])->name('jumlah_anak_magang');
+    Route::get('/jumlah_admin',[HomeController::class,'jumlah_admin'])->name('jumlah_admin');
+    Route::get('/dashboard_user',[HomeController::class,'dashboard_user'])->name('dashboard_user')
+
 
     Route::get('/user',[HomeController::class,'index'])->name('index');
     Route::get('/create',[HomeController::class,'create'])->name('user.create');
