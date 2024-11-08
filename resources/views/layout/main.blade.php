@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Aktivitas Harian | Beranda</title>
 
   <!--Bootstrap 5-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -46,10 +46,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="index3.html" class="nav-link">Beranda</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="#" class="nav-link">Kontak</a>
       </li>
     </ul>
 
@@ -63,7 +63,7 @@
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control form-control-navbar" type="search" placeholder="Cari" aria-label="Search">
               <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
                   <i class="fas fa-search"></i>
@@ -181,7 +181,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Aktivitas Harian</span>
     </a>
 
     <!-- profile -->
@@ -200,7 +200,7 @@
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Cari" aria-label="Search">
           <div class="input-group-append">
             <button class="btn btn-sidebar">
               <i class="fas fa-search fa-fw"></i>
@@ -215,16 +215,10 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ route('admin.dashboard_user') }}" class="nav-link">
+            <a href="{{ route('writer.dashboard_user') }}" class="nav-link">
               <i class="nav-icon fas fa-clock"></i>
               <p>
                 Riwayat Aktivitas Harian
-            <a href="{{ route('admin.dashboard') }}" class="nav-link">
-              <i class="nav-icon fas fa-clock"></i>
-              <p>
-                <b>
-                    Riwayat Aktivitas Harian
-                </b>
               </p>
             </a>
           </li>
@@ -232,10 +226,7 @@
             <a href="{{ route('admin.index') }}" class="nav-link">
               <i class="nav-icon fas fa-pen"></i>
               <p>
-                Tambah Data Aktivitas Harian
-                <b>
-                    Tambah Aktivitas Harian
-                </b>
+                Tambah Aktivitas Harian
               </p>
             </a>
           </li>
@@ -243,9 +234,7 @@
             <a href="{{ route('logout') }}" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
-                <b>
-                    Logout
-                </b>
+                Keluar
               </p>
             </a>
           </li>

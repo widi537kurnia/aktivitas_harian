@@ -11,8 +11,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">User</li>
+              <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+              <li class="breadcrumb-item active">Pengguna</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,7 +30,7 @@
 
               <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                  <input type="text" name="table_search" class="form-control float-right" placeholder="Cari">
                   <div class="input-group-append">
                     <button type="submit" class="btn btn-default">
                       <i class="fas fa-search"></i>
@@ -48,7 +48,8 @@
                     <th>Hari dan Tanggal</th>
                     <th>Aktivitas Harian</th>
                     <th>Shift</th>
-                    <th>Action</th> <!-- Tambahkan kolom Action untuk Edit dan Hapus -->
+                    <th>Waktu</th>
+                    <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -57,6 +58,7 @@
                     <td><strong>Hari dan Tanggal</strong></td>
                     <td><strong>Aktivitas Harian</strong></td>
                     <td><strong>Shift</strong></td>
+                    <td><strong>Waktu</strong></td>
                     <td>
                       <!-- Tombol Edit dan Hapus (tidak aktif tanpa data) -->
                       <button class="btn btn-primary" disabled><i class="fas fa-pen"></i> Edit</button>
