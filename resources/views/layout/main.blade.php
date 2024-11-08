@@ -228,6 +228,40 @@
               </p>
             </a>
           </li>
+          <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="{{ route('admin.dashboard_admin') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Dashboard Admin
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.jumlah_sekolah') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tabel Jumlah Sekolah</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.jumlah_anak_magang') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Jumlah Anak Magang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.jumlah_admin') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tabel Jumlah Admin</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
           <li class="nav-item">
             <a href="{{ route('admin.index') }}" class="nav-link">
               <i class="nav-icon fas fa-pen"></i>

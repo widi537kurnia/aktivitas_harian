@@ -18,6 +18,10 @@ class HomeController extends Controller
         return view ('dashboard', compact('data'));
     }
 
+    public function dashboard_admin(){
+        return view ('dashboard_admin');
+    }
+
     public function index() {
 
         $data = User::get();
@@ -43,6 +47,10 @@ class HomeController extends Controller
     public function store(Request $request) {
 
         $validator = Validator::make($request->all(),[
+            'photo'    => 'required|mimes:png,jpg,jpeg|max:2048',
+            'email'    => 'required|email',
+            'nama'     => 'required',
+          
             'email' => 'required|email',
             'nama'  => 'required',
             'password' => 'required',
@@ -106,6 +114,16 @@ class HomeController extends Controller
         }
 
         return redirect()->route('admin.index');
+    }
+
+    public function jumlah_sekolah(){
+        return view ('jumlah_sekolah');
+    }
+    public function jumlah_anak_magang(){
+        return view ('jumlah_anak_magang');
+    }
+    public function jumlah_admin(){
+        return view ('jumlah_admin');
     }
     
     public function update_user(Request $request,$id){
