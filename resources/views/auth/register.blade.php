@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Register</title>
+  <title>Daftar</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -19,10 +19,10 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href=".{{ route('login') }}" class="h1"><b>Absensi</b>MAGANG</a>
+      <a href="{{ route('login') }}" class="h1"><b>Absensi</b>MAGANG</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Halaman Register</p>
+      <p class="login-box-msg">Daftarkan akun Anda</p>
 
       <form action="{{ route('register-proses') }}" method="post">
         @csrf
@@ -49,7 +49,7 @@
             <small>{{ $message }}</small>
         @enderror
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Kata Sandi">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -62,7 +62,7 @@
         <div class="row">
           <!-- /.col -->
           <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Daftar</button>
           </div>
           <!-- /.col -->
         </div>
