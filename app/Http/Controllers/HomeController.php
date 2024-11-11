@@ -43,6 +43,7 @@ class HomeController extends Controller
 
         return view('auth.edit_profile',compact('data'));
     }
+
     public function update_profile(Request $request) {
         $validator = Validator::make($request->all(),[
             'photo'         => 'required|mimes:png,jpg,jpeg|max:2048',

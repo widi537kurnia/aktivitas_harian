@@ -186,16 +186,16 @@
 
     <!-- profile -->
     <div class="user-panel mt-3 pb-1 mb-3 d-flex mr-2">
-        <div class="image" >
-            <img src="" width="100" class="img-circle elevation-2" alt="User Image">
-         </div>
-         <div class="info">
-           <a href="{{route('admin.profile')}}" class="d-block text-white text-decoration-none hover:text-light">
-             <p>
-                 Haechan
-             </p>
-         </a>
-         </div>
+      <div class="image" >
+          <img src="{{$photo}}" name="photo" width="100" class="img-circle elevation-2">
+       </div>
+       <div class="info">
+        <a href="{{route('admin.profile')}}" class="d-block text-white text-decoration-nonet">
+           <p name="name">
+            {{$name}}
+           </p>
+       </a>
+       </div>
     </div>
       <!-- SidebarSearch Form -->
       <div class="form-inline">
@@ -215,6 +215,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
+            <a href="{{ route('admin.dashboard') }}" class="text-white-50 nav-link">
             <a href="{{ route('writer.dashboard_user') }}" class="nav-link">
               <i class="nav-icon fas fa-clock"></i>
               <p>
@@ -257,7 +258,7 @@
           </li>
         </ul>
           <li class="nav-item">
-            <a href="{{ route('admin.index') }}" class="nav-link">
+            <a href="{{ route('admin.index') }}" class="text-white-50 nav-link">
               <i class="nav-icon fas fa-pen"></i>
               <p>
                 Tambah Aktivitas Harian
@@ -265,7 +266,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link">
+            <a href="{{ route('logout') }}" class="text-white-50 nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Keluar
