@@ -20,45 +20,55 @@
           <!-- /.content-header -->
           <section class="content">
             <div class="row pl-2">
-              <div class="col-lg-8">
+              <div class="col-12">
                 <!-- Card Form -->
-                <a href="{{ route('admin.profile') }}" class="btn btn-primary mb-3">
+                <a href="{{ route('admin.profile') }}" class="btn btn-primary mb-3" style="background-color: rgb(231, 76, 60); color: white;">
                     <i class="fas fa-arrow-left"></i>
                     Back
                 </a>
                 <div class="card">
                   <div class="card-header">
-                    <h4 class="card-title">Edit your profile here!</h4>
+                    <h4 class="card-title">
+                    <b>
+                        Edit your profile here!
+                    </b>
+                    </h4>
                   </div>
                   <div class="card-body">
                     <form action="{{route('admin.update-profile')}}" enctype="multipart/form-data" method="POST">
                         @csrf
                         @if ($data)
-                        <div class="mb-3">
-                          <label for="disabledTextInput" class="form-label">Nama</label>
-                          <input type="text" id="disabledTextInput" class="form-control" name="name" placeholder="Nama" value="{{$data->name}}">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                              <label for="disabledTextInput" class="form-label">Nama</label>
+                              <input type="text" id="disabledTextInput" class="form-control" name="name" placeholder="Nama" value="{{$data->name}}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label for="disabledTextInput" class="form-label">Email</label>
+                              <input type="email" id="disabledTextInput" class="form-control" name="email" placeholder="Email" value="{{$data->email}}">
+                            </div>
                         </div>
-                        <div class="mb-3">
-                          <label for="disabledTextInput" class="form-label">Email</label>
-                          <input type="email" id="disabledTextInput" class="form-control" name="email" placeholder="Email" value="{{$data->email}}">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                              <label for="disabledTextInput" class="form-label">Bio</label>
+                              <input type="text" id="disabledTextInput" class="form-control" name="bio" placeholder="Your Bio" value="{{$data->bio}}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label for="disabledTextInput" class="form-label">About Me</label>
+                              <input type="text" id="disabledTextInput" class="form-control" name="about" placeholder="Tell them about" value="{{$data->about}}">
+                            </div>
                         </div>
-                        <div class="mb-3">
-                          <label for="disabledTextInput" class="form-label">Bio</label>
-                          <input type="text" id="disabledTextInput" class="form-control" name="bio" placeholder="Your Bio" value="{{$data->bio}}">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                              <label for="disabledTextInput" class="form-label">Password</label>
+                              <input type="password" id="disabledTextInput" class="form-control" name="password">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label for="imageUpload" class="form-label">Choose an Image</label>
+                              <input type="file" class="form-control" id="imageUpload" name="photo">
+                            </div>
                         </div>
-                        <div class="mb-3">
-                          <label for="disabledTextInput" class="form-label">About Me</label>
-                          <input type="text" id="disabledTextInput" class="form-control" name="about" placeholder="Tell them about" value="{{$data->about}}">
-                        </div>
-                        <div class="mb-3">
-                          <label for="disabledTextInput" class="form-label">Password</label>
-                          <input type="password" id="disabledTextInput" class="form-control" name="password">
-                        </div>
-                        <div class="mb-3">
-                          <label for="imageUpload" class="form-label">Choose an Image</label>
-                          <input type="file" class="form-control" id="imageUpload" name="photo">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" style="background-color: rgb(231, 76, 60); color: white;" class="btn btn-primary">Submit</button>
                         @endif
                     </form>
                   </div>
