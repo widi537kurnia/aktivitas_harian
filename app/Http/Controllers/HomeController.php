@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -12,7 +13,9 @@ class HomeController extends Controller
 {
 
     public function dashboard(){
-        return view ('dashboard');
+        $data = Auth::user();
+
+        return view ('dashboard', compact('data'));
     }
 
     public function index() {
@@ -24,6 +27,17 @@ class HomeController extends Controller
 
     public function create(){
         return view('create');
+    }
+
+    public function profile(){
+        $data = Auth::user();
+
+        return view('auth.profile', compact('data'));
+    }
+    public function edit_profile(){
+        $data = Auth::user();
+
+        return view('auth.edit_profile',compact('data'));
     }
 
     public function store(Request $request) {
@@ -61,6 +75,7 @@ class HomeController extends Controller
 
     public function update(Request $request,$id){
         $validator = Validator::make($request->all(),[
+            'photo'     => 'required|mimes:png,jpg,jpeg|max:2048',
             'email'      => 'required|email',
             'nama'       => 'required',
             'password'   => 'nullable',
@@ -70,6 +85,8 @@ class HomeController extends Controller
 
         $data['email']     = $request->email;
         $data['name']      = $request->nama;
+        $data['image']     =  null;//$filename;
+
 
         if($request->password){
             $data['password']  = Hash::make($request->password);
@@ -77,7 +94,6 @@ class HomeController extends Controller
         }
 
         User::whereId($id)->update($data);
-
         return redirect()->route('admin.index');
     }
 

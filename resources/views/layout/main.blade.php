@@ -211,7 +211,7 @@
             <a href="{{ route('admin.index') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Users
+                Tambah Data Aktivitas
               </p>
             </a>
           </li>

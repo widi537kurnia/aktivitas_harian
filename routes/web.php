@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
 
-    Route::get('/user',[HomeController::class,'index'])->name('index');
+    Route::get('/tambah-data-aktivitas',[HomeController::class,'index'])->name('index');
     Route::get('/create',[HomeController::class,'create'])->name('user.create');
     Route::post('/store',[HomeController::class,'store'])->name('user.store');
 
