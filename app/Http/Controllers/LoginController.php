@@ -31,7 +31,6 @@ class LoginController extends Controller
         }else{
             return redirect()->route('login')->with('failed', 'Email atau Password Salah');
         }
-
     }
 
     public function logout(){

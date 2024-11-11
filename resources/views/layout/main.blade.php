@@ -231,8 +231,12 @@
             <a href="{{ route('admin.dashboard_admin') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
+ tambah_data_aktivitas
+                Tambah Data Aktivitas
+
                 Dashboard Admin
                 <i class="right fas fa-angle-left"></i>
+                master
               </p>
             </a>
             <ul class="nav nav-treeview">
