@@ -26,16 +26,15 @@
                 <div class="card text-center p-5 shadow">
                     <div class="card-body">
                         @if($data)
-                        <img src="https://avatars.githubusercontent.com/u/134774984?v=4" alt="profile" class="img img-thumbnail rounded-circle w-50">
+                        <img src="{{asset('storage/photo-user/'.$data->image)}}" alt="profile" class="img img-thumbnail rounded-circle w-50" width="100">
                         <h2>{{$data->name}}</h2>
                         <p class="card-text text-muted">
-                            blabababababbbababbabababbabababababa
+                            {{$data->bio}}
                         </p>
-                        <button class="btn btn-warning btn-sm">
+                        <button class="btn btn-sm" style="background-color: rgb(231, 76, 60); color: white;">
                             <i class="fas fa-pen"></i>
-
-                            <a href="{{route('admin.edit-profile')}}" class="link-muted">
-                                Ubah profil
+                            <a href="{{route('admin.edit-profile')}}" class="text-white">
+                                Ubah
                             </a>
                         </button>
                     </div>
@@ -43,32 +42,36 @@
             </div>
             <div class="col-lg-8">
                 <div class="card shadow border rounded p-5 mb-4 pl-3">
-                    <h2>About Me</h2>
-
-                    <p>aku pacar jeno aku pacar jeno aku pacar jeno aku pacar jeno aku pacar jeno aku pacar jeno
-                         aku pacar jeno aku pacar jeno aku pacar jeno aku pacar jeno aku pacar jeno aku pacar jeno aku pacar jeno
-                         aku pacar jeno aku pacar jeno
+                    <h2>Pengguna</h2>
+                    <p>
+                        {{$data->about}}
+                    </p>
+                    <p class="card-text">
+                        <span class="text-muted mb-1 d-block">Alamat Email :</span>
+                        <i class="fas fa-envelope mr-2" style="color: rgb(231, 76, 60);"></i>
+                        {{$data->email}}
+                    </p>
+                    <p class="card-text">
+                        <span class="text-muted mb-1 d-block">Divisi :</span>
+                        <i class="fas fa-envelope mr-2" style="color: rgb(231, 76, 60);"></i>
+                        {{$data->email}}
                     </p>
                 </div>
                 <div class="card shadow border rounded p-5 mb-4">
-                    <h2>Contact</h2>
+                    <h2>See Us</h2>
                     <div class="row">
                         <div class="col-lg-6">
                         <p class="card-text">
-                            <span class="text-muted mb-1 d-block">Alamat: </span>
-                            <i class="fas fa-map text-warning mr-2"></i>
-                            YAYAYAYAYAYYAAYYAYAYAYAYA
-                        </p>
-                        <p class="card-text">
-                            <span class="text-muted mb-1 d-block">Alamat Email:</span>
-                            <i class="fas fa-envelope text-warning mr-2"></i>
-                            {{$data->email}}
+                            <span class="text-muted mb-1 d-block">Alamat :</span>
+                            <i class="fas fa-map mr-2" style="color: rgb(231, 76, 60);"></i>
+                            Jl. Parangtritis km 5,6 Sewon, Bantul,
+DI Yogyakarta 55187
                         </p>
                         <p class="card-text">
                             <span class="text-muted mb-1 d-block">Website</span>
-                            <a href="https://github.com/TiraMutiar" target="_blank" class="text-decoration-none link-warning">
+                            <a href="https://www.rumahmesin.com" target="_blank" class="text-decoration-none" style="color: rgb(231, 76, 60);">
                                 <i class="fas fa-globe mr-2"></i>
-                                www.akupacarjeno.id
+                                https://www.rumahmesin.com
                             </a>
 
                         </p>
@@ -76,19 +79,19 @@
                         </div>
                         <div class="col-lg-6">
                             <div>
-                                Follow me:
+                                Follow Us:
                             </div>
-                            <a href="https://github.com/TiraMutiar" target="_blank" class="text-decoration-none link-warning fs-2">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://instagram.com/onyour_i" target="_blank" class="text-decoration-none link-warning fs-2">
+                            <a href="https://instagram.com/rumahmesin" target="_blank" class="text-decoration-none link-danger fs-2">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://youtube.com/RumahMesin" target="_blank" class="text-decoration-none link-warning fs-2">
+                            <a href="https://youtube.com/RumahMesin" target="_blank" class="text-decoration-none link-danger fs-2">
                                 <i class="fab fa-youtube"></i>
                             </a>
-                            <a href="https://wa.me/085860223570" target="_blank" class="text-decoration-none link-warning fs-2">
-                                <i class="fab fa-whatsapp"></i>
+                            <a href="https://www.tiktok.com/@rumahmesin" target="_blank" class="text-decoration-none link-danger fs-2">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="https://www.facebook.com/rumah.mesin" target="_blank" class="text-decoration-none link-danger fs-2">
+                                <i class="fab fa-facebook"></i>
                             </a>
                         </div>
                     </div>

@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+
 use App\Models\User;
+
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -17,6 +19,7 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+
         $role_admin = Role::updateOrCreate(
             [
                 'name' => 'admin',
@@ -53,5 +56,6 @@ class PermissionSeeder extends Seeder
             $user2  = User::find(1);
 
             $user->assignRole(['admin']);
+
     }
 }
