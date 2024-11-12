@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    //
+    //function
 
     public function index(){
         return view('auth.login');
@@ -17,27 +17,32 @@ class LoginController extends Controller
 
     public function login_proses(Request $request){
         $request->validate([
-            'email'     => 'required',
-            'password'  => 'required',
+            'email'     => 'required|email',
+            'password'  => 'required|min:6',
         ]);
 
-        $data = [
-            'email'    =>$request->email,
-            'password' =>$request->password,
-        ];
+        // Cek apakah ada pengguna yang cocok
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            // Cek role user setelah login
+            $user = Auth::user();
+            // Redirect berdasarkan role user
+            if ($user->role == 'admin') {
+                return redirect()->route('admin.dashboard_admin');
+            } else if ($user->role == 'writer') {
+                return redirect()->route('writer.dashboard_user');
+            }
 
-        if(Auth::attempt($data)){
-            return redirect()->route('admin.dashboard');
-        }else{
-            return redirect()->route('login')->with('failed', 'Email atau Password Salah');
-        }
+        // Jika gagal login
+        return redirect()->route('login')->with('failed', 'Email atau Password Salah');
 
     }
+}
 
     public function logout(){
         Auth::logout();
         return redirect()->route('login')->with('success', 'Kamu berhasil logout!');
     }
+
 
     public function register(){
         return view('auth.register');
@@ -48,11 +53,13 @@ class LoginController extends Controller
             'nama'      => 'required',
             'email'     => 'required|email|unique:users,email',
             'password'  => 'required|min:6',
+            'role'      => 'required|in:admin,writer',
         ]);
 
         $data['name']     = $request->nama;
         $data['email']    = $request->email;
         $data['password'] = Hash::make($request->password);
+        $data['role']     = $request->role;
 
         User::create($data);
 
@@ -62,9 +69,11 @@ class LoginController extends Controller
         ];
 
         if(Auth::attempt($login)){
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('login');
         }else{
             return redirect()->route('login')->with('failed', 'Email atau Password Salah');
         }
     }
+
+
 }

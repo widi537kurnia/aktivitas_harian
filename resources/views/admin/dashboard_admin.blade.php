@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.main_admin')
  @section('content')
 
  <div class="content-wrapper">
@@ -12,7 +12,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Admin</li>
+            <li class="breadcrumb-item active">Dashboard Admin</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -42,12 +42,12 @@
 
         <div class="col-lg-4 col-6">
           <div class="info-box">
-            <span class="info-box-icon bg-olive"><i class="fas fa-user"></i></span>
+            <span class="info-box-icon bg-info"><i class="fas fa-user"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Jumlah Anak Magang</span>
               <span class="info-box-number">41,410</span>
               <div class="progress">
-                <div class="progress-bar bg-olive" style="width: 70%"></div>
+                <div class="progress-bar bg-info" style="width: 70%"></div>
               </div>
               <span class="progress-description">
                 70% Increase in 30 Days

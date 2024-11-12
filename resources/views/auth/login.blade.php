@@ -19,10 +19,10 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href=".{{ route('login') }}" class="h1"><b>Absensi</b>MAGANG</a>
+      <a href="{{ route('login') }}" class="h1"><b>Absensi</b>MAGANG</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Halaman Login</p>
+      <p class="login-box-msg">Masuk ke akun Anda untuk memulai</p>
 
       <form action="{{ route('login-proses') }}" method="post">
         @csrf
@@ -38,7 +38,7 @@
             <small>{{ $message }}</small>
         @enderror
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Kata Sandi">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -53,13 +53,13 @@
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
               <label for="remember">
-                Remember Me
+                Ingat Saya
               </label>
             </div>
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
           </div>
           <!-- /.col -->
         </div>
@@ -67,11 +67,8 @@
 
       <!-- /.social-auth-links -->
 
-      <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p>
       <p class="mb-0">
-        <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
+        <a href="{{ route('register') }}" class="text-center">Daftar Akun Baru</a>
       </p>
     </div>
     <!-- /.card-body -->
