@@ -22,7 +22,7 @@
             <div class="row pl-2">
               <div class="col-12">
                 <!-- Card Form -->
-                <a href="{{ route('admin.profile') }}" class="btn btn-primary mb-3" style="background-color: rgb(231, 76, 60); color: white;">
+                <a href="{{ route('admin.profile') }}" class="btn mb-3" style="background-color: rgb(231, 76, 60); color: white;">
                     <i class="fas fa-arrow-left"></i>
                     Back
                 </a>
@@ -68,7 +68,7 @@
                               <input type="file" class="form-control" id="imageUpload" name="photo">
                             </div>
                         </div>
-                        <button type="submit" style="background-color: rgb(231, 76, 60); color: white;" class="btn btn-primary">Submit</button>
+                        <button type="submit" style="background-color: rgb(231, 76, 60); color: white;" class="btn">Submit</button>
                         @endif
                     </form>
                   </div>

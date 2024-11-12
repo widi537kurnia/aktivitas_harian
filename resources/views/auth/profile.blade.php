@@ -47,7 +47,12 @@
                         {{$data->about}}
                     </p>
                     <p class="card-text">
-                        <span class="text-muted mb-1 d-block">Alamat Email:</span>
+                        <span class="text-muted mb-1 d-block">Alamat Email :</span>
+                        <i class="fas fa-envelope mr-2" style="color: rgb(231, 76, 60);"></i>
+                        {{$data->email}}
+                    </p>
+                    <p class="card-text">
+                        <span class="text-muted mb-1 d-block">Divisi :</span>
                         <i class="fas fa-envelope mr-2" style="color: rgb(231, 76, 60);"></i>
                         {{$data->email}}
                     </p>
@@ -57,7 +62,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                         <p class="card-text">
-                            <span class="text-muted mb-1 d-block">Alamat: </span>
+                            <span class="text-muted mb-1 d-block">Alamat :</span>
                             <i class="fas fa-map mr-2" style="color: rgb(231, 76, 60);"></i>
                             Jl. Parangtritis km 5,6 Sewon, Bantul,
 DI Yogyakarta 55187
@@ -81,6 +86,12 @@ DI Yogyakarta 55187
                             </a>
                             <a href="https://youtube.com/RumahMesin" target="_blank" class="text-decoration-none link-danger fs-2">
                                 <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@rumahmesin" target="_blank" class="text-decoration-none link-danger fs-2">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="https://www.facebook.com/rumah.mesin" target="_blank" class="text-decoration-none link-danger fs-2">
+                                <i class="fab fa-facebook"></i>
                             </a>
                         </div>
                     </div>

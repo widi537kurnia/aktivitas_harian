@@ -24,13 +24,13 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {     
+    {
         View::composer('layout.main', function ($view) {
             if (Auth::check()) {
                 $user = Auth::user();
 
                 if (empty($user->image)) {
-                    $user->image = '../photo-user/RM.png';
+                    $user->image = '../photo-user/merah.jpg';
                 }
 
                 $view->with('photo', asset('storage/photo-user/'.Auth::user()->image))
@@ -44,14 +44,14 @@ class AppServiceProvider extends ServiceProvider
                 $user = Auth::user();
 
                 if (empty($user->image)) {
-                    $user->image = '../photo-user/RM.png'; 
+                    $user->image = '../photo-user/merah.jpg';
                 }
 
                 $view->with('photo', asset('storage/photo-user/'.Auth::user()->image));
             }
         });
     }
-        
+
 
 }
 
