@@ -38,11 +38,6 @@ class LoginController extends Controller
         return redirect()->route('login')->with('failed', 'Email atau Password Salah');
     }
 
-    public function logout(){
-        Auth::logout();
-        return redirect()->route('login')->with('success', 'Kamu berhasil logout!');
-    }
-
     public function register(){
         return view('auth.register');
     }

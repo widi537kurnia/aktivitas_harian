@@ -16,12 +16,4 @@ class RoleMiddleware
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     //
-    public function handle(Request $request, Closure $next, $role)
-    {
-        if (Auth::check() && Auth::user()->role == $role) {
-            return $next($request);
-        }
-
-        return redirect('/');
-    }
 }
