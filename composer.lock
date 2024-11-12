@@ -3159,8 +3159,6 @@
         },
         {
             "name": "spatie/laravel-permission",
-<<<<<<< HEAD
-profil_user
             "version": "6.10.1",
             "source": {
                 "type": "git",
@@ -3172,9 +3170,7 @@ profil_user
                 "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/8bb69d6d67387f7a00d93a2f5fab98860f06e704",
                 "reference": "8bb69d6d67387f7a00d93a2f5fab98860f06e704",
             "version": "6.10.0",
-=======
             "version": "6.10.1",
->>>>>>> download-spatie
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
@@ -3182,14 +3178,10 @@ profil_user
             },
             "dist": {
                 "type": "zip",
-<<<<<<< HEAD
                 "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/2444bb914a52c570c00ae8c94e096a58e01b2317",
                 "reference": "2444bb914a52c570c00ae8c94e096a58e01b2317",
-master
-=======
                 "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/8bb69d6d67387f7a00d93a2f5fab98860f06e704",
                 "reference": "8bb69d6d67387f7a00d93a2f5fab98860f06e704",
->>>>>>> download-spatie
                 "shasum": ""
             },
             "require": {
@@ -3251,15 +3243,10 @@ master
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-permission/issues",
-<<<<<<< HEAD
-profil_user
                 "source": "https://github.com/spatie/laravel-permission/tree/6.10.1"
-              
+                "source": "https://github.com/spatie/laravel-permission/tree/6.10.1"
                 "source": "https://github.com/spatie/laravel-permission/tree/6.10.0"
-master
-=======
                 "source": "https://github.com/spatie/laravel-permission/tree/6.10.1"
->>>>>>> download-spatie
             },
             "funding": [
                 {
@@ -3267,15 +3254,10 @@ master
                     "type": "github"
                 }
             ],
-<<<<<<< HEAD
-profil_user
             "time": "2024-11-08T18:45:41+00:00"
-
+            "time": "2024-11-08T18:45:41+00:00"
             "time": "2024-11-05T17:30:49+00:00"
-master
-=======
             "time": "2024-11-08T18:45:41+00:00"
->>>>>>> download-spatie
         },
         {
             "name": "symfony/console",
