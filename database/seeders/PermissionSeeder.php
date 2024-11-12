@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+profil_user
+
 use App\Models\User;
+
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -17,6 +20,30 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+profil_user
+        $role_admin = Role::updateOrCreate([
+            'name'  => 'admin',
+        ],
+        ['name' => 'admin']
+        );
+        $role_writer = Role::updateOrCreate([
+            'name'  => 'writer',
+        ],
+        ['name' => 'writer']
+        );
+        $role_guest = Role::updateOrCreate([
+            'name'  => 'guest',
+        ],
+        ['name' => 'guest']
+        );
+        $permission = Permission::updateOrCreate([
+            'name'  => 'view_dashboard',
+        ],
+        ['name' => 'view_dashboard']
+        );
+
+        $role_admin->givePermissionTo($permission);
+
         $role_admin = Role::updateOrCreate(
             [
                 'name' => 'admin',
@@ -53,5 +80,6 @@ class PermissionSeeder extends Seeder
             $user2  = User::find(1);
 
             $user->assignRole(['admin']);
+
     }
 }
