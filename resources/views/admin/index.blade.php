@@ -1,5 +1,7 @@
 @extends('layout.main_admin')
 @section('content')
+multi_user
+
  tambah_data_aktivitas
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -165,5 +167,4 @@
 
 </div>
 
- master
 @endsection

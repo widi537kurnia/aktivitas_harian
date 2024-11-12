@@ -1,7 +1,7 @@
 @extends('layout.main_admin')
 @section('content')
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+
+    <!-- Content Header (Page Header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">

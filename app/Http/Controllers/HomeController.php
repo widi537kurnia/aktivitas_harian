@@ -18,41 +18,13 @@ class HomeController extends Controller
         return view ('dashboard', compact('data'));
     }
 
-    // ADMIN
+    // function admin
     public function dashboard_admin(){
         return view ('admin.dashboard_admin');
     }
 
     public function main_admin(){
         return view ('admin.main_admin');
-    }
-
-    public function jumlah_sekolah(){
-        return view ('admin.jumlah_sekolah');
-    }
-    public function jumlah_anak_magang(){
-        return view ('admin.jumlah_anak_magang');
-    }
-    public function jumlah_admin(){
-        return view ('admin.jumlah_admin');
-    }
-    public function create_sekolah() {
-
-        $data = User::get();
-
-        return view('admin.add.create_sekolah', compact('data'));
-    }
-    public function create_anak_magang() {
-
-        $data = User::get();
-
-        return view('admin.add.create_anak_magang', compact('data'));
-    }
-    public function create_admin() {
-
-        $data = User::get();
-
-        return view('admin.add.create_admin', compact('data'));
     }
 
 

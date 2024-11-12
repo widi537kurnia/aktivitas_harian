@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    //
+    //function
 
     public function index(){
         return view('auth.login');
@@ -38,11 +38,6 @@ class LoginController extends Controller
         // Jika gagal login
         return redirect()->route('login')->with('failed', 'Email atau Password Salah');
 
-    }
-
-    public function logout(){
-        Auth::logout();
-        return redirect()->route('login')->with('success', 'Kamu berhasil logout!');
     }
 
     public function register(){

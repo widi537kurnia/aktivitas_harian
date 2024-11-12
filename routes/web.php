@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::get('/', function () {
-//   echo "hello world";
+//   echo "Hello world";
 //});
 Route::get('/',[LoginController::class,'index'])->name('login');
 Route::post('/login-proses',[LoginController::class,'login_proses'])->name('login-proses');
@@ -37,14 +37,6 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
     Route::get('/dashboard_admin',[HomeController::class,'dashboard_admin'])->name('dashboard_admin');
-    Route::get('/jumlah_sekolah',[HomeController::class,'jumlah_sekolah'])->name('jumlah_sekolah');
-    Route::get('/jumlah_anak_magang',[HomeController::class,'jumlah_anak_magang'])->name('jumlah_anak_magang');
-    Route::get('/jumlah_admin',[HomeController::class,'jumlah_admin'])->name('jumlah_admin');
-
-    Route::get('/create_sekolah',[HomeController::class,'create_sekolah'])->name('add.create_sekolah');
-    Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('add.create_anak_magang');
-    Route::get('/create_admin',[HomeController::class,'create_admin'])->name('add.create_admin');
-
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
 

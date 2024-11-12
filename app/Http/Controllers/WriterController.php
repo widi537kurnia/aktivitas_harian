@@ -11,8 +11,4 @@ use Illuminate\Support\Facades\Validator;
 
 class WriterController extends Controller
 {
-
-    public function dashboard_user(){
-        return view('writer.dashboard_user');
-    }
 }
