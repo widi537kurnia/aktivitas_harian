@@ -18,7 +18,7 @@ class HomeController extends Controller
         return view ('dashboard', compact('data'));
     }
 
-    // ADMIN
+    // function admin
     public function dashboard_admin(){
         return view ('admin.dashboard_admin');
     }

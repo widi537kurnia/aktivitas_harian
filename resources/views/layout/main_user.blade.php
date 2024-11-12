@@ -220,7 +220,7 @@
               <p>
                 Riwayat Aktivitas Harian
               </p>
-            </a> 
+            </a>
           </li>
           <li class="nav-item">
             <a href="{{ route('writer.dashboard_user') }}" class="nav-link">
@@ -245,7 +245,7 @@
     <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
+  <!-- Content Wrapper. Contains Page content -->
   @yield('content')
   <!-- /.content-wrapper -->
   <footer class="main-footer">

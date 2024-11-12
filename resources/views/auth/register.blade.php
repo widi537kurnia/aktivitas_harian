@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="{{ asset('lte/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- icheck bootstrap -->
   <link rel="stylesheet" href="{{ asset('lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-  <!-- Theme style -->
+  <!-- Theme Style -->
   <link rel="stylesheet" href="{{ asset('lte/dist/css/adminlte.min.css')}} ">
 </head>
 <body class="hold-transition login-page">
