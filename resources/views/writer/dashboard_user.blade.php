@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.main_user')
 
 @section('content')
 <div class="content-wrapper">

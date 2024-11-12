@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aktivitas Harian | Beranda</title>
+  <title>Aktivitas Harian | Beranda Admin</title>
 
   <!--Bootstrap 5-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -46,7 +46,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Beranda</a>
+        <a href="{{ route('admin.dashboard_admin') }}" class="nav-link">Beranda</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Kontak</a>
@@ -215,52 +215,34 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ route('writer.dashboard_user') }}" class="nav-link">
-              <i class="nav-icon fas fa-clock"></i>
-              <p>
-                Riwayat Aktivitas Harian
-              </p>
-            </a>
-          </li>
-          <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
             <a href="{{ route('admin.dashboard_admin') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Dashboard Admin
-                <i class="right fas fa-angle-left"></i>
+                Dashboard
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('admin.jumlah_sekolah') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tabel Jumlah Sekolah</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('admin.jumlah_anak_magang') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Jumlah Anak Magang</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('admin.jumlah_admin') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tabel Jumlah Admin</p>
-                </a>
-              </li>
-            </ul>
           </li>
-        </ul>
           <li class="nav-item">
-            <a href="{{ route('admin.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-pen"></i>
+            <a href="{{ route('admin.jumlah_sekolah') }}" class="nav-link">
+              <i class="nav-icon fas fa-school"></i>
               <p>
-                Tambah Aktivitas Harian
+                Jumlah Sekolah
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.jumlah_anak_magang') }}" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Jumlah Anak Magang
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.jumlah_admin') }}" class="nav-link">
+              <i class="nav-icon fas fa-user-shield"></i>
+              <p>
+                Jumlah Admin
               </p>
             </a>
           </li>

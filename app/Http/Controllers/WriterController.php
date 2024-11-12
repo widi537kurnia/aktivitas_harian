@@ -13,6 +13,6 @@ class WriterController extends Controller
 {
 
     public function dashboard_user(){
-        return view ('dashboard_user');
+        return view('writer.dashboard_user');
     }
 }

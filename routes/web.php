@@ -27,13 +27,17 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 Route::get('/register',[LoginController::class,'register'])->name('register');
 Route::post('/register-proses',[LoginController::class,'register_proses'])->name('register-proses');
 
+Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
+
 Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , function(){
-    Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
     Route::get('/dashboard_admin',[HomeController::class,'dashboard_admin'])->name('dashboard_admin');
     Route::get('/jumlah_sekolah',[HomeController::class,'jumlah_sekolah'])->name('jumlah_sekolah');
     Route::get('/jumlah_anak_magang',[HomeController::class,'jumlah_anak_magang'])->name('jumlah_anak_magang');
     Route::get('/jumlah_admin',[HomeController::class,'jumlah_admin'])->name('jumlah_admin');
-    Route::get('/dashboard_user',[HomeController::class,'dashboard_user'])->name('dashboard_user')
+
+    Route::get('/create_sekolah',[HomeController::class,'create_sekolah'])->name('add.create_sekolah');
+    Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('add.create_anak_magang');
+    Route::get('/create_admin',[HomeController::class,'create_admin'])->name('add.create_admin');
 
 
     Route::get('/user',[HomeController::class,'index'])->name('index');
@@ -51,5 +55,5 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 });
 
 Route::group(['prefix' => 'writer', 'middleware' => ['auth'], 'as' => 'writer.'], function() {
-    Route::get('/dashboard_user',[WriterController::class,'dashboard_user'])->name('dashboard_user');
+    Route::get('/dashboard_user', [WriterController::class, 'dashboard_user'])->name('dashboard_user');
 });

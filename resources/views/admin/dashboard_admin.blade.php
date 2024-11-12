@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.main_admin')
  @section('content')
 
  <div class="content-wrapper">
@@ -12,7 +12,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Admin</li>
+            <li class="breadcrumb-item active">Dashboard Admin</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->

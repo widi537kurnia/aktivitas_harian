@@ -18,9 +18,43 @@ class HomeController extends Controller
         return view ('dashboard', compact('data'));
     }
 
+    // ADMIN
     public function dashboard_admin(){
-        return view ('dashboard_admin');
+        return view ('admin.dashboard_admin');
     }
+
+    public function main_admin(){
+        return view ('admin.main_admin');
+    }
+
+    public function jumlah_sekolah(){
+        return view ('admin.jumlah_sekolah');
+    }
+    public function jumlah_anak_magang(){
+        return view ('admin.jumlah_anak_magang');
+    }
+    public function jumlah_admin(){
+        return view ('admin.jumlah_admin');
+    }
+    public function create_sekolah() {
+
+        $data = User::get();
+
+        return view('admin.add.create_sekolah', compact('data'));
+    }
+    public function create_anak_magang() {
+
+        $data = User::get();
+
+        return view('admin.add.create_anak_magang', compact('data'));
+    }
+    public function create_admin() {
+
+        $data = User::get();
+
+        return view('admin.add.create_admin', compact('data'));
+    }
+
 
     public function index() {
 
@@ -50,9 +84,6 @@ class HomeController extends Controller
             'photo'    => 'required|mimes:png,jpg,jpeg|max:2048',
             'email'    => 'required|email',
             'nama'     => 'required',
-          
-            'email' => 'required|email',
-            'nama'  => 'required',
             'password' => 'required',
         ]);
 
@@ -116,16 +147,6 @@ class HomeController extends Controller
         return redirect()->route('admin.index');
     }
 
-    public function jumlah_sekolah(){
-        return view ('jumlah_sekolah');
-    }
-    public function jumlah_anak_magang(){
-        return view ('jumlah_anak_magang');
-    }
-    public function jumlah_admin(){
-        return view ('jumlah_admin');
-    }
-    
     public function update_user(Request $request,$id){
         $validator = Validator::make($request->all(),[
             'email'      => 'required|email',
@@ -145,7 +166,7 @@ class HomeController extends Controller
 
         User::whereId($id)->update($data);
 
-        return redirect()->route('admin.dashboard_user');
+        return redirect()->route('writer.dashboard_user');
     }
 
     public function delete_user(Request $request,$id){
@@ -155,6 +176,6 @@ class HomeController extends Controller
             $data->delete();
         }
 
-        return redirect()->route('admin.dashboard_user');
+        return redirect()->route('writer.dashboard_user');
     }
 }

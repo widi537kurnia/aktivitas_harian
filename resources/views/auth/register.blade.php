@@ -59,6 +59,15 @@
         @error('password')
             <small>{{ $message }}</small>
         @enderror
+        <div class="input-group mb-3">
+            <select class="form-control" id="role" name="role">
+                <option value="writer">Writer</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div>
+          @error('role')
+              <small>{{ $message }}</small>
+          @enderror
         <div class="row">
           <!-- /.col -->
           <div class="col-12">
