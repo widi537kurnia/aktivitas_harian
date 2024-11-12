@@ -51,8 +51,8 @@ class HomeController extends Controller
             'email'    => 'required|email',
             'nama'     => 'required',
           
-            'email' => 'required|email',
-            'nama'  => 'required',
+            'email'    => 'required|email',
+            'nama'     => 'required',
             'password' => 'required',
         ]);
 
@@ -82,7 +82,7 @@ class HomeController extends Controller
 
     public function update(Request $request,$id){
         $validator = Validator::make($request->all(),[
-            'photo'     => 'required|mimes:png,jpg,jpeg|max:2048',
+            'photo'      => 'required|mimes:png,jpg,jpeg|max:2048',
             'email'      => 'required|email',
             'nama'       => 'required',
             'password'   => 'nullable',
@@ -145,7 +145,7 @@ class HomeController extends Controller
 
         User::whereId($id)->update($data);
 
-        return redirect()->route('admin.dashboard_user');
+        return redirect()->route('admin.dashboard_admin');
     }
 
     public function delete_user(Request $request,$id){
@@ -155,6 +155,6 @@ class HomeController extends Controller
             $data->delete();
         }
 
-        return redirect()->route('admin.dashboard_user');
+        return redirect()->route('admin.dashboard_admin');
     }
 }

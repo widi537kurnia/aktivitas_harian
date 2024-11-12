@@ -13,10 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('image')->nullable()->after('remember_token');
-
-        });
+        
     }
 
     /**
@@ -26,8 +23,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('jumlah_sekolah');
     }
 };
