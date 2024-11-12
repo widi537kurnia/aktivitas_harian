@@ -45,6 +45,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('add.create_anak_magang');
     Route::get('/create_admin',[HomeController::class,'create_admin'])->name('add.create_admin');
 
+    Route::get('/tambah_data_sekolah',[HomeController::class,'sekolah'])->name('tambah_data_sekolah');
+
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
 
     Route::get('/tambah-data-aktivitas',[HomeController::class,'index'])->name('index');

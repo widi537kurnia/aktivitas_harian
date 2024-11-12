@@ -214,6 +214,11 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
+          <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="{{ route('admin.dashboard_admin') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -243,6 +248,12 @@
               <i class="nav-icon fas fa-user-shield"></i>
               <p>
                 Jumlah Admin
+            <a href="{{ route('admin.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-pen"> </i>
+              <p>
+                <b>
+                    Tambah Aktivitas Harian
+                </b>
               </p>
             </a>
           </li>
