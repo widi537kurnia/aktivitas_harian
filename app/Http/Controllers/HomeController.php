@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aktivitas;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,11 +20,78 @@ class HomeController extends Controller
     }
 
     public function index() {
-
-        $data = User::get();
-
-        return view('index', compact('data'));
+        return view('index');
     }
+
+    public function aktivitas(Request $request)
+{
+    // Validasi data input
+    $validator = Validator::make($request->all(), [
+        'tanggal'       => 'required|date',
+        'shift'         => 'required',
+        'mulai_kerja'   => 'required',
+        'selesai_kerja' => 'required',
+        'aktivitas'     => 'required|string',
+        'photo'         => 'required|mimes:png,jpg,jpeg|max:2048'
+    ]);
+
+    // Jika validasi gagal, kembali ke halaman sebelumnya dengan pesan error
+    if ($validator->fails()) {
+        return redirect()->back()->withInput()->withErrors($validator);
+    }
+
+    // Simpan foto ke storage
+    $photo = $request->file('photo');
+    $filename = date('Y-m-d') . $photo->getClientOriginalName();
+    $path = 'photo-user/' . $filename;
+    Storage::disk('public')->put($path, file_get_contents($photo));
+
+    // Siapkan data untuk disimpan di database
+    $data['tanggal']        = $request->tanggal; // perbaikan di sini
+    $data['shift']          = $request->shift;
+    $data['mulai_kerja']    = $request->mulai_kerja;
+    $data['selesai_kerja']  = $request->selesai_kerja;
+    $data['aktivitas']      = $request->aktivitas;
+    $data['photo']          = $filename;
+
+    // Simpan data ke tabel Aktivitas
+    Aktivitas::create($data);
+
+    // Redirect ke halaman index dengan pesan sukses
+    return redirect()->route('admin.tambah-aktivitas')->with('success', 'Data aktivitas berhasil ditambahkan.');
+}
+
+    /* public function aktivitas(Request $request) {
+
+        $validator = Validator::make($request->all(),[
+            'tanggal'       => 'required|date',
+            'shift'         => 'required',
+            'mulai_kerja'   => 'required',
+            'selesai_kerja' => 'required',
+            'aktivitas'     => 'required|string',
+            'photo'         => 'required|mimes:png,jpg,jpeg|max:2048'
+        ]);
+
+        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        $photo      = $request->file('photo');
+        $filename   = date('Y-m-d').$photo->getClientOriginalName();
+        $path       = 'photo-user/'.$filename;
+
+        Storage::disk('public')->put($path,file_get_contents($photo));
+
+        $data['tanggal']        = $request->date;
+        $data['shift']          = $request->shift;
+        $data['mulai_kerja']    = $request->mulai_kerja;
+        $data['selesai_kerja']  = $request->selesai_kerja;
+        $data['aktivitas']      = $request->aktivitas;
+        $data['photo']          = $filename;
+
+        Aktivitas::create($data);
+
+        return redirect()->route('admin.index');
+    }*/
+
 
     public function create(){
         return view('create');

@@ -20,7 +20,16 @@
         <!-- /.content-header -->
         <section class="content">
             <div class="container-fluid">
-                <form action="{{ route('admin.user.store') }}" method="POST" enctype="multipart/form-data">
+
+                <!--tampilan pesan suksess-->
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                <!-- form tambah aktivitas-->
+                <form action="{{ route('admin.tambah-data-aktivitas') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <!-- left column -->
@@ -40,12 +49,12 @@
                                                 <div class="form-group">
                                                     <label>Tanggal :</label>
                                                     <div class="input-group" id="reservationdate" data-target-input="nearest">
-                                                      <input type="date" class="form-control date-input" data-target="#reservationdate" name="tanggal" placeholder="Tanggal...">
-                                                      <div class="input-group-append" data-target="#reservationdate" data-toggle="date"></div>
-                                                  </div>
-                                                  @error('tanggal')
-                                                    <small>{{ $message }}</small>
-                                                  @enderror
+                                                        <input type="date" class="form-control date-input" data-target="#reservationdate" name="tanggal" placeholder="Tanggal...">
+                                                        <div class="input-group-append" data-target="#reservationdate" data-toggle="date"></div>
+                                                    </div>
+                                                    @error('tanggal')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -60,38 +69,36 @@
                                                             <option data-select2-id="1">Pagi</option>
                                                             <option data-select2-id="2">Sore</option>
                                                         </select>
-                                                    </div>
-                                                    @error('shift')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-
-                                            <!-- jam mulai dan jam pulang -->
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Mulai Kerja :</label>
-                                                    <div class="input-group" id="timepicker" data-target-input="nearest">
-                                                        <input type="time" class="form-control datetimepicker-input" data-target="#timepicker" name="mulai kerja">
+                                                        @error('shift')
+                                                            <small>{{ $message }}</small>
+                                                        @enderror
                                                     </div>
                                                 </div>
-                                                @error('mulai kerja')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
 
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Selesai Kerja :</label>
-                                                        <div class="input-group" id="timepicker" data-target-input="nearest">
-                                                            <input type="time" class="form-control datetimepicker-input" data-target="#timepicker" name="selesai kerja">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Mulai Kerja :</label>
+                                                        <div class="input-group">
+                                                            <input type="time" class="form-control" name="mulai_kerja">
                                                         </div>
-                                                    <!-- /.input group -->
+                                                        @error('mulai_kerja')
+                                                            <small>{{ $message }}</small>
+                                                        @enderror
+                                                    </div>
                                                 </div>
-                                                <!-- /.form group -->
-                                                @error('selesai kerjaa')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Selesai Kerja :</label>
+                                                        <div class="input-group">
+                                                            <input type="time" class="form-control" name="selesai_kerja">
+                                                        </div>
+                                                        @error('selesai_kerja')
+                                                            <small>{{ $message }}</small>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
 
                                             <!--/Isi aktivitas-->
                                             <div class="form-group">
@@ -132,14 +139,7 @@
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
         </section>
-
     </div>
-
-
-
-    <!--KODE DI BAWAH TIDAK DI GUNAKAN-->
-
-    <!-- Main content -->
     <!-- /.content -->
     </div>
 @endsection
