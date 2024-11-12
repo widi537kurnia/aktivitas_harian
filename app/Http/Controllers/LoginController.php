@@ -34,8 +34,10 @@ class LoginController extends Controller
             }
         }
 
+
         // Jika gagal login
         return redirect()->route('login')->with('failed', 'Email atau Password Salah');
+
     }
 
     public function logout(){
