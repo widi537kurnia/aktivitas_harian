@@ -16,6 +16,13 @@ class HomeController extends Controller
         $data = Auth::user();
 
         return view ('dashboard', compact('data'));
+tambah_data_aktivitas
+
+    }
+
+    public function dashboard_admin(){
+        return view ('dashboard_admin');
+
     }
 
     public function index() {
@@ -39,6 +46,15 @@ class HomeController extends Controller
 
         return view('auth.edit_profile',compact('data'));
     }
+
+ tambah_data_aktivitas
+    public function store(Request $request) {
+
+        $validator = Validator::make($request->all(),[
+            'photo'     => 'required|mimes:png,jpg,jpeg|max:2048',
+            'email'     => 'required|email',
+            'nama'      => 'required',
+            'password'  => 'required',
 
     public function update_profile(Request $request) {
         $validator = Validator::make($request->all(),[
@@ -76,10 +92,14 @@ class HomeController extends Controller
     public function store(Request $request) {
 
         $validator = Validator::make($request->all(),[
-            'photo' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'photo'    => 'required|mimes:png,jpg,jpeg|max:2048',
+            'email'    => 'required|email',
+            'nama'     => 'required',
+          
             'email' => 'required|email',
             'nama'  => 'required',
             'password' => 'required',
+ 
         ]);
 
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
@@ -113,21 +133,32 @@ class HomeController extends Controller
             'nama'       => 'required',
             'password'   => 'nullable',
         ]);
+tambah_data_aktivitas
+
         $photo                  = $request->file('photo');
         $filename               = date('Y-m-d').$photo->getClientOriginalName();
         $path                   = 'photo-user/'.$filename;
+
 
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
         $data['email']     = $request->email;
         $data['name']      = $request->nama;
+ tambah_data_aktivitas
+        $data['image']     =  null;//$filename;
+
         $data['image']     = $filename;
+
 
 
         if($request->password){
             $data['password']  = Hash::make($request->password);
 
         }
+ tambah_data_aktivitas
+
+
+
         User::whereId($id)->update($data);
         return redirect()->route('admin.index');
     }
@@ -140,5 +171,47 @@ class HomeController extends Controller
         }
 
         return redirect()->route('admin.index');
+    }
+
+    public function jumlah_sekolah(){
+        return view ('jumlah_sekolah');
+    }
+    public function jumlah_anak_magang(){
+        return view ('jumlah_anak_magang');
+    }
+    public function jumlah_admin(){
+        return view ('jumlah_admin');
+    }
+    
+    public function update_user(Request $request,$id){
+        $validator = Validator::make($request->all(),[
+            'email'      => 'required|email',
+            'nama'       => 'required',
+            'password'   => 'nullable',
+        ]);
+
+        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        $data['email']     = $request->email;
+        $data['name']      = $request->nama;
+
+        if($request->password){
+            $data['password']  = Hash::make($request->password);
+
+        }
+
+        User::whereId($id)->update($data);
+
+        return redirect()->route('admin.dashboard_user');
+    }
+
+    public function delete_user(Request $request,$id){
+        $data = User::find($id);
+
+        if($data){
+            $data->delete();
+        }
+
+        return redirect()->route('admin.dashboard_user');
     }
 }
