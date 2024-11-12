@@ -40,6 +40,12 @@ class LoginController extends Controller
 
     }
 
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login')->with('success', 'Kamu berhasil logout!');
+    }
+
+
     public function register(){
         return view('auth.register');
     }

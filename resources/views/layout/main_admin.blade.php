@@ -1,5 +1,3 @@
-multi_user
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,8 +28,6 @@ multi_user
   <link rel="stylesheet" href="{{ asset('lte/plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('lte/plugins/summernote/summernote-bs4.min.css') }}">
-
-
 @yield('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -190,16 +186,16 @@ multi_user
 
     <!-- profile -->
     <div class="user-panel mt-3 pb-1 mb-3 d-flex mr-2">
-      <div class="image" >
-          <img src="{{$photo}}" name="photo" width="100" class="img-circle elevation-2">
-       </div>
-       <div class="info">
-        <a href="{{route('admin.profile')}}" class="d-block text-white text-decoration-nonet">
-           <p name="name">
-            {{$name}}
-           </p>
-       </a>
-       </div>
+        <div class="image" >
+            <img src="https://avatars.githubusercontent.com/u/134774984?v=4" width="100" class="img-circle elevation-2" alt="User Image">
+         </div>
+        <div class="info">
+          <a href="{{route('admin.profile')}}" class="d-block text-white text-decoration-none hover:text-light">
+            <p>
+                Alexander Pierce
+            </p>
+        </a>
+        </div>
     </div>
       <!-- SidebarSearch Form -->
       <div class="form-inline">
@@ -223,32 +219,12 @@ multi_user
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
-            <a href="{{ route('admin.dashboard') }}" class="text-white-50 nav-link">
-            <a href="{{ route('writer.dashboard_user') }}" class="nav-link">
-              <i class="nav-icon fas fa-clock"></i>
-              <p>
-                Riwayat Aktivitas Harian
-              </p>
-            </a>
-          </li>
-          <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="{{ route('admin.dashboard_admin') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Dashboard Admin
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{ route('admin.jumlah_sekolah') }}" class="nav-link">
               <i class="nav-icon fas fa-school"></i>
-            <a href="{{ route('admin.index') }}" class="text-white-50 nav-link">
-              <i class="nav-icon fas fa-pen"></i>
               <p>
                 Jumlah Sekolah
               </p>
@@ -271,7 +247,7 @@ multi_user
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('logout') }}" class="text-white-50 nav-link">
+            <a href="{{ route('logout') }}" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Keluar
