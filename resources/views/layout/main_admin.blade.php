@@ -248,12 +248,11 @@
               <i class="nav-icon fas fa-user-shield"></i>
               <p>
                 Jumlah Admin
+              </p>
             <a href="{{ route('admin.index') }}" class="nav-link">
               <i class="nav-icon fas fa-pen"> </i>
               <p>
-                <b>
-                    Tambah Aktivitas Harian
-                </b>
+              Tambah Aktivitas Harian
               </p>
             </a>
           </li>
