@@ -109,7 +109,7 @@ class HomeController extends Controller
         }
         $id = Auth::id();
         User::whereId($id)->update($data);
-        return redirect()->route('admin.profile');
+        return redirect()->route('writer.profile');
     }
 
     public function store(Request $request) {
