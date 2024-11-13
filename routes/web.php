@@ -22,16 +22,12 @@ use Illuminate\Support\Facades\Route;
 //});
 Route::get('/',[LoginController::class,'index'])->name('login');
 Route::post('/login-proses',[LoginController::class,'login_proses'])->name('login-proses');
-
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 Route::get('/register',[LoginController::class,'register'])->name('register');
 Route::post('/register-proses',[LoginController::class,'register_proses'])->name('register-proses');
 
 Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
-
-Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , function(){
-Route::get('/logout',[LoginController::class,'logout'])->name('logout');
-});
 
 Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , function(){
 
