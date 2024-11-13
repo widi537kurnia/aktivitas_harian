@@ -118,6 +118,8 @@ class HomeController extends Controller
             'photo'    => 'required|mimes:png,jpg,jpeg|max:2048',
             'email'    => 'required|email',
             'nama'     => 'required',
+            'email'    => 'required|email',
+            'nama'     => 'required',
             'password' => 'required',
 
         ]);
