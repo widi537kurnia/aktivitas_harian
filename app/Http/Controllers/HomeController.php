@@ -18,6 +18,45 @@ class HomeController extends Controller
         return view ('dashboard', compact('data'));
     }
 
+    // function admin
+    public function dashboard_admin(){
+        return view ('admin.dashboard_admin');
+    }
+
+    public function main_admin(){
+        return view ('admin.main_admin');
+    }
+
+    public function jumlah_sekolah(){
+        return view ('admin.jumlah_sekolah');
+    }
+    public function jumlah_anak_magang(){
+        return view ('admin.jumlah_anak_magang');
+    }
+    public function jumlah_admin(){
+        return view ('admin.jumlah_admin');
+    }
+    public function create_sekolah() {
+
+        $data = User::get();
+
+        return view('admin.add.create_sekolah', compact('data'));
+    }
+    public function create_anak_magang() {
+
+        $data = User::get();
+
+        return view('admin.add.create_anak_magang', compact('data'));
+    }
+    public function create_admin() {
+
+        $data = User::get();
+
+        return view('admin.add.create_admin', compact('data'));
+    }
+
+
+
     public function index() {
 
         $data = User::get();
@@ -76,10 +115,11 @@ class HomeController extends Controller
     public function store(Request $request) {
 
         $validator = Validator::make($request->all(),[
-            'photo' => 'required|mimes:png,jpg,jpeg|max:2048',
-            'email' => 'required|email',
-            'nama'  => 'required',
+            'photo'    => 'required|mimes:png,jpg,jpeg|max:2048',
+            'email'    => 'required|email',
+            'nama'     => 'required',
             'password' => 'required',
+
         ]);
 
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
@@ -108,26 +148,32 @@ class HomeController extends Controller
 
     public function update(Request $request,$id){
         $validator = Validator::make($request->all(),[
-            'photo'     => 'required|mimes:png,jpg,jpeg|max:2048',
+            'photo'      => 'required|mimes:png,jpg,jpeg|max:2048',
             'email'      => 'required|email',
             'nama'       => 'required',
             'password'   => 'nullable',
         ]);
+
         $photo                  = $request->file('photo');
         $filename               = date('Y-m-d').$photo->getClientOriginalName();
         $path                   = 'photo-user/'.$filename;
+
 
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
         $data['email']     = $request->email;
         $data['name']      = $request->nama;
+        $data['image']     =  null;//$filename;
+
         $data['image']     = $filename;
+
 
 
         if($request->password){
             $data['password']  = Hash::make($request->password);
 
-        }
+        };
+
         User::whereId($id)->update($data);
         return redirect()->route('admin.index');
     }
@@ -140,5 +186,37 @@ class HomeController extends Controller
         }
 
         return redirect()->route('admin.index');
+    }
+
+    public function update_user(Request $request,$id){
+        $validator = Validator::make($request->all(),[
+            'email'      => 'required|email',
+            'nama'       => 'required',
+            'password'   => 'nullable',
+        ]);
+
+        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        $data['email']     = $request->email;
+        $data['name']      = $request->nama;
+
+        if($request->password){
+            $data['password']  = Hash::make($request->password);
+
+        }
+
+        User::whereId($id)->update($data);
+
+
+        return redirect()->route('writer.dashboard_user');
+    }
+
+    public function delete_user(Request $request,$id){
+        $data = User::find($id);
+
+        if($data){
+            $data->delete();
+        }
+        return redirect()->route('writer.dashboard_user');
     }
 }
