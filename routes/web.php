@@ -23,12 +23,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[LoginController::class,'index'])->name('login');
 Route::post('/login-proses',[LoginController::class,'login_proses'])->name('login-proses');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+<<<<<<< HEAD
+=======
+
+>>>>>>> dashboard_user
 
 Route::get('/register',[LoginController::class,'register'])->name('register');
 Route::post('/register-proses',[LoginController::class,'register_proses'])->name('register-proses');
 
+<<<<<<< HEAD
 Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
 
+=======
+>>>>>>> dashboard_user
 Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , function(){
 
     Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
@@ -36,12 +43,15 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::get('/jumlah_sekolah',[HomeController::class,'jumlah_sekolah'])->name('jumlah_sekolah');
     Route::get('/jumlah_anak_magang',[HomeController::class,'jumlah_anak_magang'])->name('jumlah_anak_magang');
     Route::get('/jumlah_admin',[HomeController::class,'jumlah_admin'])->name('jumlah_admin');
+<<<<<<< HEAD
 
     Route::get('/create_sekolah',[HomeController::class,'create_sekolah'])->name('add.create_sekolah');
     Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('add.create_anak_magang');
     Route::get('/create_admin',[HomeController::class,'create_admin'])->name('add.create_admin');
 
     Route::get('/tambah_data_sekolah',[HomeController::class,'sekolah'])->name('tambah_data_sekolah');
+=======
+>>>>>>> dashboard_user
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
 
@@ -61,5 +71,10 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 });
 
 Route::group(['prefix' => 'writer', 'middleware' => ['auth'], 'as' => 'writer.'], function() {
+<<<<<<< HEAD
     Route::get('/dashboard_user', [WriterController::class, 'dashboard_user'])->name('dashboard_user');
 });
+=======
+    Route::get('/dashboard_user',[WriterController::class,'dashboard_user'])->name('dashboard_user');
+});
+>>>>>>> dashboard_user

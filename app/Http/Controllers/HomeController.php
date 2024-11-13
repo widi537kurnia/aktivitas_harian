@@ -16,6 +16,7 @@ class HomeController extends Controller
         $data = Auth::user();
 
         return view ('dashboard', compact('data'));
+
     }
 
     // function admin
@@ -77,6 +78,17 @@ class HomeController extends Controller
         $data = Auth::user();
 
         return view('auth.edit_profile',compact('data'));
+    }
+
+    public function sekolah(Request $request) { //name functionnya di ganti sekolah karna untuk membedakan
+
+        $validator = Validator::make($request->all(),[
+            'photo'     => 'required|mimes:png,jpg,jpeg|max:2048',
+            'email'     => 'required|email',
+            'nama'      => 'required',
+            'password'  => 'required',
+
+        ]);
     }
 
     public function update_profile(Request $request) {
@@ -175,6 +187,8 @@ class HomeController extends Controller
             $data['password']  = Hash::make($request->password);
 
         };
+
+
 
         User::whereId($id)->update($data);
         return redirect()->route('admin.index');
