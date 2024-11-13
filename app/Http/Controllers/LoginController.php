@@ -25,18 +25,18 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             // Cek role user setelah login
             $user = Auth::user();
-
             // Redirect berdasarkan role user
             if ($user->role == 'admin') {
                 return redirect()->route('admin.dashboard_admin');
             } else if ($user->role == 'writer') {
                 return redirect()->route('writer.dashboard_user');
             }
-        }
 
         // Jika gagal login
         return redirect()->route('login')->with('failed', 'Email atau Password Salah');
+
     }
+}
 
     public function logout(){
         Auth::logout();

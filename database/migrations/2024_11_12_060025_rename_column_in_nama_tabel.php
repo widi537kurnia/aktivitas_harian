@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('bio')->nullable()->after('image');
-            $table->text('about')->nullable()->after('bio');
-            $table->string('image')->nullable()->after('remember_token');
+        Schema::table('nama_tabel', function (Blueprint $table) {
+            //
         });
     }
 
@@ -27,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('nama_tabel', function (Blueprint $table) {
             //
         });
     }
