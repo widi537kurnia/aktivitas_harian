@@ -50,9 +50,13 @@
                     @enderror
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Divisi</label>
-                    <input type="text" name="divisi" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Divisi">
-                    @error('nama')
+                    <label for="divisi">Divisi</label>
+                    <select class="form-control" id="divisi" name="divisi">
+                        <option value="web">Web</option>
+                        <option value="desain">Desain</option>
+                        <option value="video">Video</option>
+                    </select>
+                    @error('divisi')
                         <small>{{ $message }}</small>
                     @enderror
                   </div>

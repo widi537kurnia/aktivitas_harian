@@ -68,6 +68,16 @@
           @error('role')
               <small>{{ $message }}</small>
           @enderror
+          <div class="form-group">
+            <select class="form-control" id="divisi" name="divisi">
+                <option value="web">Web</option>
+                <option value="desain">Desain</option>
+                <option value="video">Video</option>
+            </select>
+        </div>
+        @error('divisi')
+              <small>{{ $message }}</small>
+          @enderror
         <div class="row">
           <!-- /.col -->
           <div class="col-12">

@@ -54,12 +54,14 @@ class LoginController extends Controller
             'email'     => 'required|email|unique:users,email',
             'password'  => 'required|min:6',
             'role'      => 'required|in:admin,writer',
+            'divisi'    => 'required|in:web,desain,video'
         ]);
 
         $data['name']     = $request->nama;
         $data['email']    = $request->email;
         $data['password'] = Hash::make($request->password);
         $data['role']     = $request->role;
+        $data['divisi']     = $request->divisi;
 
         User::create($data);
 
