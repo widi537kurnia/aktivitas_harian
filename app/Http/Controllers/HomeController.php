@@ -205,6 +205,7 @@ class HomeController extends Controller
         return redirect()->route('admin.jumlah_admin');
     }
 
+
     public function edit(Request $request,$id){
         $data = User::find($id);
 
