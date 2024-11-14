@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.main_user')
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -38,7 +38,7 @@
             <div class="row pl-2">
               <div class="col-12">
                 <!-- Card Form -->
-                <a href="{{ route('admin.profile') }}" class="btn mb-3" style="background-color: rgb(231, 76, 60); color: white;">
+                <a href="{{ route('writer.profile') }}" class="btn mb-3" style="background-color: rgb(231, 76, 60); color: white;">
                     <i class="fas fa-arrow-left"></i>
                     Back
                 </a>
@@ -51,7 +51,7 @@
                     </h4>
                   </div>
                   <div class="card-body">
-                    <form action="{{route('admin.update-profile')}}" enctype="multipart/form-data" method="POST">
+                    <form action="{{route('writer.update-profile')}}" enctype="multipart/form-data" method="POST">
                         @csrf
                         @if ($data)
                         <div class="row">

@@ -58,6 +58,13 @@ class HomeController extends Controller
     }
 
 
+    public function index() {
+
+        $data = User::get();
+
+        return view('admin.index', compact('data'));
+
+
 
     // function admin
     public function dashboard_admin(){
@@ -117,6 +124,7 @@ class HomeController extends Controller
     // Jika validasi gagal, kembali ke halaman sebelumnya dengan pesan error
     if ($validator->fails()) {
         return redirect()->back()->withInput()->withErrors($validator);
+
     }
 
     // Simpan foto ke storage
@@ -187,7 +195,7 @@ class HomeController extends Controller
         }
         $id = Auth::id();
         User::whereId($id)->update($data);
-        return redirect()->route('admin.profile');
+        return redirect()->route('writer.profile');
     }
 
     public function store(Request $request) {

@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('layout.main', function ($view) {
+        View::composer('layout.main_user', function ($view) {
             if (Auth::check()) {
                 $user = Auth::user();
 

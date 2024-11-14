@@ -179,20 +179,19 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="index3.html" class="brand-link text-center">
       <span class="brand-text font-weight-light">Aktivitas Harian</span>
     </a>
 
     <!-- profile -->
     <div class="user-panel mt-3 pb-1 mb-3 d-flex mr-2">
         <div class="image" >
-            <img src="https://avatars.githubusercontent.com/u/134774984?v=4" width="100" class="img-circle elevation-2" alt="User Image">
+            <img src="{{$photo}}" width="100" class="img-circle elevation-2" alt="User Image">
          </div>
         <div class="info">
-          <a href="{{route('admin.profile')}}" class="d-block text-white text-decoration-none hover:text-light">
+          <a href="{{route('writer.profile')}}" class="d-block text-white text-decoration-none hover:text-light">
             <p>
-                Alexander Pierce
+                 {{$name}}
             </p>
         </a>
         </div>
