@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-           
+        Schema::table('admin', function (Blueprint $table) {
+            if (!Schema::hasColumn('admin', 'role')) {
+                $table->string('role')->nullable();
+            }
         });
     }
 
@@ -25,7 +27,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('admin', function (Blueprint $table) {
             //
         });
     }
