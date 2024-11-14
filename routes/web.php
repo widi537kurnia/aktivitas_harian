@@ -23,7 +23,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[LoginController::class,'index'])->name('login');
 Route::post('/login-proses',[LoginController::class,'login_proses'])->name('login-proses');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
-
 Route::get('/register',[LoginController::class,'register'])->name('register');
 Route::post('/register-proses',[LoginController::class,'register_proses'])->name('register-proses');
 
@@ -40,6 +39,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::get('/create_sekolah',[HomeController::class,'create_sekolah'])->name('add.create_sekolah');
     Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('add.create_anak_magang');
     Route::get('/create_admin',[HomeController::class,'create_admin'])->name('add.create_admin');
+
+    Route::get('/index',[HomeController::class,'index'])->name('index');
 
     Route::get('/tambah_data_sekolah',[HomeController::class,'sekolah'])->name('tambah_data_sekolah');
 

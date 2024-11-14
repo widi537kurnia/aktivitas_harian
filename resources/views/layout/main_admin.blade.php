@@ -245,6 +245,10 @@
               <p>
                 Jumlah Admin
               </p>
+            <a href="{{ route('admin.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-pen"> </i>
+              <p>
+                Tambah Aktivitas Harian
             </a>
           </li>
 
