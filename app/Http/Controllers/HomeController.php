@@ -19,53 +19,6 @@ class HomeController extends Controller
         return view ('dashboard', compact('data'));
 
     }
-
-    // function admin
-    public function dashboard_admin(){
-        return view ('admin.dashboard_admin');
-    }
-
-    public function main_admin(){
-        return view ('admin.main_admin');
-    }
-
-    public function jumlah_sekolah(){
-        return view ('admin.jumlah_sekolah');
-    }
-    public function jumlah_anak_magang(){
-        return view ('admin.jumlah_anak_magang');
-    }
-    public function jumlah_admin(){
-        return view ('admin.jumlah_admin');
-    }
-    public function create_sekolah() {
-
-        $data = User::get();
-
-        return view('admin.add.create_sekolah', compact('data'));
-    }
-    public function create_anak_magang() {
-
-        $data = User::get();
-
-        return view('admin.add.create_anak_magang', compact('data'));
-    }
-    public function create_admin() {
-
-        $data = User::get();
-
-        return view('admin.add.create_admin', compact('data'));
-    }
-
-
-    public function index() {
-
-        $data = User::get();
-
-        return view('admin.index', compact('data'));
-
-
-
     // function admin
     public function dashboard_admin(){
         return view ('admin.dashboard_admin');
@@ -198,13 +151,6 @@ class HomeController extends Controller
         return redirect()->route('writer.profile');
     }
 
-    public function store(Request $request) {
-
-        $validator = Validator::make($request->all(),[
-            'photo'    => 'required|mimes:png,jpg,jpeg|max:2048',
-            'email'    => 'required|email',
-            'nama'     => 'required',
-
     public function sekolah(Request $request) { //name functionnya di ganti sekolah karna untuk membedakan
 
         $validator = Validator::make($request->all(),[
@@ -216,48 +162,12 @@ class HomeController extends Controller
         ]);
     }
 
-    public function update_profile(Request $request) {
-        $validator = Validator::make($request->all(),[
-            'photo'         => 'required|mimes:png,jpg,jpeg|max:2048',
-            'email'         => 'required|email',
-            'name'          => 'required',
-            'password'      => 'nullable',
-            'bio'           => 'required',
-            'about'         => 'required',
-        ]);
-
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
-
-        $photo                  = $request->file('photo');
-        $filename               = date('Y-m-d').$photo->getClientOriginalName();
-        $path                   = 'photo-user/'.$filename;
-
-        Storage::disk('public')->put($path,file_get_contents($photo));
-
-        $data['email']      = $request->email;
-        $data['name']       = $request->name;
-        $data['bio']        = $request->bio;
-        $data['about']      = $request->about;
-        $data['image']      = $filename;
-
-        if($request->password){
-            $data['password']  = Hash::make($request->password);
-
-        }
-        $id = Auth::id();
-        User::whereId($id)->update($data);
-        return redirect()->route('admin.profile');
-    }
-
     public function store(Request $request) {
 
         $validator = Validator::make($request->all(),[
             'photo'    => 'required|mimes:png,jpg,jpeg|max:2048',
             'email'    => 'required|email',
             'nama'     => 'required',
-            'email'    => 'required|email',
-            'nama'     => 'required',
-
             'password' => 'required',
 
         ]);
