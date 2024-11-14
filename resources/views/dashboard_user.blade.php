@@ -24,7 +24,6 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-<<<<<<< HEAD
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Aktivitas Harian</h3>
@@ -36,7 +35,11 @@
                     <button type="submit" class="btn btn-default">
                       <i class="fas fa-search"></i>
                     </button>
-=======
+                  </div>
+                </div>
+              </div>
+            </div>
+
           <div class="col-12">
             <div class="card">
               <div class="card-header">
@@ -50,7 +53,6 @@
                         <i class="fas fa-search"></i>
                       </button>
                     </div>
->>>>>>> dashboard_user
                   </div>
                 </div>
               </div>
@@ -87,7 +89,6 @@
               </div>
               <!-- /.card-body -->
             </div>
-<<<<<<< HEAD
             <!-- /.card-header -->
 
             <div class="card-body table-responsive p-0">
@@ -118,8 +119,7 @@
               </table>
             </div>
             <!-- /.card-body -->
-=======
->>>>>>> dashboard_user
+
           </div>
           <!-- /.card -->
         </div>
