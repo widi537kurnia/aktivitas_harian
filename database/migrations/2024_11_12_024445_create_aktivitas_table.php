@@ -11,10 +11,17 @@ return new class extends Migration
      *
      * @return void
      */
+
     public function up()
     {
-        Schema::create('tanggal_absensis', function (Blueprint $table) {
+        Schema::create('aktivitas', function (Blueprint $table) {
             $table->id();
+            $table->date('tanggal');
+            $table->string('shift');
+            $table->time('mulai_kerja');
+            $table->time('selesai_kerja');
+            $table->text('aktivitas');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tanggal_absensis');
+        Schema::dropIfExists('aktivitas');
     }
 };

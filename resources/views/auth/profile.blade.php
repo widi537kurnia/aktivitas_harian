@@ -64,8 +64,8 @@
                         <p class="card-text">
                             <span class="text-muted mb-1 d-block">Alamat :</span>
                             <i class="fas fa-map mr-2" style="color: rgb(231, 76, 60);"></i>
-                            Jl. Parangtritis km 5,6 Sewon, Bantul,
-DI Yogyakarta 55187
+                            Jl. Parangtritis km 5,6 Sewon, Bantul, DI Yogyakarta 55187
+                            Jl. Parangtritis km 5,6 Sewon, Bantul, DI Yogyakarta 55187
                         </p>
                         <p class="card-text">
                             <span class="text-muted mb-1 d-block">Website</span>

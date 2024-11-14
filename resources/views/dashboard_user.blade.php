@@ -39,6 +39,56 @@
                 </div>
               </div>
             </div>
+
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Aktivitas Harian</h3>
+  
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+  
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>Hari dan Tanggal</th>
+                      <th>Aktivitas Harian</th>
+                      <th>Shift</th>
+                      <th>Waktu</th>
+                      <th>Kategori</th> <!-- Tambahkan kolom Action untuk Edit dan Hapus -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Baris kosong sebagai placeholder -->
+                    <tr>
+                      <td><string>Hari dan Tanggal</string></td>
+                      <td><string>Aktivitas Harian</string></td>
+                      <td><string>Shift</string></td>
+                      <td><string>Waktu</string></td>
+                      <td>
+                        <!-- Tombol Edit dan Hapus (tidak aktif tanpa data) -->
+                        <button class="btn btn-primary" disabled><i class="fas fa-pen"></i> Edit</button>
+                        <button class="btn btn-danger" disabled><i class="fas fa-trash-alt"></i> Hapus</button>
+                      </td>
+                    </tr>
+                    <!-- Baris kosong untuk saat data belum ada -->
+                    <!-- Jika data sudah ada, ganti bagian ini dengan loop foreach untuk menampilkan data -->
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
             <!-- /.card-header -->
 
             <div class="card-body table-responsive p-0">
@@ -69,6 +119,7 @@
               </table>
             </div>
             <!-- /.card-body -->
+
           </div>
           <!-- /.card -->
         </div>
