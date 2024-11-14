@@ -226,11 +226,7 @@
             </a>
           </li>
           <li class="nav-item">
-<<<<<<< HEAD
             <a href="{{ route('writer.tambah-aktivitas') }}" class="nav-link text-white">
-=======
-            <a href="{{ route('admin.index') }}" class="nav-link">
->>>>>>> ecce728b4e239cbc1372a88e2eacce5b51b06ff7
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Tambah Data Aktivitas Harian

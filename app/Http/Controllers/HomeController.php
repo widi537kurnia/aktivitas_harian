@@ -36,7 +36,9 @@ class HomeController extends Controller
         return view ('admin.jumlah_anak_magang');
     }
     public function jumlah_admin(){
-        return view ('admin.jumlah_admin');
+        $data = User::get();
+
+        return view ('admin.jumlah_admin', compact('data'));
     }
     public function create_sekolah() {
 
@@ -58,7 +60,7 @@ class HomeController extends Controller
     }
 
     public function index() {
-        return view('admin.index');
+        return view('writer.index');
     }
 
     public function aktivitas(Request $request)

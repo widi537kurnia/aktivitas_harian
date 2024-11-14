@@ -38,7 +38,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     Route::get('/create_sekolah',[HomeController::class,'create_sekolah'])->name('add.create_sekolah');
     Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('add.create_anak_magang');
-    
+
     Route::get('/create-admin',[HomeController::class,'create_admin'])->name('create-admin');
     Route::post('/input-admin',[HomeController::class,'store'])->name('input-admin');
 
