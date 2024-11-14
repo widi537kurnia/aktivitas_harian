@@ -185,18 +185,6 @@
     </a>
 
     <!-- profile -->
-    <div class="user-panel mt-3 pb-1 mb-3 d-flex mr-2">
-        <div class="image" >
-            <img src="https://avatars.githubusercontent.com/u/134774984?v=4" width="100" class="img-circle elevation-2" alt="User Image">
-         </div>
-        <div class="info">
-          <a href="{{route('admin.profile')}}" class="d-block text-white text-decoration-none hover:text-light">
-            <p>
-                Alexander Pierce
-            </p>
-        </a>
-        </div>
-    </div>
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
@@ -214,7 +202,14 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
+          <li class="nav-item">
+            <a href="{{ route('writer.dashboard_user') }}" class="nav-link">
+              <i class="nav-icon fas fa-clock"></i>
+              <p>
+                Riwayat Aktivitas Harian
+              </p>
+            </a>
+          </li>
           <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
@@ -223,7 +218,8 @@
             <a href="{{ route('admin.dashboard_admin') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Dashboard
+                Dashboard Admin
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
           </li>
@@ -253,6 +249,15 @@
               <i class="nav-icon fas fa-pen"> </i>
               <p>
                 Tambah Aktivitas Harian
+            </a>
+          </li>
+
+            <a href="{{ route('admin.tambah-aktivitas') }}" class="nav-link"
+
+            <a href="{{ route('admin.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-pen"> </i>
+              <p>
+              Tambah Aktivitas Harian
               </p>
             </a>
           </li>
