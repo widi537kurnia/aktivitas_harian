@@ -247,14 +247,6 @@
               </p>
             </a>
           </li>
-
-            <a href="{{ route('admin.tambah-aktivitas') }}" class="nav-link">
-              <i class="nav-icon fas fa-pen"> </i>
-              <p>
-              Tambah Aktivitas Harian
-              </p>
-            </a>
-          </li>
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>

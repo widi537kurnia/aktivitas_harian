@@ -1,4 +1,4 @@
-@extends('layout.main_admin')
+@extends('layout.main_user')
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -30,10 +30,7 @@
                 @endif
 
                 <!-- form tambah aktivitas-->
-                <form action="{{ route('admin.tambah-data-aktivitas') }}" method="POST" enctype="multipart/form-data">
-
-                <form action="{{ route('admin.user.store') }}" method="POST" enctype="multipart/form-data">
-
+                <form action="{{ route('writer.tambah-data-aktivitas') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <!-- left column -->
@@ -59,89 +56,53 @@
                                                     @error('tanggal')
                                                         <small>{{ $message }}</small>
                                                     @enderror
-
-                                                      <input type="date" class="form-control date-input" data-target="#reservationdate" name="tanggal" placeholder="Tanggal...">
-                                                      <div class="input-group-append" data-target="#reservationdate" data-toggle="date"></div>
-                                                  </div>
-                                                  @error('tanggal')
-                                                    <small>{{ $message }}</small>
-                                                  @enderror
                                                 </div>
                                             </div>
-
-                                             <!-- /.card-header -->
-
+                                            <!-- /.card-header -->
                                             <!-- sift input-->
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>Shift :</label>
-                                                        <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" name="shift" placeholder="Sift Kerja...">
-                                                            <option selected ="selected"></option>
-                                                            <option data-select2-id="1">Pagi</option>
-                                                            <option data-select2-id="2">Sore</option>
-                                                        </select>
-                                                        @error('shift')
-                                                            <small>{{ $message }}</small>
-                                                        @enderror
-                                                    </div>
+                                                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" name="shift" placeholder="Sift Kerja...">
+                                                        <option selected ="selected"></option>
+                                                        <option data-select2-id="1">Pagi</option>
+                                                        <option data-select2-id="2">Sore</option>
+                                                    </select>
+                                                    @error('shift')
+                                                    <small>{{ $message }}</small>
+                                                    @enderror
                                                 </div>
-
+                                            </div>
+                                        </div>
+                                            <!-- jam mulai dan jam pulang -->
+                                            <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Mulai Kerja :</label>
-                                                        <div class="input-group">
-                                                            <input type="time" class="form-control" name="mulai_kerja">
+                                                        <div class="input-group" id="timepicker" data-target-input="nearest">
+                                                            <input type="time" class="form-control datetimepicker-input" data-target="#timepicker" name="mulai kerja">
                                                         </div>
-                                                        @error('mulai_kerja')
-                                                            <small>{{ $message }}</small>
-                                                        @enderror
                                                     </div>
+                                                    @error('mulai kerja')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
                                                 </div>
 
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Selesai Kerja :</label>
-                                                        <div class="input-group">
-                                                            <input type="time" class="form-control" name="selesai_kerja">
-                                                        </div>
-                                                        @error('selesai_kerja')
+                                                            <div class="input-group" id="timepicker" data-target-input="nearest">
+                                                                <input type="time" class="form-control datetimepicker-input" data-target="#timepicker" name="selesai kerja">
+                                                            </div>
+                                                        <!-- /.input group -->
+                                                        @error('selesai kerjaa')
                                                             <small>{{ $message }}</small>
                                                         @enderror
                                                     </div>
                                                 </div>
-
-                                                    </div>
-                                                    @error('shift')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-
-                                            <!-- jam mulai dan jam pulang -->
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Mulai Kerja :</label>
-                                                    <div class="input-group" id="timepicker" data-target-input="nearest">
-                                                        <input type="time" class="form-control datetimepicker-input" data-target="#timepicker" name="mulai kerja">
-                                                    </div>
-                                                </div>
-                                                @error('mulai kerja')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
                                             </div>
-
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Selesai Kerja :</label>
-                                                        <div class="input-group" id="timepicker" data-target-input="nearest">
-                                                            <input type="time" class="form-control datetimepicker-input" data-target="#timepicker" name="selesai kerja">
-                                                        </div>
-                                                    <!-- /.input group -->
-                                                </div>
                                                 <!-- /.form group -->
-                                                @error('selesai kerjaa')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
+
 
                                             <!--/Isi aktivitas-->
                                             <div class="form-group">
@@ -153,20 +114,18 @@
                                                 @enderror
                                               </div>
                                           </div>
-                                        </div>
-                                          <!-- /.input group -->
+                                          <div class="form-group" >
+                                                  <div class="col-sm-12">
+                                                      <label for="exampleInputEmail1">Bukti Foto</label>
+                                                      <input type="file" class="form-control" id="exampleInputEmail1" name="photo">
+                                                      @error('photo')
+                                                          <small>{{ $message }}</small>
+                                                      @enderror
+                                              </div>
+                                          </div>
                                     </div>
-
                                         <!--tambah foto-->
-                                        <div class="form-group" >
-                                            <div class="col-sm-12">
-                                                <label for="exampleInputEmail1">Bukti Foto</label>
-                                                <input type="file" class="form-control" id="exampleInputEmail1" name="photo">
-                                                @error('photo')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
-                                        </div>
+                                          <!-- /.input group -->
                                     </div>
                                     <!--/.card-body -->
                                     <div class="card-footer">
@@ -174,13 +133,17 @@
                                     </div>
                                 </form>
                             </div>
+                        </div>
                             <!-- /.card -->
                         </div>
                         <!--/.col (left) -->
                     </div>
                 </form>
                 <!-- /.row -->
-            </div><!-- /.container-fluid -->
+            </div>
+         </div>
+            <!-- /.container-fluid -->
+
         </section>
     </div>
 

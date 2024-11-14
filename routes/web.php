@@ -39,16 +39,14 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     Route::get('/create_sekolah',[HomeController::class,'create_sekolah'])->name('add.create_sekolah');
     Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('add.create_anak_magang');
-    Route::get('/create_admin',[HomeController::class,'create_admin'])->name('add.create_admin');
+    
+    Route::get('/create-admin',[HomeController::class,'create_admin'])->name('create-admin');
+    Route::post('/input-admin',[HomeController::class,'store'])->name('input-admin');
 
     Route::get('/tambah_data_sekolah',[HomeController::class,'sekolah'])->name('tambah_data_sekolah');
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
 
-    Route::get('/tambah-aktivitas',[HomeController::class,'index'])->name('tambah-aktivitas');
-    Route::post('/tambah-data-aktivitas',[HomeController::class,'aktivitas'])->name('tambah-data-aktivitas');
-
-    Route::post('/store',[HomeController::class,'store'])->name('user.store');
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
 
@@ -63,5 +61,8 @@ Route::group(['prefix' => 'writer', 'middleware' => ['auth'], 'as' => 'writer.']
     Route::get('/profile',[HomeController::class,'profile'])->name('profile');
     Route::get('/edit-profile',[HomeController::class,'edit_profile'])->name('edit-profile');
     Route::post('/update-profile',[HomeController::class,'update_profile'])->name('update-profile');
+
+    Route::get('/tambah-aktivitas',[HomeController::class,'index'])->name('tambah-aktivitas');
+    Route::post('/tambah-data-aktivitas',[HomeController::class,'aktivitas'])->name('tambah-data-aktivitas');
 
 });
