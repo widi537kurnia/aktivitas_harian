@@ -55,13 +55,11 @@ class HomeController extends Controller
         return view('admin.add.create_admin', compact('data'));
     }
 
-
-
     public function index() {
 
         $data = User::get();
 
-        return view('index', compact('data'));
+        return view('admin.index', compact('data'));
     }
 
     public function create(){
