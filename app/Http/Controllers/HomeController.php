@@ -19,6 +19,7 @@ class HomeController extends Controller
         return view ('dashboard', compact('data'));
 
     }
+
     // function admin
     public function dashboard_admin(){
         return view ('admin.dashboard_admin');
@@ -35,9 +36,7 @@ class HomeController extends Controller
         return view ('admin.jumlah_anak_magang');
     }
     public function jumlah_admin(){
-        $data = User::get();
-
-        return view ('admin.jumlah_admin', compact('data'));
+        return view ('admin.jumlah_admin');
     }
     public function create_sekolah() {
 
@@ -54,11 +53,12 @@ class HomeController extends Controller
     public function create_admin() {
 
         $data = User::get();
+
         return view('admin.add.create_admin', compact('data'));
     }
 
     public function index() {
-        return view('writer.index');
+        return view('admin.index');
     }
 
     public function aktivitas(Request $request)
