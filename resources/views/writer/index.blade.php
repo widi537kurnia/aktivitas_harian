@@ -102,8 +102,6 @@
                                                 </div>
                                             </div>
                                                 <!-- /.form group -->
-
-
                                             <!--/Isi aktivitas-->
                                             <div class="form-group">
                                               <div class="col-sm-12">
