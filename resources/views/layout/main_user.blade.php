@@ -223,7 +223,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('writer.dashboard_user') }}" class="nav-link">
+            <a href="{{ route('admin.index') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Tambah Data Aktivitas Harian
