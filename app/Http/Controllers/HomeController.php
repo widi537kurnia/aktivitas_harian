@@ -291,4 +291,12 @@ class HomeController extends Controller
         }
         return redirect()->route('writer.dashboard_user');
     }
+    public function delete_admin(Request $request,$id){
+        $data = User::find($id);
+
+        if($data){
+            $data->delete();
+        }
+        return redirect()->route('admin.dashboard_admin');
+    }
 }
