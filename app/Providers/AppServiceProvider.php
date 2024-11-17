@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
                 $user = Auth::user();
 
                 if (empty($user->image)) {
-                    $user->image = '../photo-user/merah.jpg';
+                    $user->image = '../photo-user/mbuh.jpeg';
                 }
 
                 $view->with('photo', asset('storage/photo-user/'.Auth::user()->image))
@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
                 $user = Auth::user();
 
                 if (empty($user->image)) {
-                    $user->image = '../photo-user/merah.jpg';
+                    $user->image = '../photo-user/mbuh.jpeg';
                 }
 
                 $view->with('photo', asset('storage/photo-user/'.Auth::user()->image));

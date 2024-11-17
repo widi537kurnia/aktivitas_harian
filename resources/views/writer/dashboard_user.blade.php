@@ -40,33 +40,47 @@
               </div>
             </div>
             <!-- /.card-header -->
-
             <div class="card-body table-responsive p-0">
               <table class="table table-hover text-nowrap">
                 <thead>
                   <tr>
-                    <th>Hari dan Tanggal</th>
+                    <th>No</th>
+                    <th>Bukti</th>
+                    <th>Mulai Kerja</th>
+                    <th>Selesai Kerja</th>
                     <th>Aktivitas Harian</th>
                     <th>Shift</th>
-                    <th>Waktu</th>
+                    <th>Hari dan Jam</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- Baris kosong sebagai placeholder -->
-                  <tr>
-                    <td><strong>Hari dan Tanggal</strong></td>
-                    <td><strong>Aktivitas Harian</strong></td>
-                    <td><strong>Shift</strong></td>
-                    <td><strong>Waktu</strong></td>
-                    <td>
-                      <!-- Tombol Edit dan Hapus (tidak aktif tanpa data) -->
-                      <button class="btn btn-primary" disabled><i class="fas fa-pen"></i> Edit</button>
-                      <button class="btn btn-danger" disabled><i class="fas fa-trash-alt"></i> Hapus</button>
-                    </td>
-                  </tr>
-                  <!-- Baris kosong untuk saat data belum ada -->
-                  <!-- Jika data sudah ada, ganti bagian ini dengan loop foreach untuk menampilkan data -->
+                    @foreach ($data as $item)
+                    <tr>
+                      <td><strong>{{$loop->iteration}}</strong></td>
+                      <td><img src="{{ asset('storage/photo-user/' . $item->photo) }}" alt="foto" width="100"></td>
+                      <td><strong>{{$item->mulai_kerja}}</strong></td>
+                      <td><strong>{{$item->selesai_kerja}}</strong></td>
+                      <td><strong>{{$item->aktivitas}}</strong></td>
+                      <td><strong>{{$item->shift}}</strong></td>
+                      <td><strong>{{$item->created_at->format('d-m-Y H:i:s') }}</strong></td>
+                      <td>
+                        <!-- Tombol Edit -->
+                        <a href="{{ route('aktivitas.edit', $item->id) }}" class="btn btn-primary">
+                          <i class="fas fa-pen"></i> Edit
+                        </a>
+
+                        <!-- Tombol Hapus -->
+                        <form action="{{ route('aktivitas.destroy', $item->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i> Hapus
+                          </button>
+                        </form>
+                      </td>
+                    </tr>
+                    @endforeach
                 </tbody>
               </table>
             </div>

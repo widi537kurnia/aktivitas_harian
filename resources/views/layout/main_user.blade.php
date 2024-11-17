@@ -177,7 +177,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar" style="background-color: pink;">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link text-center">
       <span class="brand-text font-weight-light">Aktivitas Harian</span>
@@ -215,7 +215,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="{{ route('writer.dashboard_user') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-clock"></i>
               <p>
                 Riwayat Aktivitas Harian
               </p>
@@ -223,7 +223,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('admin.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-pen"></i>
               <p>
                 Tambah Data Aktivitas Harian
               </p>

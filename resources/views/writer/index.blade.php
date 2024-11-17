@@ -21,7 +21,6 @@
         <section class="content">
             <div class="container-fluid">
 
-
                 <!--tampilan pesan suksess-->
                 @if(session('success'))
                     <div class="alert alert-success">
@@ -30,10 +29,7 @@
                 @endif
 
                 <!-- form tambah aktivitas-->
-                <form action="{{ route('admin.tambah-data-aktivitas') }}" method="POST" enctype="multipart/form-data">
-
-                <form action="{{ route('admin.user.store') }}" method="POST" enctype="multipart/form-data">
-
+                <form action="{{ route('writer.tambah-data-aktivitas') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <!-- left column -->
@@ -59,13 +55,6 @@
                                                     @error('tanggal')
                                                         <small>{{ $message }}</small>
                                                     @enderror
-
-                                                      <input type="date" class="form-control date-input" data-target="#reservationdate" name="tanggal" placeholder="Tanggal...">
-                                                      <div class="input-group-append" data-target="#reservationdate" data-toggle="date"></div>
-                                                  </div>
-                                                  @error('tanggal')
-                                                    <small>{{ $message }}</small>
-                                                  @enderror
                                                 </div>
                                             </div>
 
@@ -110,38 +99,6 @@
                                                     </div>
                                                 </div>
 
-                                                    </div>
-                                                    @error('shift')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-
-                                            <!-- jam mulai dan jam pulang -->
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Mulai Kerja :</label>
-                                                    <div class="input-group" id="timepicker" data-target-input="nearest">
-                                                        <input type="time" class="form-control datetimepicker-input" data-target="#timepicker" name="mulai kerja">
-                                                    </div>
-                                                </div>
-                                                @error('mulai kerja')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Selesai Kerja :</label>
-                                                        <div class="input-group" id="timepicker" data-target-input="nearest">
-                                                            <input type="time" class="form-control datetimepicker-input" data-target="#timepicker" name="selesai kerja">
-                                                        </div>
-                                                    <!-- /.input group -->
-                                                </div>
-                                                <!-- /.form group -->
-                                                @error('selesai kerjaa')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
 
                                             <!--/Isi aktivitas-->
                                             <div class="form-group">

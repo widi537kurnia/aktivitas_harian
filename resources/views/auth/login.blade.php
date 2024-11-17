@@ -20,52 +20,52 @@
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
       <a href="{{ route('login') }}" class="h1"><b>Absensi</b>MAGANG</a>
-      <a href="{{ route('login') }}" class="h1"><b>Absensi</b>MAGANG</a>
-      <a href="{{ route('login') }}" class="h1"><b>Aktivitas</b>MAGANG</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Masuk ke akun Anda untuk memulai</p>
 
       <form action="{{ route('login-proses') }}" method="post">
-        @csrf
-        <div class="input-group mb-3">
-          <input type="email" name="email" class="form-control" placeholder="Email">
-          <div class="input-group-append">
+    @csrf
+    <div class="input-group mb-3">
+        <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" aria-label="Email Address">
+        <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+                <span class="fas fa-envelope"></span>
             </div>
-          </div>
         </div>
-        @error('email')
-            <small>{{ $message }}</small>
-        @enderror
-        <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Kata Sandi">
-          <div class="input-group-append">
+    </div>
+    @error('email')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+
+    <div class="input-group mb-3">
+        <input type="password" name="password" class="form-control" placeholder="Kata Sandi" aria-label="Password">
+        <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+                <span class="fas fa-lock"></span>
             </div>
-          </div>
         </div>
-        @error('password')
-            <small>{{ $message }}</small>
-        @enderror
-        <div class="row">
-          <div class="col-8">
+    </div>
+    @error('password')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+
+    <div class="row">
+        <div class="col-8">
             <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Ingat Saya
-              </label>
+                <input type="checkbox" name="remember" id="remember" value="1">
+                <label for="remember">
+                    Ingat Saya
+                </label>
             </div>
-          </div>
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
-          </div>
-          <!-- /.col -->
         </div>
-      </form>
+        <!-- /.col -->
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+        </div>
+        <!-- /.col -->
+    </div>
+</form>
 
       <!-- /.social-auth-links -->
 
