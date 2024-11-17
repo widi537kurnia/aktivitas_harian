@@ -41,7 +41,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     Route::get('/create-admin',[HomeController::class,'create_admin'])->name('create-admin');
     Route::post('/input-admin',[HomeController::class,'store'])->name('input-admin');
-    Route::delete('/delete-admin/{id}',[HomeController::class,'delete_admin'])->name('admin.delete-admin');
+    Route::delete('/delete-admin/{id}',[HomeController::class,'delete_admin'])->name('delete-admin');
 
 
     Route::get('/index',[HomeController::class,'index'])->name('index');

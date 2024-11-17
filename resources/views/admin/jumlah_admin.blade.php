@@ -64,6 +64,31 @@
                         <button type="button" class="btn btn-warning"><i class="fas fa-pen"></i> Edit</button>
                         <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
                       </td>
+                      <div class="modal fade" id="modal-hapus{{ $data->id }}">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title">Konfirmasi Hapus Data</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Apakah kamu yakin ingin menghapus data user <b>{{ $data->name }}</b></p>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <form action="{{ route('admin.delete-admin',['id' => $data->id]) }}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Tidak!</button>
+                                <button type="submit" class="btn btn-primary">Ya, Hapus Data</button>
+                                </form>
+                            </div>
+                          </div>
+                          <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                      </div>
                     </tr>
                     @endforeach
                   </tbody>
