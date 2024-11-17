@@ -60,6 +60,10 @@
                       <td>{{$data->name}}</td>
                       <td>{{$data->email}}</td>
                       <td>{{$data->divisi}}</td>
+                      <td>
+                        <button type="button" class="btn btn-warning"><i class="fas fa-pen"></i> Edit</button>
+                        <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                      </td>
                     </tr>
                     @endforeach
                   </tbody>

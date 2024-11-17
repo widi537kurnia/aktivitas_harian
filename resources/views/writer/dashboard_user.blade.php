@@ -21,7 +21,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content" enctype="multipart/form-data">
       <div class="container-fluid">
         <div class="row">
           <div class="card">
@@ -45,26 +45,33 @@
               <table class="table table-hover text-nowrap">
                 <thead>
                   <tr>
-                    <th>Hari dan Tanggal</th>
+                    <th>No</th>
+                    <th>Bukti</th>
+                    <th>Mulai Kerja</th>
+                    <th>Selesai Kerja</th>
                     <th>Aktivitas Harian</th>
                     <th>Shift</th>
-                    <th>Waktu</th>
+                    <th>Hari dan Jam</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- Baris kosong sebagai placeholder -->
-                  <tr>
-                    <td><strong>Hari dan Tanggal</strong></td>
-                    <td><strong>Aktivitas Harian</strong></td>
-                    <td><strong>Shift</strong></td>
-                    <td><strong>Waktu</strong></td>
-                    <td>
-                      <!-- Tombol Edit dan Hapus (tidak aktif tanpa data) -->
-                      <button class="btn btn-primary" disabled><i class="fas fa-pen"></i> Edit</button>
-                      <button class="btn btn-danger" disabled><i class="fas fa-trash-alt"></i> Hapus</button>
-                    </td>
-                  </tr>
+                    @foreach ($data as $data )
+                    <tr>
+                      <td><strong>{{$loop->iteration}}</strong></td>
+                      <td><img src="{{ asset('storage/photo-user/' . $data->photo) }}" alt="foto" width="100"></td>
+                      <td><strong>{{$data->mulai_kerja}}</strong></td>
+                      <td><strong>{{$data->selesai_kerja}}</strong></td>
+                      <td><strong>{{$data->aktivitas}}</strong></td>
+                      <td><strong>{{$data->shift}}</strong></td>
+                      <td><strong>{{$data->created_at->format('d-m-Y H:i:s') }}</strong></td>
+                      <td>
+                        <!-- Tombol Edit dan Hapus (tidak aktif tanpa data) -->
+                        <button class="btn btn-primary"><i class="fas fa-pen"></i> Edit</button>
+                        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</button>
+                      </td>
+                    </tr>
+                    @endforeach
                   <!-- Baris kosong untuk saat data belum ada -->
                   <!-- Jika data sudah ada, ganti bagian ini dengan loop foreach untuk menampilkan data -->
                 </tbody>

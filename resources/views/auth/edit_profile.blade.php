@@ -76,10 +76,6 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                              <label for="disabledTextInput" class="form-label">Password</label>
-                              <input type="password" id="disabledTextInput" class="form-control" name="password">
-                            </div>
-                            <div class="col-md-6 mb-3">
                               <label for="imageUpload" class="form-label">Choose an Image</label>
                               <input type="file" class="form-control" id="imageUpload" name="photo">
                             </div>

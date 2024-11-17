@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Aktivitas;
 use App\Models\User;
+use App\Models\Aktivitas;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +23,9 @@ class HomeController extends Controller
 
     // function admin
     public function dashboard_admin(){
-        return view ('admin.dashboard_admin');
+        $roles = Role::withCount('users')->get();
+
+        return view ('admin.dashboard_admin', compact('roles'));
     }
 
     public function main_admin(){
@@ -99,7 +102,7 @@ class HomeController extends Controller
     Aktivitas::create($data);
 
     // Redirect ke halaman index dengan pesan sukses
-    return redirect()->route('admin.tambah-aktivitas')->with('success', 'Data aktivitas berhasil ditambahkan.');
+    return redirect()->route('writer.tambah-aktivitas')->with('success', 'Data aktivitas berhasil ditambahkan.');
 }
 
 
@@ -206,6 +209,8 @@ class HomeController extends Controller
 
         return redirect()->route('admin.jumlah_admin');
     }
+
+
 
     public function edit(Request $request,$id){
         $data = User::find($id);
