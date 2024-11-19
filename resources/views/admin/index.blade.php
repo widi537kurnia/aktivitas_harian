@@ -1,4 +1,4 @@
-@extends('layout.main_admin')
+@extends('layout.main_user')
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -59,13 +59,6 @@
                                                     @error('tanggal')
                                                         <small>{{ $message }}</small>
                                                     @enderror
-
-                                                      <input type="date" class="form-control date-input" data-target="#reservationdate" name="tanggal" placeholder="Tanggal...">
-                                                      <div class="input-group-append" data-target="#reservationdate" data-toggle="date"></div>
-                                                  </div>
-                                                  @error('tanggal')
-                                                    <small>{{ $message }}</small>
-                                                  @enderror
                                                 </div>
                                             </div>
 
@@ -116,33 +109,6 @@
                                                     @enderror
                                                 </div>
 
-                                            <!-- jam mulai dan jam pulang -->
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Mulai Kerja :</label>
-                                                    <div class="input-group" id="timepicker" data-target-input="nearest">
-                                                        <input type="time" class="form-control datetimepicker-input" data-target="#timepicker" name="mulai kerja">
-                                                    </div>
-                                                </div>
-                                                @error('mulai kerja')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Selesai Kerja :</label>
-                                                        <div class="input-group" id="timepicker" data-target-input="nearest">
-                                                            <input type="time" class="form-control datetimepicker-input" data-target="#timepicker" name="selesai kerja">
-                                                        </div>
-                                                    <!-- /.input group -->
-                                                </div>
-                                                <!-- /.form group -->
-                                                @error('selesai kerjaa')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
-
                                             <!--/Isi aktivitas-->
                                             <div class="form-group">
                                               <div class="col-sm-12">
@@ -152,26 +118,28 @@
                                                     <small>{{ $message }}</small>
                                                 @enderror
                                               </div>
+
+                                              <div class="form-group" >
+                                                <div class="col-sm-12 mt-4">
+                                                    <label for="exampleInputEmail1">Bukti Foto</label>
+                                                    <input type="file" class="form-control" id="exampleInputEmail1" name="photo">
+                                                    @error('photo')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--/.card-body -->
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-danger">Kirim</button>
+                                        </div>
                                           </div>
                                         </div>
                                           <!-- /.input group -->
                                     </div>
 
                                         <!--tambah foto-->
-                                        <div class="form-group" >
-                                            <div class="col-sm-12">
-                                                <label for="exampleInputEmail1">Bukti Foto</label>
-                                                <input type="file" class="form-control" id="exampleInputEmail1" name="photo">
-                                                @error('photo')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/.card-body -->
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-danger">Kirim</button>
-                                    </div>
                                 </form>
                             </div>
                             <!-- /.card -->

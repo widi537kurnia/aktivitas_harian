@@ -20,8 +20,6 @@
     <!-- /.content-header -->
     <section class="content">
       <div class="container-fluid">
-        <form action="{{ route('admin.add.create_admin') }}" method="POST" enctype="multipart/form-data">
-            @csrf
         <div class="row">
           <!-- left column -->
           <div class="col-md-6">
@@ -33,15 +31,23 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form action="{{ route('admin.input-admin') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="card-body">
                     <div class="form-group">
                     <label for="exampleInputEmail1">Nama Admin</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="admin" placeholder="Masukkan Nama Admin">
-                    @error('nama')
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Masukkan Nama Admin">
+                    @error('name')
                         <small>{{ $message }}</small>
                     @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Masukkan Email">
+                        @error('email')
+                            <small>{{ $message }}</small>
+                        @enderror
+                        </div>
                     <div class="form-group">
                         <label for="divisi">Divisi</label>
                         <select class="form-control" id="divisi" name="divisi">

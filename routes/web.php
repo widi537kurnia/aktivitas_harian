@@ -39,7 +39,9 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     Route::get('/create_sekolah',[HomeController::class,'create_sekolah'])->name('add.create_sekolah');
     Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('add.create_anak_magang');
-    Route::get('/create_admin',[HomeController::class,'create_admin'])->name('add.create_admin');
+
+    Route::get('/create_admin', [HomeController::class, 'create_admin'])->name('create_admin');
+    Route::post('/input-admin',[HomeController::class,'store_admin'])->name('input-admin');
 
     Route::get('/tambah_data_sekolah',[HomeController::class,'sekolah'])->name('tambah_data_sekolah');
 
