@@ -103,7 +103,7 @@ class HomeController extends Controller
 
     // Redirect ke halaman index dengan pesan sukses
     return redirect()->route('writer.tambah-aktivitas')->with('success', 'Data aktivitas berhasil ditambahkan.');
-}
+    }
 
 
     public function create(){
@@ -210,7 +210,39 @@ class HomeController extends Controller
         return redirect()->route('admin.jumlah_admin');
     }
 
+    public function ubah_admin(Request $request, $id){
+        $data = User::find($id);
 
+        return view('admin.add.edit_admin', compact('data'));
+    }
+
+    public function edit_admin(Request $request, $id) {
+
+        $validator = Validator::make($request->all(),[
+            'email'    => 'required|email',
+            'name'     => 'required',
+            'divisi'   => 'required',
+            'password' => 'nullable',
+
+        ]);
+
+        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        $data['email']     = $request->email;
+        $data['name']      = $request->name;
+        $data['divisi']    = $request->divisi;
+
+        if ($request->password) {
+            $data['password'] = Hash::make($request->password);
+        } else {
+            // Berikan nilai default atau abaikan pengubahan password jika tidak diinput
+            $user = User::find(Auth::id());
+            $data['password'] = $user->password;  // Gunakan password lama
+        }
+
+        User::whereId($id)->update($data);
+        return redirect()->route('admin.jumlah_admin');
+    }
 
     public function edit(Request $request,$id){
         $data = User::find($id);
@@ -297,6 +329,6 @@ class HomeController extends Controller
         if($data){
             $data->delete();
         }
-        return redirect()->route('admin.dashboard_admin');
+        return redirect()->route('admin.jumlah_admin');
     }
 }

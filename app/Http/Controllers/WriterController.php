@@ -19,8 +19,8 @@ class WriterController extends Controller
         return view('writer.dashboard_user', compact('data'));
     }
 
-    public function hapus_data(){
-        $data = Aktivitas::get();
+    public function delete_data(Request $request,$id){
+        $data = Aktivitas::find($id);
 
         if ($data) {
             $data->delete();

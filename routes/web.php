@@ -41,7 +41,10 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     Route::get('/create-admin',[HomeController::class,'create_admin'])->name('create-admin');
     Route::post('/input-admin',[HomeController::class,'store'])->name('input-admin');
+
     Route::delete('/delete-admin/{id}',[HomeController::class,'delete_admin'])->name('delete-admin');
+    Route::get( '/ubah-admin/{id}',[HomeController::class,'ubah_admin'])->name('ubah-admin');
+    Route::put( '/edit-admin/{id}',[HomeController::class,'edit_admin'])->name('edit-admin');
 
 
     Route::get('/index',[HomeController::class,'index'])->name('index');
@@ -67,5 +70,6 @@ Route::group(['prefix' => 'writer', 'middleware' => ['auth'], 'as' => 'writer.']
 
     Route::get('/tambah-aktivitas',[HomeController::class,'index'])->name('tambah-aktivitas');
     Route::post('/tambah-data-aktivitas',[HomeController::class,'aktivitas'])->name('tambah-data-aktivitas');
+    Route::delete('/delete-data/{id}',[WriterController::class,'delete_data'])->name('delete-data');
 
 });

@@ -66,11 +66,38 @@
                       <td><strong>{{$data->shift}}</strong></td>
                       <td><strong>{{$data->created_at->format('d-m-Y H:i:s') }}</strong></td>
                       <td>
-                        <!-- Tombol Edit dan Hapus (tidak aktif tanpa data) -->
-                        <button class="btn btn-primary"><i class="fas fa-pen"></i> Edit</button>
-                        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</button>
+                        <a href="#" class="btn btn-warning"><i class="fas fa-pen"></i>
+                            Edit
+                        </a>
+                        <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-hapus{{$data->id}}"><i class="fas fa-trash"></i>
+                            Hapus
+                        </button>
+
                       </td>
-                    </tr>
+                      </tr>
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal-hapus{{$data->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                Apakah anda yakin ingin menghapus data {{$data->id}} ?
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{{ route('writer.delete-data',['id' => $data->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                        <button type="submit" class="btn btn-danger">Ya, hapus</button>
+                                    </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
                     @endforeach
                   <!-- Baris kosong untuk saat data belum ada -->
                   <!-- Jika data sudah ada, ganti bagian ini dengan loop foreach untuk menampilkan data -->
