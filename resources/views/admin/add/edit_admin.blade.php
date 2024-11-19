@@ -29,23 +29,25 @@
                   <!-- general form elements -->
                   <div class="card card-danger">
                       <div class="card-header">
-                          <h3 class="card-title">Form Tambah Admin</h3>
+                          <h3 class="card-title">Edit Admin</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-            <form action="{{ route('admin.input-admin') }}" method="POST" >
+            <form action="{{ route('admin.edit-admin',['id' => $data->id]) }}" method="POST" >
                 @csrf
+                @method('PUT')
+                @if ($data)
                 <div class="card-body">
                     <div class="form-group">
                     <label for="exampleInputEmail1">Nama Admin</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Masukkan Nama Admin">
-                    @error('nama')
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Masukkan Nama Admin" value="{{$data->name}}">
+                    @error('name')
                         <small>{{ $message }}</small>
                     @enderror
                     </div>
                     <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Masukkan Email">
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Masukkan Email" value="{{$data->email}}">
                     @error('email')
                         <small>{{ $message }}</small>
                     @enderror
@@ -62,6 +64,7 @@
                         @enderror
                       </div>
                 </div>
+                @endif
                 <!-- /.card-body -->
 
                 <div class="card-footer">

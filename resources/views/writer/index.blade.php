@@ -79,26 +79,24 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Mulai Kerja :</label>
-                                                        <div class="input-group" id="timepicker" data-target-input="nearest">
-                                                            <input type="time" class="form-control datetimepicker-input" data-target="#timepicker" name="mulai kerja">
+                                                            <div class="input-group" id="timepicker" data-target-input="nearest">
+                                                                <input type="time" class="form-control" name="mulai_kerja">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    @error('mulai kerja')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
+                                                        @error('mulai_kerja')
+                                                            <small>{{ $message }}</small>
+                                                        @enderror
                                                 </div>
-
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Selesai Kerja :</label>
                                                             <div class="input-group" id="timepicker" data-target-input="nearest">
-                                                                <input type="time" class="form-control datetimepicker-input" data-target="#timepicker" name="selesai kerja">
+                                                                <input type="time" class="form-control" name="selesai_kerja">
                                                             </div>
-                                                        <!-- /.input group -->
-                                                        @error('selesai kerjaa')
+                                                        </div>
+                                                        @error('selesai_kerja')
                                                             <small>{{ $message }}</small>
                                                         @enderror
-                                                    </div>
                                                 </div>
                                             </div>
                                                 <!-- /.form group -->
@@ -131,18 +129,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
-                            <!-- /.card -->
-                        </div>
-                        <!--/.col (left) -->
-                    </div>
-                </form>
-                <!-- /.row -->
-            </div>
-         </div>
-            <!-- /.container-fluid -->
-
         </section>
     </div>
-
 @endsection
+

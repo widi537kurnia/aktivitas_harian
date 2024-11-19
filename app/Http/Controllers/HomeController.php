@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Aktivitas;
 use App\Models\User;
+use App\Models\Aktivitas;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +23,9 @@ class HomeController extends Controller
 
     // function admin
     public function dashboard_admin(){
-        return view ('admin.dashboard_admin');
+        $roles = Role::withCount('users')->get();
+
+        return view ('admin.dashboard_admin', compact('roles'));
     }
 
     public function main_admin(){
@@ -99,8 +102,8 @@ class HomeController extends Controller
     Aktivitas::create($data);
 
     // Redirect ke halaman index dengan pesan sukses
-    return redirect()->route('admin.tambah-aktivitas')->with('success', 'Data aktivitas berhasil ditambahkan.');
-}
+    return redirect()->route('writer.tambah-aktivitas')->with('success', 'Data aktivitas berhasil ditambahkan.');
+    }
 
 
     public function create(){
@@ -207,6 +210,40 @@ class HomeController extends Controller
         return redirect()->route('admin.jumlah_admin');
     }
 
+    public function ubah_admin(Request $request, $id){
+        $data = User::find($id);
+
+        return view('admin.add.edit_admin', compact('data'));
+    }
+
+    public function edit_admin(Request $request, $id) {
+
+        $validator = Validator::make($request->all(),[
+            'email'    => 'required|email',
+            'name'     => 'required',
+            'divisi'   => 'required',
+            'password' => 'nullable',
+
+        ]);
+
+        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        $data['email']     = $request->email;
+        $data['name']      = $request->name;
+        $data['divisi']    = $request->divisi;
+
+        if ($request->password) {
+            $data['password'] = Hash::make($request->password);
+        } else {
+            // Berikan nilai default atau abaikan pengubahan password jika tidak diinput
+            $user = User::find(Auth::id());
+            $data['password'] = $user->password;  // Gunakan password lama
+        }
+
+        User::whereId($id)->update($data);
+        return redirect()->route('admin.jumlah_admin');
+    }
+
     public function edit(Request $request,$id){
         $data = User::find($id);
 
@@ -285,5 +322,13 @@ class HomeController extends Controller
             $data->delete();
         }
         return redirect()->route('writer.dashboard_user');
+    }
+    public function delete_admin(Request $request,$id){
+        $data = User::find($id);
+
+        if($data){
+            $data->delete();
+        }
+        return redirect()->route('admin.jumlah_admin');
     }
 }
