@@ -19,7 +19,11 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-danger">
     <div class="card-header text-center">
+<<<<<<< HEAD
       <a href="{{ route('login') }}" class="h1"><b>Absensi</b>MAGANG</a>
+=======
+      <a href="{{ route('login') }}" class="h1"><b>Aktivitas</b>MAGANG</a>
+>>>>>>> role-user
     </div>
     <div class="card-body">
       <p class="login-box-msg">Masuk ke akun Anda untuk memulai</p>

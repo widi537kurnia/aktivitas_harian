@@ -49,6 +49,10 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     Route::get('/index',[HomeController::class,'index'])->name('index');
 
+    Route::get('/create_admin', [HomeController::class, 'create_admin'])->name('create_admin');
+    Route::post('/input-admin',[HomeController::class,'store_admin'])->name('input-admin');
+
+
     Route::get('/tambah_data_sekolah',[HomeController::class,'sekolah'])->name('tambah_data_sekolah');
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');

@@ -98,8 +98,13 @@
                                                             <small>{{ $message }}</small>
                                                         @enderror
                                                 </div>
-                                            </div>
-                                                <!-- /.form group -->
+
+                                                    </div>
+                                                    @error('shift')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+
                                             <!--/Isi aktivitas-->
                                             <div class="form-group">
                                               <div class="col-sm-12">
@@ -109,6 +114,22 @@
                                                     <small>{{ $message }}</small>
                                                 @enderror
                                               </div>
+
+                                              <div class="form-group" >
+                                                <div class="col-sm-12 mt-4">
+                                                    <label for="exampleInputEmail1">Bukti Foto</label>
+                                                    <input type="file" class="form-control" id="exampleInputEmail1" name="photo">
+                                                    @error('photo')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--/.card-body -->
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-danger">Kirim</button>
+                                        </div>
                                           </div>
                                           <div class="form-group" >
                                                   <div class="col-sm-12">
@@ -121,12 +142,15 @@
                                           </div>
                                     </div>
                                         <!--tambah foto-->
+<<<<<<< HEAD:resources/views/writer/index.blade.php
                                           <!-- /.input group -->
                                     </div>
                                     <!--/.card-body -->
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-danger">Kirim</button>
                                     </div>
+=======
+>>>>>>> role-user:resources/views/admin/index.blade.php
                                 </form>
                             </div>
         </section>
