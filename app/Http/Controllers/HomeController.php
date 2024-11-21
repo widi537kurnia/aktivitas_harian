@@ -59,7 +59,7 @@ class HomeController extends Controller
 
 
     public function index() {
-        return view('admin.index');
+        return view('writer.index');
     }
 
     public function aktivitas(Request $request)
@@ -86,7 +86,7 @@ class HomeController extends Controller
     Storage::disk('public')->put($path, file_get_contents($photo));
 
     // Siapkan data untuk disimpan di database
-    $data['tanggal']        = $request->tanggal; // perbaikan di sini
+    $data['tanggal']        = $request->tanggal;
     $data['shift']          = $request->shift;
     $data['mulai_kerja']    = $request->mulai_kerja;
     $data['selesai_kerja']  = $request->selesai_kerja;
@@ -97,7 +97,7 @@ class HomeController extends Controller
     Aktivitas::create($data);
 
     // Redirect ke halaman index dengan pesan sukses
-    return redirect()->route('admin.tambah-aktivitas')->with('success', 'Data aktivitas berhasil ditambahkan.');
+    return redirect()->route('writer.tambah-aktivitas')->with('success', 'Data aktivitas berhasil ditambahkan.');
 }
 
 

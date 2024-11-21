@@ -223,11 +223,10 @@
             </a>
           </li>
           <li class="nav-item">
-           <!-- <a href="{{ route('admin.tambah-aktivitas') }}" class="nav-link"> -->
-            <a href="{{ route('writer.dashboard_user') }}" class="nav-link">
+           <a href="{{ route('writer.tambah-aktivitas') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Tambah Data Aktivitas Harian
+                Tambah Data Aktivitas
               </p>
             </a>
           </li>

@@ -45,9 +45,6 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
 
-    Route::get('/tambah-aktivitas',[HomeController::class,'index'])->name('tambah-aktivitas');
-    Route::post('/tambah-data-aktivitas',[HomeController::class,'aktivitas'])->name('tambah-data-aktivitas');
-
     Route::post('/store',[HomeController::class,'store'])->name('user.store');
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
@@ -63,4 +60,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
 Route::group(['prefix' => 'writer', 'middleware' => ['auth'], 'as' => 'writer.'], function() {
     Route::get('/dashboard_user', [WriterController::class, 'dashboard_user'])->name('dashboard_user');
+
+    Route::get('/tambah-aktivitas',[HomeController::class,'index'])->name('tambah-aktivitas');
+    Route::post('/tambah-data-aktivitas',[HomeController::class,'aktivitas'])->name('tambah-data-aktivitas');
+
 });
