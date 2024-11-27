@@ -12,46 +12,18 @@ use Illuminate\Support\Facades\Validator;
 class HomeController extends Controller
 {
 
-    public function dashboard(){
-        $data = Auth::user();
-
-        return view ('dashboard', compact('data'));
-    }
-
-    // function admin
     public function dashboard_admin(){
         return view ('admin.dashboard_admin');
     }
 
-    public function main_admin(){
-        return view ('admin.main_admin');
-    }
 
-    public function jumlah_sekolah(){
-        return view ('admin.jumlah_sekolah');
-    }
-    public function jumlah_anak_magang(){
-        return view ('admin.jumlah_anak_magang');
-    }
+    // ADMIN - ADMIN - ADMIN - ADMIN - ADMIN
     public function jumlah_admin(){
 
-        $data = User::get();
-
+        $data = User::where('role', 'admin')->get();
         return view('admin.jumlah_admin', compact('data'));
     }
 
-    public function create_sekolah() {
-
-        $data = User::get();
-
-        return view('admin.add.create_sekolah', compact('data'));
-    }
-    public function create_anak_magang() {
-
-        $data = User::get();
-
-        return view('admin.add.create_anak_magang', compact('data'));
-    }
     public function create_admin() {
 
         $data = User::get();
@@ -89,7 +61,100 @@ class HomeController extends Controller
     }
 
 
+    // ANAK MAGANG - ANAK MAGANG - ANAK MAGANG - ANAK MAGANG - ANAK MAGANG
+    public function create_anak_magang() {
 
+        $data = User::get();
+
+        return view('admin.add.create_anak_magang', compact('data'));
+    }
+
+    public function jumlah_anak_magang(){
+        $data = User::where('role', 'anak_magang')->get();
+        return view ('admin.jumlah_anak_magang', compact('data'));
+    }
+
+    public function store_anak_magang(Request $request)
+{
+    // Validasi input
+    $validator = Validator::make($request->all(), [
+        'sekolah'     => 'required|string|max:255',
+        'anak_magang' => 'required',
+        'divisi'      => 'required',
+        'password'    => 'nullable|string|min:8',
+    ]);
+
+    // Jika validasi gagal, kembalikan dengan pesan error
+    if ($validator->fails()) {
+        return redirect()->back()->withInput()->withErrors($validator);
+    }
+
+    // Siapkan data untuk disimpan
+    $data = [
+        'name'        => $request->anak_magang,  // Memberikan nilai default
+        'sekolah'     => $request->sekolah,
+        'email'       => $request->anak_magang . '@gmail.com',  // Anda bisa sesuaikan emailnya
+        'divisi'      => $request->divisi,
+        'role'        => 'anak_magang',
+        'password'    => $request->password
+            ? Hash::make($request->password)
+            : bcrypt('default_password'),  // Jika tidak ada password, gunakan default
+    ];
+
+    // Simpan data ke tabel 'users'
+    User::create($data);
+
+    // Redirect ke halaman jumlah anak magang dengan pesan sukses
+    return redirect()->route('admin.jumlah_anak_magang')->with('success', 'Data anak magang berhasil ditambahkan.');
+}
+
+
+    // SEKOLAH - SEKOLAH - SEKOLAH - SEKOLAH - SEKOLAH
+    public function jumlah_sekolah(){
+        $data = User::where('role', 'sekolah')->get();
+        return view ('admin.jumlah_sekolah', compact('data'));
+    }
+
+    public function create_sekolah() {
+
+        $data =  User::select('sekolah', 'divisi', 'jumlah_anak')->get();
+        return view('admin.add.create_sekolah', compact('data'));
+    }
+
+    public function store_sekolah(Request $request)
+{
+    // Validasi input
+    $validator = Validator::make($request->all(), [
+        'sekolah'     => 'required|string|max:255',
+        'jumlah_anak' => 'required|integer',
+        'divisi'      => 'required|string|max:255',
+        'password'    => 'nullable|string|min:8',
+    ]);
+
+    // Jika validasi gagal, kembalikan dengan pesan error
+    if ($validator->fails()) {
+        return redirect()->back()->withInput()->withErrors($validator);
+    }
+
+    // Siapkan data untuk disimpan
+    $data = [
+        'name'        => $request->sekolah, // Kolom 'name' diisi dengan nama sekolah
+        'sekolah'     => $request->sekolah,
+        'email'       => $request->sekolah . '@example.com',
+        'jumlah_anak' => $request->jumlah_anak,
+        'divisi'      => $request->divisi,
+        'role'        => 'sekolah',
+        'password'    => $request->password
+            ? Hash::make($request->password)
+            : bcrypt('default_password'), // Jika tidak ada password, gunakan default
+    ];
+
+    // Simpan data ke tabel 'users'
+    User::create($data);
+
+    // Redirect ke halaman jumlah sekolah dengan pesan sukses
+    return redirect()->route('admin.jumlah_sekolah')->with('success', 'Data sekolah berhasil ditambahkan.');
+    }
 
     public function index() {
 
@@ -213,6 +278,6 @@ class HomeController extends Controller
 
         return redirect()->route('writer.dashboard_user');
     }
-    
+
 }
 
