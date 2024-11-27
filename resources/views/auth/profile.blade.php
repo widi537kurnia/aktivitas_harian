@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.main_user')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -33,7 +33,7 @@
                         </p>
                         <button class="btn btn-sm" style="background-color: rgb(231, 76, 60); color: white;">
                             <i class="fas fa-pen"></i>
-                            <a href="{{route('admin.edit-profile')}}" class="text-white">
+                            <a href="{{route('writer.edit-profile')}}" class="text-white">
                                 Ubah
                             </a>
                         </button>
@@ -54,7 +54,7 @@
                     <p class="card-text">
                         <span class="text-muted mb-1 d-block">Divisi :</span>
                         <i class="fas fa-envelope mr-2" style="color: rgb(231, 76, 60);"></i>
-                        {{$data->role}}
+                        {{$data->divisi}}
                     </p>
                 </div>
                 <div class="card shadow border rounded p-5 mb-4">
@@ -64,7 +64,6 @@
                         <p class="card-text">
                             <span class="text-muted mb-1 d-block">Alamat :</span>
                             <i class="fas fa-map mr-2" style="color: rgb(231, 76, 60);"></i>
-                            Jl. Parangtritis km 5,6 Sewon, Bantul, DI Yogyakarta 55187
                             Jl. Parangtritis km 5,6 Sewon, Bantul, DI Yogyakarta 55187
                         </p>
                         <p class="card-text">

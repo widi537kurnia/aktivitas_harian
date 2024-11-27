@@ -21,7 +21,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content" enctype="multipart/form-data">
       <div class="container-fluid">
         <div class="row">
           <div class="card">
@@ -45,26 +45,60 @@
               <table class="table table-hover text-nowrap">
                 <thead>
                   <tr>
-                    <th>Hari dan Tanggal</th>
+                    <th>No</th>
+                    <th>Bukti</th>
+                    <th>Mulai Kerja</th>
+                    <th>Selesai Kerja</th>
                     <th>Aktivitas Harian</th>
                     <th>Shift</th>
-                    <th>Waktu</th>
+                    <th>Hari dan Jam</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- Baris kosong sebagai placeholder -->
-                  <tr>
-                    <td><strong>Hari dan Tanggal</strong></td>
-                    <td><strong>Aktivitas Harian</strong></td>
-                    <td><strong>Shift</strong></td>
-                    <td><strong>Waktu</strong></td>
-                    <td>
-                      <!-- Tombol Edit dan Hapus (tidak aktif tanpa data) -->
-                      <button class="btn btn-primary" disabled><i class="fas fa-pen"></i> Edit</button>
-                      <button class="btn btn-danger" disabled><i class="fas fa-trash-alt"></i> Hapus</button>
-                    </td>
-                  </tr>
+                    @foreach ($data as $data )
+                    <tr>
+                      <td><strong>{{$loop->iteration}}</strong></td>
+                      <td><img src="{{ asset('storage/photo-user/' . $data->photo) }}" alt="foto" width="100"></td>
+                      <td><strong>{{$data->mulai_kerja}}</strong></td>
+                      <td><strong>{{$data->selesai_kerja}}</strong></td>
+                      <td><strong>{{$data->aktivitas}}</strong></td>
+                      <td><strong>{{$data->shift}}</strong></td>
+                      <td><strong>{{$data->created_at->format('d-m-Y H:i:s') }}</strong></td>
+                      <td>
+                        <a href="#" class="btn btn-warning"><i class="fas fa-pen"></i>
+                            Edit
+                        </a>
+                        <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-hapus{{$data->id}}"><i class="fas fa-trash"></i>
+                            Hapus
+                        </button>
+
+                      </td>
+                      </tr>
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal-hapus{{$data->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                Apakah anda yakin ingin menghapus data {{$data->id}} ?
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{{ route('writer.delete-data',['id' => $data->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                        <button type="submit" class="btn btn-danger">Ya, hapus</button>
+                                    </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                    @endforeach
                   <!-- Baris kosong untuk saat data belum ada -->
                   <!-- Jika data sudah ada, ganti bagian ini dengan loop foreach untuk menampilkan data -->
                 </tbody>

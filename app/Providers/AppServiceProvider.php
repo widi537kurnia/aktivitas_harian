@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Aktivitas;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -25,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('layout.main', function ($view) {
+        View::composer('layout.main_user', function ($view) {
             if (Auth::check()) {
                 $user = Auth::user();
 
@@ -50,6 +51,7 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('photo', asset('storage/photo-user/'.Auth::user()->image));
             }
         });
+        
     }
 
 

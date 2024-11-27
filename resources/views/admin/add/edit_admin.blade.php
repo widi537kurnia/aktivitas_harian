@@ -21,42 +21,33 @@
     <!-- /.content-header -->
     <section class="content">
       <div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-6">
-            <a href="{{ route('admin.jumlah_admin') }}" class="btn btn-secondary mb-3">Kembali</a>
-            <!-- general form elements -->
-            <div class="card card-danger">
-              <div class="card-header">
-                <h3 class="card-title">Form Tambah Admin</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form action="{{ route('admin.input-admin') }}" method="POST" enctype="multipart/form-data">
+          @csrf
+          <div class="row">
+              <!-- left column -->
+              <div class="col-md-6">
+                  <a href="{{ route('admin.jumlah_admin') }}" class="btn btn-secondary mb-3">Kembali</a>
+                  <!-- general form elements -->
+                  <div class="card card-danger">
+                      <div class="card-header">
+                          <h3 class="card-title">Edit Admin</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+            <form action="{{ route('admin.edit-admin',['id' => $data->id]) }}" method="POST" >
                 @csrf
+                @method('PUT')
+                @if ($data)
                 <div class="card-body">
                     <div class="form-group">
                     <label for="exampleInputEmail1">Nama Admin</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Masukkan Nama Admin">
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Masukkan Nama Admin" value="{{$data->name}}">
                     @error('name')
                         <small>{{ $message }}</small>
                     @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Masukkan Email">
-                        @error('email')
-                            <small>{{ $message }}</small>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputEmail1" name="password" placeholder="Masukkan Password">
-                        @error('password')
-                            <small>{{ $message }}</small>
-                        @enderror
                     <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Masukkan Email">
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Masukkan Email" value="{{$data->email}}">
                     @error('email')
                         <small>{{ $message }}</small>
                     @enderror
@@ -73,6 +64,7 @@
                         @enderror
                       </div>
                 </div>
+                @endif
                 <!-- /.card-body -->
 
                 <div class="card-footer">

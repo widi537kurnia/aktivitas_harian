@@ -35,7 +35,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="#" alt="absensiMagang" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -179,20 +179,23 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Aktivitas Harian</span>
+    <a href="{{route('writer.dashboard_user')}}" class="brand-link text-center">
+      <span class="brand-text font-weight-light text-white">
+        <b>
+            Aktivitas Harian
+        </b>
+      </span>
     </a>
 
     <!-- profile -->
     <div class="user-panel mt-3 pb-1 mb-3 d-flex mr-2">
         <div class="image" >
-            <img src="https://avatars.githubusercontent.com/u/134774984?v=4" width="100" class="img-circle elevation-2" alt="User Image">
+            <img src="{{$photo}}" width="100" class="img-circle elevation-2" alt="User Image">
          </div>
         <div class="info">
-          <a href="{{route('admin.profile')}}" class="d-block text-white text-decoration-none hover:text-light">
+          <a href="{{route('writer.profile')}}" class="d-block text-white text-decoration-none hover:text-light">
             <p>
-                Alexander Pierce
+                 {{$name}}
             </p>
         </a>
         </div>
@@ -215,7 +218,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ route('writer.dashboard_user') }}" class="nav-link">
+            <a href="{{ route('writer.dashboard_user') }}" class="nav-link text-white">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Riwayat Aktivitas Harian
@@ -223,7 +226,8 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('writer.dashboard_user') }}" class="nav-link">
+            <a href="" class="nav-link">
+            <a href="{{ route('writer.tambah-aktivitas') }}" class="nav-link text-white">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Tambah Data Aktivitas Harian
@@ -231,7 +235,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link">
+            <a href="{{ route('logout') }}" class="nav-link text-white">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Keluar
