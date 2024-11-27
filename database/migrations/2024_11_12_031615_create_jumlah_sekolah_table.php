@@ -13,7 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        
+        Schema::create('jumlah_sekolah', function (Blueprint $table) {
+
+        });
     }
 
     /**

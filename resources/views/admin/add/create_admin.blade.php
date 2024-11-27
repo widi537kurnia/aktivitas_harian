@@ -10,7 +10,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard_admin') }}">Beranda</a></li>
+              <li class="breadcrumb-item">
+                <a href="{{ route('admin.dashboard_admin') }}">Beranda</a></li>
               <li class="breadcrumb-item active">Tambah Admin</li>
             </ol>
           </div><!-- /.col -->
@@ -42,12 +43,12 @@
                     @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Masukkan Email">
-                        @error('email')
-                            <small>{{ $message }}</small>
-                        @enderror
-                        </div>
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Masukkan Email">
+                    @error('email')
+                        <small>{{ $message }}</small>
+                    @enderror
+                    </div>
                     <div class="form-group">
                         <label for="divisi">Divisi</label>
                         <select class="form-control" id="divisi" name="divisi">
@@ -76,6 +77,6 @@
       </div><!-- /.container-fluid -->
     </section>
 
-  </div>
+</div>
 
 @endsection

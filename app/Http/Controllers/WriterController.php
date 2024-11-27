@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Aktivitas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +14,17 @@ class WriterController extends Controller
 {
 
     public function dashboard_user(){
-        return view('writer.dashboard_user');
+        $data = Aktivitas::get();
+
+        return view('writer.dashboard_user', compact('data'));
+    }
+
+    public function delete_data(Request $request,$id){
+        $data = Aktivitas::find($id);
+
+        if ($data) {
+            $data->delete();
+        }
+        return redirect()->route('writer.dashboard_user');
     }
 }
