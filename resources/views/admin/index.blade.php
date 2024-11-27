@@ -60,15 +60,6 @@
                                                         <small>{{ $message }}</small>
                                                     @enderror
 
-                                                      <input type="date" class="form-control date-input" data-target="#reservationdate" name="tanggal" placeholder="Tanggal...">
-                                                      <div class="input-group-append" data-target="#reservationdate" data-toggle="date"></div>
-                                                  </div>
-                                                  @error('tanggal')
-                                                    <small>{{ $message }}</small>
-                                                  @enderror
-                                                </div>
-                                            </div>
-
                                              <!-- /.card-header -->
 
                                             <!-- sift input-->

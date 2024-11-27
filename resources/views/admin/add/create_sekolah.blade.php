@@ -20,12 +20,12 @@
     <!-- /.content-header -->
     <section class="content">
       <div class="container-fluid">
-        <form action="{{ route('admin.add.create_sekolah') }}" method="POST" enctype="multipart/form-data">
+        <a href="{{ route('admin.jumlah_sekolah') }}" class="btn btn-secondary mb-3">Kembali</a>
+        <form action="{{ route('admin.input-sekolah') }}" method="POST" enctype="multipart/form-data">
             @csrf
         <div class="row">
           <!-- left column -->
           <div class="col-md-6">
-            <a href="{{ route('admin.jumlah_sekolah') }}" class="btn btn-secondary mb-3">Kembali</a>
             <!-- general form elements -->
             <div class="card card-danger">
               <div class="card-header">
@@ -36,16 +36,28 @@
               <form>
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Nama Sekolah</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="sekolah" placeholder="Masukkan Nama Sekolah">
-                    @error('nama')
+                      <label for="exampleInputEmail1">Nama Sekolah</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" name="sekolah" placeholder="Masukkan Nama Sekolah">
+                      @error('sekolah')
+                          <small class="text-danger">{{ $message }}</small>
+                      @enderror
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Jumlah Anak</label>
+                    <input type="text" name="jumlah_anak" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Jumlah Anak">
+                    @error('jumlah_anak')
                         <small>{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Jumlah Anak</label>
-                    <input type="text" name="anak" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Jumlah Anak">
-                    @error('nama')
+                    <label for="divisi">Divisi</label>
+                    <select class="form-control" id="divisi" name="divisi">
+                        <option value="web">Web</option>
+                        <option value="desain">Desain</option>
+                        <option value="video">Video</option>
+                    </select>
+                    @error('divisi')
                         <small>{{ $message }}</small>
                     @enderror
                   </div>

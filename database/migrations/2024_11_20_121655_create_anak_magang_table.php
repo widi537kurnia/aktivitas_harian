@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            if (!Schema::hasColumn('users', 'divisi')) {
-                $table->string('divisi')->nullable();
-            }
+        Schema::create('anak_magang', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_anak_magang');
+            $table->integer('nama_sekolah')->nullable();
+            $table->string('divisi');
+            $table->timestamps();
         });
     }
 
@@ -27,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('divisi');
-        });
+        Schema::dropIfExists('anak_magang');
     }
 };

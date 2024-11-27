@@ -13,7 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('sekolah')->nullable()->after('name');
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jumlah_sekolah');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('sekolah');
+        });
     }
 };

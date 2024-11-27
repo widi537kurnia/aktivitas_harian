@@ -36,13 +36,19 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::get('/jumlah_anak_magang',[HomeController::class,'jumlah_anak_magang'])->name('jumlah_anak_magang');
     Route::get('/jumlah_admin',[HomeController::class,'jumlah_admin'])->name('jumlah_admin');
 
-    Route::get('/create_sekolah',[HomeController::class,'create_sekolah'])->name('add.create_sekolah');
     Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('add.create_anak_magang');
     Route::get('/create_admin',[HomeController::class,'create_admin'])->name('add.create_admin');
 
-    Route::get('/index',[HomeController::class,'index'])->name('index');
+    // create sekolah
+    Route::get('/create_sekolah',[HomeController::class,'create_sekolah'])->name('create_sekolah');
+    Route::post('/input-sekolah',[HomeController::class,'store_sekolah'])->name('input-sekolah');
 
-    Route::get('/tambah_data_sekolah',[HomeController::class,'sekolah'])->name('tambah_data_sekolah');
+    // create anak magang
+    Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('create_anak_magang');
+    Route::post('/input-anak_magang',[HomeController::class,'store_anak_magang'])->name('input-anak_magang');
+
+
+    Route::get('/index',[HomeController::class,'index'])->name('index');
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
 

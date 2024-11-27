@@ -23,7 +23,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <a href="{{ route('admin.add.create_anak_magang') }}" class="btn btn-primary mb-3">Tambah Data</a>
+            <a href="{{ route('admin.create_anak_magang') }}" class="btn btn-primary mb-3">Tambah Data</a>
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Tabel Jumlah Anak Magang</h3>
@@ -54,9 +54,17 @@
                   </thead>
                   <tbody>
                     <!-- Baris kosong untuk tampilan awal tanpa data -->
+                    @foreach ($data as $data)
                     <tr>
-                      <td colspan="5" class="text-center">Tidak ada data</td>
+                      <td>{{$loop->iteration}}</td>
+                      <td>{{$data->anak_magang}}</td>
+                      <td>{{$data->divisi}}</td>
+                      <td>
+                        <button type="button" class="btn btn-warning"><i class="fas fa-pen"></i> Edit</button>
+                        <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                      </td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

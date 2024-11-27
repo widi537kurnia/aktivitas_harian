@@ -20,12 +20,12 @@
     <!-- /.content-header -->
     <section class="content">
       <div class="container-fluid">
-        <form action="{{ route('admin.add.create_anak_magang') }}" method="POST" enctype="multipart/form-data">
-            @csrf
         <div class="row">
           <!-- left column -->
           <div class="col-md-6">
             <a href="{{ route('admin.jumlah_anak_magang') }}" class="btn btn-secondary mb-3">Kembali</a>
+            <form action="{{ route('admin.input-anak_magang') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <!-- general form elements -->
             <div class="card card-danger">
               <div class="card-header">

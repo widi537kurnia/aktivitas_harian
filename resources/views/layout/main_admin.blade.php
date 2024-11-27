@@ -203,23 +203,10 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ route('writer.dashboard_user') }}" class="nav-link">
-              <i class="nav-icon fas fa-clock"></i>
-              <p>
-                Riwayat Aktivitas Harian
-              </p>
-            </a>
-          </li>
-          <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
             <a href="{{ route('admin.dashboard_admin') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard Admin
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
           </li>
@@ -244,20 +231,6 @@
               <i class="nav-icon fas fa-user-shield"></i>
               <p>
                 Jumlah Admin
-              </p>
-            <a href="{{ route('admin.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-pen"> </i>
-              <p>
-                Tambah Aktivitas Harian
-            </a>
-          </li>
-
-            <a href="{{ route('admin.tambah-aktivitas') }}" class="nav-link"
-
-            <a href="{{ route('admin.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-pen"> </i>
-              <p>
-              Tambah Aktivitas Harian
               </p>
             </a>
           </li>
