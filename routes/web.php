@@ -46,14 +46,24 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::get( '/ubah-admin/{id}',[HomeController::class,'ubah_admin'])->name('ubah-admin');
     Route::put( '/edit-admin/{id}',[HomeController::class,'edit_admin'])->name('edit-admin');
 
+    Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('add.create_anak_magang');
+    Route::get('/create_admin',[HomeController::class,'create_admin'])->name('add.create_admin');
 
-    Route::get('/index',[HomeController::class,'index'])->name('index');
+    // create sekolah
+    Route::get('/create_sekolah',[HomeController::class,'create_sekolah'])->name('create_sekolah');
+    Route::post('/input-sekolah',[HomeController::class,'store_sekolah'])->name('input-sekolah');
 
     Route::get('/create_admin', [HomeController::class, 'create_admin'])->name('create_admin');
     Route::post('/input-admin',[HomeController::class,'store_admin'])->name('input-admin');
     Route::get('/create-sekolah',[HomeController::class,'create_sekolah'])->name('create-sekolah');
     Route::post('/input-sekolah',[HomeController::class,'store_sekolah'])->name('input_sekolah');
     Route::get('/tambah_data_sekolah',[HomeController::class,'sekolah'])->name('tambah_data_sekolah');
+    // create anak magang
+    Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('create_anak_magang');
+    Route::post('/input-anak_magang',[HomeController::class,'store_anak_magang'])->name('input-anak_magang');
+
+
+    Route::get('/index',[HomeController::class,'index'])->name('index');
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
 

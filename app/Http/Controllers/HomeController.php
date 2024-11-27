@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\anak_magang;
+use App\Models\Sekolah;
+use App\Models\Sekolahs;
 use App\Models\User;
 use App\Models\Aktivitas;
 use Illuminate\Http\Request;
@@ -14,6 +17,13 @@ use Illuminate\Support\Facades\Validator;
 class HomeController extends Controller
 {
 
+    public function dashboard(){
+        $data = Auth::user();
+
+        return view ('dashboard', compact('data'));
+    }
+
+    // function admin
     public function dashboard_admin(){
         $roles = Role::withCount('users')->get();
 
@@ -201,6 +211,7 @@ class HomeController extends Controller
     return redirect()->route('admin.jumlah_sekolah')->with('success', 'Data sekolah berhasil ditambahkan.');
     }
 
+
     public function index() {
 
         $data = User::get();
@@ -225,65 +236,13 @@ class HomeController extends Controller
 
     public function update_profile(Request $request) {
         $validator = Validator::make($request->all(),[
-            'photo'         => 'nullable|mimes:png,jpg,jpeg|max:2048',  // Foto tidak wajib
+            'photo'         => 'required|mimes:png,jpg,jpeg|max:2048',
             'email'         => 'required|email',
             'name'          => 'required',
             'password'      => 'nullable',
             'bio'           => 'required',
             'about'         => 'required',
         ]);
-
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
-
-        // Simpan data selain foto
-        $data['email']  = $request->email;
-        $data['name']   = $request->name;
-        $data['bio']    = $request->bio;
-        $data['about']  = $request->about;
-
-        // Periksa apakah ada foto baru
-        if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
-            $photo = $request->file('photo');
-            $filename = date('Y-m-d') . $photo->getClientOriginalName();
-            $path = 'photo-user/' . $filename;
-
-            // Simpan foto baru
-            Storage::disk('public')->put($path, file_get_contents($photo));
-
-            // Update data foto
-            $data['image'] = $filename;
-        } else {
-            // Jika tidak ada foto baru, gunakan foto lama
-            $user = User::find(Auth::id());
-            $data['image'] = $user->image;  // Menyimpan foto lama
-        }
-
-        // Periksa apakah password diubah
-        if($request->password) {
-            $data['password'] = Hash::make($request->password);
-        }
-
-        // Update data pengguna
-        $id = Auth::id();
-        User::whereId($id)->update($data);
-
-        return redirect()->route('writer.profile');
-    }
-
-
-    public function sekolah(Request $request) { //name functionnya di ganti sekolah karna untuk membedakan
-
-        $validator = Validator::make($request->all(),[
-            'photo'     => 'required|mimes:png,jpg,jpeg|max:2048',
-            'email'     => 'required|email',
-            'nama'      => 'required',
-            'password'  => 'required',
-
-        ]);
-    }
-
-    public function ubah_admin(Request $request, $id){
-        $data = User::find($id);
 
         return view('admin.add.edit_admin', compact('data'));
     }
@@ -398,6 +357,5 @@ class HomeController extends Controller
         }
         return redirect()->route('admin.jumlah_admin');
     }
-
 }
 

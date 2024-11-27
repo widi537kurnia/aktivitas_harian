@@ -56,9 +56,15 @@
                                                     @error('tanggal')
                                                         <small>{{ $message }}</small>
                                                     @enderror
+<<<<<<< HEAD:resources/views/writer/index.blade.php
                                                 </div>
                                             </div>
                                             <!-- /.card-header -->
+=======
+
+                                             <!-- /.card-header -->
+
+>>>>>>> 7e3daee65a508dd4dcb55666906ea27124955798:resources/views/admin/index.blade.php
                                             <!-- sift input-->
                                             <div class="col-sm-6">
                                                 <div class="form-group">
