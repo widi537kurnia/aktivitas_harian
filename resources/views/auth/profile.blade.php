@@ -56,6 +56,11 @@
                         <i class="fas fa-envelope mr-2" style="color: rgb(231, 76, 60);"></i>
                         {{$data->divisi}}
                     </p>
+                    <p class="card-text">
+                        <span class="text-muted mb-1 d-block">Sekolah :</span>
+                        <i class="fas fa-envelope mr-2" style="color: rgb(231, 76, 60);"></i>
+                        {{$data->sekolah}}
+                    </p>
                 </div>
                 <div class="card shadow border rounded p-5 mb-4">
                     <h2>See Us</h2>

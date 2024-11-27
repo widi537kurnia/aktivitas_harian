@@ -47,6 +47,7 @@
                     <tr>
                       <th>No</th>
                       <th>Nama Sekolah</th>
+                      <th>Jumlah</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -55,6 +56,27 @@
                     <tr>
                       <td colspan="5" class="text-center">Tidak ada data</td>
                     </tr>
+                    <div class="modal fade" id="modal-hapus{{$data->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            Apakah anda yakin ingin menghapus data {{$data->id}} ?
+                            </div>
+                            <div class="modal-footer">
+                                <form action="{{ route('writer.delete-data',['id' => $data->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                    <button type="submit" class="btn btn-danger">Ya, hapus</button>
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                   </tbody>
                 </table>
               </div>

@@ -1,5 +1,4 @@
 @extends('layout.main_user')
-
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -66,7 +65,7 @@
                       <td><strong>{{$data->shift}}</strong></td>
                       <td><strong>{{$data->created_at->format('d-m-Y H:i:s') }}</strong></td>
                       <td>
-                        <a href="#" class="btn btn-warning"><i class="fas fa-pen"></i>
+                        <a href="{{ route('writer.edit-user',['id' => $data->id]) }}" class="btn btn-warning"><i class="fas fa-pen"></i>
                             Edit
                         </a>
                         <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-hapus{{$data->id}}"><i class="fas fa-trash"></i>
@@ -80,7 +79,7 @@
                             <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -106,9 +105,9 @@
             </div>
             <!-- /.card-body -->
           </div>
-          <!-- /.card -->
+
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
     <!-- /.content -->
 </div>

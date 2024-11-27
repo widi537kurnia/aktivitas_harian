@@ -62,48 +62,7 @@ class HomeController extends Controller
         return view('admin.add.create_admin', compact('data'));
     }
 
-    public function index() {
-        return view('writer.index');
-    }
 
-    public function aktivitas(Request $request)
-{
-    // Validasi data input
-    $validator = Validator::make($request->all(), [
-        'tanggal'       => 'required|date',
-        'shift'         => 'required',
-        'mulai_kerja'   => 'required',
-        'selesai_kerja' => 'required',
-        'aktivitas'     => 'required|string',
-        'photo'         => 'required|mimes:png,jpg,jpeg|max:2048'
-    ]);
-
-    // Jika validasi gagal, kembali ke halaman sebelumnya dengan pesan error
-    if ($validator->fails()) {
-        return redirect()->back()->withInput()->withErrors($validator);
-
-    }
-
-    // Simpan foto ke storage
-    $photo = $request->file('photo');
-    $filename = date('Y-m-d') . $photo->getClientOriginalName();
-    $path = 'photo-user/' . $filename;
-    Storage::disk('public')->put($path, file_get_contents($photo));
-
-    // Siapkan data untuk disimpan di database
-    $data['tanggal']        = $request->tanggal; // perbaikan di sini
-    $data['shift']          = $request->shift;
-    $data['mulai_kerja']    = $request->mulai_kerja;
-    $data['selesai_kerja']  = $request->selesai_kerja;
-    $data['aktivitas']      = $request->aktivitas;
-    $data['photo']          = $filename;
-
-    // Simpan data ke tabel Aktivitas
-    Aktivitas::create($data);
-
-    // Redirect ke halaman index dengan pesan sukses
-    return redirect()->route('writer.tambah-aktivitas')->with('success', 'Data aktivitas berhasil ditambahkan.');
-    }
 
 
     public function create(){
@@ -134,35 +93,28 @@ class HomeController extends Controller
 
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
-        // Simpan data selain foto
         $data['email']  = $request->email;
         $data['name']   = $request->name;
         $data['bio']    = $request->bio;
         $data['about']  = $request->about;
 
-        // Periksa apakah ada foto baru
         if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
             $photo = $request->file('photo');
             $filename = date('Y-m-d') . $photo->getClientOriginalName();
             $path = 'photo-user/' . $filename;
 
-            // Simpan foto baru
             Storage::disk('public')->put($path, file_get_contents($photo));
 
-            // Update data foto
             $data['image'] = $filename;
         } else {
-            // Jika tidak ada foto baru, gunakan foto lama
             $user = User::find(Auth::id());
-            $data['image'] = $user->image;  // Menyimpan foto lama
+            $data['image'] = $user->image;
         }
 
-        // Periksa apakah password diubah
         if($request->password) {
             $data['password'] = Hash::make($request->password);
         }
 
-        // Update data pengguna
         $id = Auth::id();
         User::whereId($id)->update($data);
 

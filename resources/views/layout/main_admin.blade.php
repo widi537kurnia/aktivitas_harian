@@ -206,7 +206,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ route('admin.dashboard_admin') }}" class="nav-link">
+            <a href="{{ route('admin.dashboard_admin') }}" class="nav-link text-white">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard Admin
@@ -214,7 +214,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.jumlah_sekolah') }}" class="nav-link">
+            <a href="{{ route('admin.jumlah_sekolah') }}" class="nav-link text-white">
               <i class="nav-icon fas fa-school"></i>
               <p>
                 Jumlah Sekolah
@@ -222,7 +222,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.jumlah_anak_magang') }}" class="nav-link">
+            <a href="{{ route('admin.jumlah_anak_magang') }}" class="nav-link text-white">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Jumlah Anak Magang
@@ -230,7 +230,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.jumlah_admin') }}" class="nav-link">
+            <a href="{{ route('admin.jumlah_admin') }}" class="nav-link text-white">
               <i class="nav-icon fas fa-user-shield"></i>
               <p>
                 Jumlah Admin
@@ -238,7 +238,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link">
+            <a href="{{ route('logout') }}" class="nav-link text-white">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Keluar
