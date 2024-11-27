@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->integer('jumlah_anak')->default(0)->after('role'); // Tambahkan kolom jumlah_anak
         });
     }
 
@@ -25,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('divisi');
+            $table->dropColumn('jumlah_anak'); // Untuk rollback
         });
     }
 };

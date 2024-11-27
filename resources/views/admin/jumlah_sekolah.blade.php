@@ -23,7 +23,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <a href="{{ route('admin.add.create_sekolah') }}" class="btn btn-primary mb-3">Tambah Data</a>
+            <a href="{{ route('admin.create-sekolah') }}" class="btn btn-primary mb-3">Tambah Data</a>
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Tabel Jumlah Sekolah</h3>
@@ -47,14 +47,28 @@
                     <tr>
                       <th>No</th>
                       <th>Nama Sekolah</th>
+                      <th>Jumlah</th>
+                      <th>Divisi</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <!-- Baris kosong untuk tampilan awal tanpa data -->
-                    <tr>
-                      <td colspan="5" class="text-center">Tidak ada data</td>
-                    </tr>
+                    <tbody>
+                        @foreach ($data as $sekolah)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $sekolah->sekolah }}</td>
+                            <td>{{ $sekolah->jumlah_anak}}</td>
+                            <td>{{ $sekolah->divisi }}</td>
+                            <td>
+                                <button type="button" class="btn btn-warning"><i class="fas fa-pen"></i> Edit</button>
+                                <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+
                   </tbody>
                 </table>
               </div>

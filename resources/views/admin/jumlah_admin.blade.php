@@ -57,12 +57,12 @@
                   </thead>
                   <tbody>
                     <!-- Baris kosong untuk tampilan awal tanpa data -->
-                    @foreach ($data as $data)
+                    @foreach ($data as $admin)
                     <tr>
                       <td>{{$loop->iteration}}</td>
-                      <td>{{$data->name}}</td>
-                      <td>{{$data->email}}</td>
-                      <td>{{$data->divisi}}</td>
+                      <td>{{$admin->name}}</td>
+                      <td>{{$admin->email}}</td>
+                      <td>{{$admin->divisi}}</td>
                       <td>
                         <a href="{{ route('admin.ubah-admin',['id' => $data->id]) }}" class="btn btn-warning"><i class="fas fa-pen"></i>
                             Edit
