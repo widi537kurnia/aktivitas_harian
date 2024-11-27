@@ -30,10 +30,7 @@
                 @endif
 
                 <!-- form tambah aktivitas-->
-                <form action="{{ route('admin.tambah-data-aktivitas') }}" method="POST" enctype="multipart/form-data">
-
-                <form action="{{ route('admin.user.store') }}" method="POST" enctype="multipart/form-data">
-
+                <form action="{{ route('writer.tambah-data-aktivitas') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <!-- left column -->
@@ -61,46 +58,45 @@
                                                     @enderror
                                                 </div>
                                             </div>
-
-                                             <!-- /.card-header -->
-
+                                            <!-- /.card-header -->
                                             <!-- sift input-->
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>Shift :</label>
-                                                        <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" name="shift" placeholder="Sift Kerja...">
-                                                            <option selected ="selected"></option>
-                                                            <option data-select2-id="1">Pagi</option>
-                                                            <option data-select2-id="2">Sore</option>
-                                                        </select>
-                                                        @error('shift')
-                                                            <small>{{ $message }}</small>
-                                                        @enderror
-                                                    </div>
+                                                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" name="shift" placeholder="Sift Kerja...">
+                                                        <option selected ="selected"></option>
+                                                        <option data-select2-id="1">Pagi</option>
+                                                        <option data-select2-id="2">Sore</option>
+                                                    </select>
+                                                    @error('shift')
+                                                    <small>{{ $message }}</small>
+                                                    @enderror
                                                 </div>
-
+                                            </div>
+                                        </div>
+                                            <!-- jam mulai dan jam pulang -->
+                                            <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Mulai Kerja :</label>
-                                                        <div class="input-group">
-                                                            <input type="time" class="form-control" name="mulai_kerja">
+                                                            <div class="input-group" id="timepicker" data-target-input="nearest">
+                                                                <input type="time" class="form-control" name="mulai_kerja">
+                                                            </div>
                                                         </div>
                                                         @error('mulai_kerja')
                                                             <small>{{ $message }}</small>
                                                         @enderror
-                                                    </div>
                                                 </div>
-
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Selesai Kerja :</label>
-                                                        <div class="input-group">
-                                                            <input type="time" class="form-control" name="selesai_kerja">
+                                                            <div class="input-group" id="timepicker" data-target-input="nearest">
+                                                                <input type="time" class="form-control" name="selesai_kerja">
+                                                            </div>
                                                         </div>
                                                         @error('selesai_kerja')
                                                             <small>{{ $message }}</small>
                                                         @enderror
-                                                    </div>
                                                 </div>
 
                                                     </div>
@@ -135,21 +131,29 @@
                                             <button type="submit" class="btn btn-danger">Kirim</button>
                                         </div>
                                           </div>
-                                        </div>
+                                          <div class="form-group" >
+                                                  <div class="col-sm-12">
+                                                      <label for="exampleInputEmail1">Bukti Foto</label>
+                                                      <input type="file" class="form-control" id="exampleInputEmail1" name="photo">
+                                                      @error('photo')
+                                                          <small>{{ $message }}</small>
+                                                      @enderror
+                                              </div>
+                                          </div>
+                                    </div>
+                                        <!--tambah foto-->
+<<<<<<< HEAD:resources/views/writer/index.blade.php
                                           <!-- /.input group -->
                                     </div>
-
-                                        <!--tambah foto-->
+                                    <!--/.card-body -->
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-danger">Kirim</button>
+                                    </div>
+=======
+>>>>>>> role-user:resources/views/admin/index.blade.php
                                 </form>
                             </div>
-                            <!-- /.card -->
-                        </div>
-                        <!--/.col (left) -->
-                    </div>
-                </form>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
         </section>
     </div>
-
 @endsection
+

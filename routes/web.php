@@ -23,7 +23,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[LoginController::class,'index'])->name('login');
 Route::post('/login-proses',[LoginController::class,'login_proses'])->name('login-proses');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
-
 Route::get('/register',[LoginController::class,'register'])->name('register');
 Route::post('/register-proses',[LoginController::class,'register_proses'])->name('register-proses');
 
@@ -40,20 +39,24 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('create_anak_magang');
     Route::post('/input-anak-magang',[HomeController::class,'store_anak_magang'])->name('input-anak-magang');
 
+    Route::get('/create-admin',[HomeController::class,'create_admin'])->name('create-admin');
+    Route::post('/input-admin',[HomeController::class,'store'])->name('input-admin');
+
+    Route::delete('/delete-admin/{id}',[HomeController::class,'delete_admin'])->name('delete-admin');
+    Route::get( '/ubah-admin/{id}',[HomeController::class,'ubah_admin'])->name('ubah-admin');
+    Route::put( '/edit-admin/{id}',[HomeController::class,'edit_admin'])->name('edit-admin');
+
+
+    Route::get('/index',[HomeController::class,'index'])->name('index');
+
     Route::get('/create_admin', [HomeController::class, 'create_admin'])->name('create_admin');
     Route::post('/input-admin',[HomeController::class,'store_admin'])->name('input-admin');
-
     Route::get('/create-sekolah',[HomeController::class,'create_sekolah'])->name('create-sekolah');
     Route::post('/input-sekolah',[HomeController::class,'store_sekolah'])->name('input_sekolah');
-
     Route::get('/tambah_data_sekolah',[HomeController::class,'sekolah'])->name('tambah_data_sekolah');
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
 
-    Route::get('/tambah-aktivitas',[HomeController::class,'index'])->name('tambah-aktivitas');
-    Route::post('/tambah-data-aktivitas',[HomeController::class,'aktivitas'])->name('tambah-data-aktivitas');
-
-    Route::post('/store',[HomeController::class,'store'])->name('user.store');
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
 
@@ -68,5 +71,9 @@ Route::group(['prefix' => 'writer', 'middleware' => ['auth'], 'as' => 'writer.']
     Route::get('/profile',[HomeController::class,'profile'])->name('profile');
     Route::get('/edit-profile',[HomeController::class,'edit_profile'])->name('edit-profile');
     Route::post('/update-profile',[HomeController::class,'update_profile'])->name('update-profile');
+
+    Route::get('/tambah-aktivitas',[HomeController::class,'index'])->name('tambah-aktivitas');
+    Route::post('/tambah-data-aktivitas',[HomeController::class,'aktivitas'])->name('tambah-data-aktivitas');
+    Route::delete('/delete-data/{id}',[WriterController::class,'delete_data'])->name('delete-data');
 
 });

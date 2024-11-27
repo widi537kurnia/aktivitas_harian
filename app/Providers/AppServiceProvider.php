@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Aktivitas;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -50,6 +51,7 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('photo', asset('storage/photo-user/'.Auth::user()->image));
             }
         });
+        
     }
 
 
