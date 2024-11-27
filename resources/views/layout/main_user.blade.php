@@ -226,6 +226,7 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="" class="nav-link">
             <a href="{{ route('writer.tambah-aktivitas') }}" class="nav-link text-white">
               <i class="nav-icon fas fa-th"></i>
               <p>
