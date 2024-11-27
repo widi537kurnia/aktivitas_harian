@@ -36,9 +36,6 @@ class HomeController extends Controller
 
         $data = User::where('role', 'admin')->get();
         return view('admin.jumlah_admin', compact('data'));
-        $data = User::get();
-
-        return view ('admin.jumlah_admin', compact('data'));
     }
 
     public function create_admin() {
