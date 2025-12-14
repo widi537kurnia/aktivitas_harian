@@ -19,7 +19,7 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-danger">
     <div class="card-header text-center">
-      <a href="{{ route('login') }}" class="h1"><b>Absensi</b>MAGANG</a>
+      <a href="{{ route('login') }}" class="h1"><b>Aktivitas</b>MAGANG</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Masuk ke akun Anda untuk memulai</p>
@@ -64,12 +64,6 @@
           <!-- /.col -->
         </div>
       </form>
-
-      <!-- /.social-auth-links -->
-
-      <p class="mb-0">
-        <a href="{{ route('register') }}" class="text-center">Daftar Akun Baru</a>
-      </p>
     </div>
     <!-- /.card-body -->
   </div>

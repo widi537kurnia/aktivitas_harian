@@ -20,12 +20,12 @@
     <!-- /.content-header -->
     <section class="content">
       <div class="container-fluid">
-        <form action="{{ route('admin.add.create_anak_magang') }}" method="POST" enctype="multipart/form-data">
+        <a href="{{ route('admin.jumlah_anak_magang') }}" class="btn btn-secondary mb-3">Kembali</a>
+        <form action="{{ route('admin.input-anak-magang') }}" method="POST" enctype="multipart/form-data">
             @csrf
         <div class="row">
           <!-- left column -->
           <div class="col-md-6">
-            <a href="{{ route('admin.jumlah_anak_magang') }}" class="btn btn-secondary mb-3">Kembali</a>
             <!-- general form elements -->
             <div class="card card-danger">
               <div class="card-header">
@@ -38,17 +38,24 @@
                     <div class="form-group">
                     <label for="exampleInputEmail1">Nama Anak Magang</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" name="anak_magang" placeholder="Masukkan Nama Anak Magang">
-                    @error('nama')
+                    @error('anak_magang')
                         <small>{{ $message }}</small>
                     @enderror
                     </div>
                     <div class="form-group">
                     <label for="exampleInputEmail1">Nama Sekolah</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" name="sekolah" placeholder="Masukkan Nama Sekolah">
-                    @error('nama')
+                    @error('sekolah')
                         <small>{{ $message }}</small>
                     @enderror
-                  </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputEmail1" name="password" placeholder="Masukkan Password">
+                        @error('password')
+                            <small>{{ $message }}</small>
+                        @enderror
+                    </div>
                   <div class="form-group">
                     <label for="divisi">Divisi</label>
                     <select class="form-control" id="divisi" name="divisi">

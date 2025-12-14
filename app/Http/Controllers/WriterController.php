@@ -27,6 +27,16 @@ class WriterController extends Controller
         }
         return redirect()->route('writer.dashboard_user');
     }
+    public function cari_aktivitas(Request $request)
+    {
+        $search = $request->input('search');
+
+        $data = Aktivitas::where('shift', 'like', "%$search%")
+            ->orWhere('aktivitas', 'like', "%$search%")
+            ->paginate(10);
+
+        return view('writer.dashboard_user', compact('data'));
+    }
 
     public function index() {
         return view('writer.index');

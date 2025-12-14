@@ -28,7 +28,7 @@ class LoginController extends Controller
             // Redirect berdasarkan role user
             if ($user->role == 'admin') {
                 return redirect()->route('admin.dashboard_admin');
-            } else if ($user->role == 'writer') {
+            } else if ($user->role == 'anak_magang') {
                 return redirect()->route('writer.dashboard_user');
             }
 

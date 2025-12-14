@@ -29,13 +29,7 @@
             <span class="info-box-icon bg-info"><i class="fas fa-school"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Jumlah Sekolah</span>
-              <span class="info-box-number">41,410</span>
-              <div class="progress">
-                <div class="progress-bar bg-info" style="width: 70%"></div>
-              </div>
-              <span class="progress-description">
-                70% Increase in 30 Days
-              </span>
+              <span class="info-box-number">{{ $jumlahSekolah }} Sekolah</span>
             </div>
           </div>
         </div>
@@ -45,13 +39,7 @@
             <span class="info-box-icon bg-info"><i class="fas fa-user"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Jumlah Anak Magang</span>
-              <span class="info-box-number">41,410</span>
-              <div class="progress">
-                <div class="progress-bar bg-info" style="width: 70%"></div>
-              </div>
-              <span class="progress-description">
-                70% Increase in 30 Days
-              </span>
+              <span class="info-box-number">{{ $jumlahAnakMagang }} Anak Magang</span>
             </div>
           </div>
         </div>
@@ -60,13 +48,7 @@
             <span class="info-box-icon bg-info"><i class="fas fa-user-shield"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Jumlah Admin</span>
-              <span class="info-box-number">41,410</span>
-              <div class="progress">
-                <div class="progress-bar bg-info" style="width: 70%"></div>
-              </div>
-              <span class="progress-description">
-                70% Increase in 30 Days
-              </span>
+              <span class="info-box-number">{{ $jumlahAdmin }} Admin</span>
             </div>
           </div>
         </div>

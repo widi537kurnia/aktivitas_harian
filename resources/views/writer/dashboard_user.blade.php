@@ -24,19 +24,18 @@
       <div class="container-fluid">
         <div class="row">
           <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Aktivitas Harian</h3>
-
-              <div class="card-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control float-right" placeholder="Cari">
-                  <div class="input-group-append">
-                    <button type="submit" class="btn btn-default">
-                      <i class="fas fa-search"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
+            <div class="card-header d-flex justify-content-between">
+                <h3 class="card-title">Aktivitas Harian</h3>
+                <form action="{{ route('writer.cari-aktivitas') }}" method="GET" class="ml-auto">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="search" class="form-control" placeholder="Search" value="{{ request('search') }}">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <!-- /.card-header -->
 
@@ -50,7 +49,8 @@
                     <th>Selesai Kerja</th>
                     <th>Aktivitas Harian</th>
                     <th>Shift</th>
-                    <th>Hari dan Jam</th>
+                    <th>Hari dan Tanggal</th>
+                    <th>Jam</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -63,7 +63,8 @@
                       <td><strong>{{$data->selesai_kerja}}</strong></td>
                       <td><strong>{{$data->aktivitas}}</strong></td>
                       <td><strong>{{$data->shift}}</strong></td>
-                      <td><strong>{{$data->created_at->format('d-m-Y H:i:s') }}</strong></td>
+                      <td><strong>{{$data->created_at->isoFormat('dddd, D MMMM YYYY')}}</strong></td>
+                      <td><strong>{{$data->created_at->isoFormat('H:mm:ss')}}</strong></td>
                       <td>
                         <a href="{{ route('writer.edit-user',['id' => $data->id]) }}" class="btn btn-warning"><i class="fas fa-pen"></i>
                             Edit

@@ -23,23 +23,22 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <a href="{{ route('admin.create-admin') }}" class="btn btn-primary mb-3">Tambah Data</a>
+            <a href="{{ route('admin.create_admin') }}" class="btn btn-primary mb-3">Tambah Data</a>
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Tabel Jumlah Admin</h3>
-
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
-                  </div>
+                <div class="card-header d-flex justify-content-between">
+                    <h3 class="card-title">Tabel Jumlah Admin</h3>
+                    <form action="{{ route('admin.cari-admin') }}" method="GET" class="ml-auto">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="search" class="form-control" placeholder="Search" value="{{ request('search') }}">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-              </div>
+
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
@@ -54,24 +53,24 @@
                   </thead>
                   <tbody>
                     <!-- Baris kosong untuk tampilan awal tanpa data -->
-                    @foreach ($data as $data)
+                    @foreach ($data as $admin)
                     <tr>
                       <td>{{$loop->iteration}}</td>
-                      <td>{{$data->name}}</td>
-                      <td>{{$data->email}}</td>
-                      <td>{{$data->divisi}}</td>
+                      <td>{{$admin->name}}</td>
+                      <td>{{$admin->email}}</td>
+                      <td>{{$admin->divisi}}</td>
                       <td>
-                        <a href="{{ route('admin.ubah-admin',['id' => $data->id]) }}" class="btn btn-warning"><i class="fas fa-pen"></i>
+                        <a href="{{ route('admin.ubah-admin',['id' => $admin->id]) }}" class="btn btn-warning"><i class="fas fa-pen"></i>
                             Edit
                         </a>
-                        <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-hapus{{$data->id}}"><i class="fas fa-trash"></i>
+                        <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-hapus{{$admin->id}}"><i class="fas fa-trash"></i>
                             Hapus
                         </button>
 
                       </td>
                       </tr>
                         <!-- Modal -->
-                        <div class="modal fade" id="modal-hapus{{$data->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="modal-hapus{{$admin->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -79,10 +78,10 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                Apakah anda yakin ingin menghapus data {{$data->name}} ?
+                                Apakah anda yakin ingin menghapus data {{$admin->name}} ?
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="{{ route('admin.delete-admin',['id' => $data->id]) }}" method="POST">
+                                    <form action="{{ route('admin.delete-admin',['id' => $admin->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>

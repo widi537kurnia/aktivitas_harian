@@ -36,10 +36,17 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
     Route::get('/jumlah_anak_magang',[HomeController::class,'jumlah_anak_magang'])->name('jumlah_anak_magang');
     Route::get('/jumlah_admin',[HomeController::class,'jumlah_admin'])->name('jumlah_admin');
 
-    Route::get('/create_sekolah',[HomeController::class,'create_sekolah'])->name('add.create_sekolah');
-    Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('add.create_anak_magang');
+    Route::get('/create_anak_magang',[HomeController::class,'create_anak_magang'])->name('create_anak_magang');
+    Route::post('/input-anak-magang',[HomeController::class,'store_anak_magang'])->name('input-anak-magang');
+
+    Route::delete('/delete-anak/{id}',[HomeController::class,'delete_anak'])->name('delete-anak');
+    Route::get( '/edit-anak/{id}',[HomeController::class,'edit_anak'])->name('edit-anak');
+    Route::put( '/ubah-anak/{id}',[HomeController::class,'ubah_anak'])->name('ubah-anak');
+    Route::get('/cari-anak',[HomeController::class,'cari_anak'])->name('cari-anak');
+
 
     Route::get('/create-admin',[HomeController::class,'create_admin'])->name('create-admin');
+    Route::get('/cari-admin',[HomeController::class,'cari_admin'])->name('cari-admin');
     Route::post('/input-admin',[HomeController::class,'store'])->name('input-admin');
 
     Route::delete('/delete-admin/{id}',[HomeController::class,'delete_admin'])->name('delete-admin');
@@ -49,6 +56,19 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'] , 
 
     Route::get('/index',[HomeController::class,'index'])->name('index');
 
+    Route::get('/create_admin', [HomeController::class, 'create_admin'])->name('create_admin');
+    Route::post('/input-admin',[HomeController::class,'store_admin'])->name('input-admin');
+
+
+    Route::get('/create-sekolah',[HomeController::class,'create_sekolah'])->name('create-sekolah');
+    Route::post('/input-sekolah',[HomeController::class,'store_sekolah'])->name('input_sekolah');
+    Route::get('/cari-sekolah',[HomeController::class,'cari_sekolah'])->name('cari-sekolah');
+
+
+    Route::get( '/edit-sekolah/{id}',[HomeController::class,'edit_sekolah'])->name('edit-sekolah');
+    Route::put( '/ubah-sekolah/{id}',[HomeController::class,'ubah_sekolah'])->name('ubah-sekolah');
+
+    Route::delete('/delete-data/{id}',[HomeController::class,'delete_data'])->name('delete-data');
     Route::get('/tambah_data_sekolah',[HomeController::class,'sekolah'])->name('tambah_data_sekolah');
 
     Route::get('/serverside',[DataTableController::class,'serverside'])->name('serverside');
@@ -73,5 +93,7 @@ Route::group(['prefix' => 'writer', 'middleware' => ['auth'], 'as' => 'writer.']
     Route::delete('/delete-data/{id}',[WriterController::class,'delete_data'])->name('delete-data');
     Route::get('/edit-user/{id}',[WriterController::class,'edit_user'])->name('edit-user');
     Route::put('/store-edit-user/{id}', [WriterController::class, 'store_edit_user'])->name('store-edit-user');
+
+    Route::get('/cari-aktivitas',[WriterController::class,'cari_aktivitas'])->name('cari-aktivitas');
 
 });

@@ -98,8 +98,7 @@
                                                             <small>{{ $message }}</small>
                                                         @enderror
                                                 </div>
-                                            </div>
-                                                <!-- /.form group -->
+
                                             <!--/Isi aktivitas-->
                                             <div class="form-group">
                                               <div class="col-sm-12">
@@ -109,24 +108,25 @@
                                                     <small>{{ $message }}</small>
                                                 @enderror
                                               </div>
+
+                                              <div class="form-group" >
+                                                <div class="col-sm-12 mt-4">
+                                                    <label for="exampleInputEmail1">Bukti Foto</label>
+                                                    <input type="file" class="form-control" id="exampleInputEmail1" name="photo">
+                                                    @error('photo')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/.card-body -->
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-danger">Kirim</button>
+                                        </div>
                                           </div>
-                                          <div class="form-group" >
-                                                  <div class="col-sm-12">
-                                                      <label for="exampleInputEmail1">Bukti Foto</label>
-                                                      <input type="file" class="form-control" id="exampleInputEmail1" name="photo">
-                                                      @error('photo')
-                                                          <small>{{ $message }}</small>
-                                                      @enderror
-                                              </div>
-                                          </div>
+
                                     </div>
                                         <!--tambah foto-->
-                                          <!-- /.input group -->
-                                    </div>
-                                    <!--/.card-body -->
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-danger">Kirim</button>
-                                    </div>
                                 </form>
                             </div>
         </section>

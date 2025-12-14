@@ -30,7 +30,8 @@ class User extends Authenticatable
         'image',
         'role',
         'divisi',
-        'role',
+        'sekolah',
+        'jumlah_anak',
         'bio',
         'about',
     ];

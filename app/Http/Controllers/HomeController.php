@@ -14,47 +14,32 @@ use Illuminate\Support\Facades\Validator;
 class HomeController extends Controller
 {
 
-    public function dashboard(){
-        $data = Auth::user();
-
-        return view ('dashboard', compact('data'));
-
-    }
-
-    // function admin
     public function dashboard_admin(){
-        $roles = Role::withCount('users')->get();
+         // Contoh: hitung jumlah admin
+    $jumlahAdmin = User::where('role', 'admin')->count();
 
-        return view ('admin.dashboard_admin', compact('roles'));
+    // Contoh: hitung jumlah anak magang
+    $jumlahAnakMagang = User::where('role', 'anak_magang')->count();
+
+    // Contoh: hitung jumlah sekolah
+    $jumlahSekolah = User::where('role', 'sekolah')->count();
+
+    // Kirim data ke view
+    return view('admin.dashboard_admin', [
+        'jumlahAdmin' => $jumlahAdmin,
+        'jumlahAnakMagang' => $jumlahAnakMagang,
+        'jumlahSekolah' => $jumlahSekolah,
+    ]);
     }
 
-    public function main_admin(){
-        return view ('admin.main_admin');
-    }
 
-    public function jumlah_sekolah(){
-        return view ('admin.jumlah_sekolah');
-    }
-    public function jumlah_anak_magang(){
-        return view ('admin.jumlah_anak_magang');
-    }
+    // ADMIN - ADMIN - ADMIN - ADMIN - ADMIN
     public function jumlah_admin(){
-        $data = User::get();
 
-        return view ('admin.jumlah_admin', compact('data'));
+        $data = User::where('role', 'admin')->get();
+        return view('admin.jumlah_admin', compact('data'));
     }
-    public function create_sekolah() {
 
-        $data = User::get();
-
-        return view('admin.add.create_sekolah', compact('data'));
-    }
-    public function create_anak_magang() {
-
-        $data = User::get();
-
-        return view('admin.add.create_anak_magang', compact('data'));
-    }
     public function create_admin() {
 
         $data = User::get();
@@ -62,8 +47,302 @@ class HomeController extends Controller
         return view('admin.add.create_admin', compact('data'));
     }
 
+    public function aktivitas(Request $request)
+{
+    // Validasi data input
+    $validator = Validator::make($request->all(), [
+        'tanggal'       => 'required|date',
+        'shift'         => 'required',
+        'mulai_kerja'   => 'required',
+        'selesai_kerja' => 'required',
+        'aktivitas'     => 'required|string',
+        'photo'         => 'required|mimes:png,jpg,jpeg|max:2048'
+    ]);
+
+    // Jika validasi gagal, kembali ke halaman sebelumnya dengan pesan error
+    if ($validator->fails()) {
+        return redirect()->back()->withInput()->withErrors($validator);
+
+    }
+
+    // Simpan foto ke storage
+    $photo = $request->file('photo');
+    $filename = date('Y-m-d') . $photo->getClientOriginalName();
+    $path = 'photo-user/' . $filename;
+    Storage::disk('public')->put($path, file_get_contents($photo));
+
+    // Siapkan data untuk disimpan di database
+    $data['tanggal']        = $request->tanggal; // perbaikan di sini
+    $data['shift']          = $request->shift;
+    $data['mulai_kerja']    = $request->mulai_kerja;
+    $data['selesai_kerja']  = $request->selesai_kerja;
+    $data['aktivitas']      = $request->aktivitas;
+    $data['photo']          = $filename;
+
+    // Simpan data ke tabel Aktivitas
+    Aktivitas::create($data);
+
+    // Redirect ke halaman index dengan pesan sukses
+    return redirect()->route('writer.tambah-aktivitas')->with('success', 'Data aktivitas berhasil ditambahkan.');
+    }
+
+    public function store_admin(Request $request) {
+
+        $validator = Validator::make($request->all(),[
+            'email'    => 'required|email',
+            'name'     => 'required',
+            'divisi'   => 'required',
+            'password' => 'nullable',
+
+        ]);
+
+        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        $data['email']     = $request->email;
+        $data['name']      = $request->name;
+        $data['divisi']    = $request->divisi;
+
+        if ($request->password) {
+            $data['password'] = Hash::make($request->password);
+        } else {
+            // Berikan nilai default atau abaikan pengubahan password jika tidak diinput
+            $user = User::find(Auth::id());
+            $data['password'] = $user->password;  // Gunakan password lama
+        }
+
+        User::create($data);
+
+        return redirect()->route('admin.jumlah_admin');
+    }
+    public function cari_admin(Request $request)
+{
+    $search = $request->input('search');
+
+    $data = User::where('name', 'like', "%$search%")
+        ->orWhere('email', 'like', "%$search%")
+        ->orWhere('divisi', 'like', "%$search%")
+        ->paginate(10);
+
+    return view('admin.jumlah_admin', compact('data'));
+}
 
 
+
+    // ANAK MAGANG - ANAK MAGANG - ANAK MAGANG - ANAK MAGANG - ANAK MAGANG
+    public function create_anak_magang() {
+
+        $data = User::get();
+
+        return view('admin.add.create_anak_magang', compact('data'));
+    }
+
+    public function jumlah_anak_magang(){
+        $data = User::where('role', 'anak_magang')->get();
+        return view ('admin.jumlah_anak_magang', compact('data'));
+    }
+
+    public function store_anak_magang(Request $request)
+{
+    // Validasi input
+    $validator = Validator::make($request->all(), [
+        'sekolah'     => 'required|string|max:255',
+        'anak_magang' => 'required',
+        'divisi'      => 'required',
+        'password'    => 'nullable|string|min:8',
+    ]);
+
+    // Jika validasi gagal, kembalikan dengan pesan error
+    if ($validator->fails()) {
+        return redirect()->back()->withInput()->withErrors($validator);
+    }
+
+    // Siapkan data untuk disimpan
+    $data = [
+        'name'        => $request->anak_magang,  // Memberikan nilai default
+        'sekolah'     => $request->sekolah,
+        'email'       => $request->anak_magang . '@gmail.com',  // Anda bisa sesuaikan emailnya
+        'divisi'      => $request->divisi,
+        'role'        => 'anak_magang',
+        'password'    => $request->password
+            ? Hash::make($request->password)
+            : bcrypt('default_password'),  // Jika tidak ada password, gunakan default
+    ];
+
+    // Simpan data ke tabel 'users'
+    User::create($data);
+
+    // Redirect ke halaman jumlah anak magang dengan pesan sukses
+    return redirect()->route('admin.jumlah_anak_magang')->with('success', 'Data anak magang berhasil ditambahkan.');
+}
+    public function edit_anak(Request $request, $id) {
+    $data =  User::find($id);
+    return view('admin.add.edit_anak', compact('data'));
+
+}
+    public function ubah_anak(Request $request, $id) {
+    $validator = Validator::make($request->all(), [
+        'sekolah'     => 'required|string|max:255',
+        'anak_magang' => 'required',
+        'divisi'      => 'required',
+        'password'    => 'nullable|string|min:8',
+    ]);
+
+    // Jika validasi gagal, kembalikan dengan pesan error
+    if ($validator->fails()) {
+        return redirect()->back()->withInput()->withErrors($validator);
+    }
+
+    // Siapkan data untuk disimpan
+    $data = [
+        'name'        => $request->anak_magang,  // Memberikan nilai default
+        'sekolah'     => $request->sekolah,
+        'email'       => $request->anak_magang . '@gmail.com',  // Anda bisa sesuaikan emailnya
+        'divisi'      => $request->divisi,
+        'role'        => 'anak_magang',
+        'password'    => $request->password
+            ? Hash::make($request->password)
+            : bcrypt('default_password'),  // Jika tidak ada password, gunakan default
+    ];
+
+    // Simpan data ke tabel 'users'
+
+    User::whereId($id)->update($data);
+    return redirect()->route('admin.jumlah_anak_magang');
+}
+    public function delete_anak(Request $request,$id){
+    $data = User::find($id);
+
+    if ($data) {
+        $data->delete();
+    }
+    return redirect()->route('admin.jumlah_anak_magang');
+}
+public function cari_anak(Request $request)
+{
+    $search = $request->input('search');
+
+    $data = User::where('name', 'like', "%$search%")
+        ->orWhere('sekolah', 'like', "%$search%")
+        ->orWhere('divisi', 'like', "%$search%")
+        ->paginate(10);
+
+    return view('admin.jumlah_anak_magang', compact('data'));
+}
+
+
+
+    // SEKOLAH - SEKOLAH - SEKOLAH - SEKOLAH - SEKOLAH
+    public function jumlah_sekolah(){
+        $data = User::where('role', 'sekolah')->get();
+        return view ('admin.jumlah_sekolah', compact('data'));
+    }
+
+    public function create_sekolah() {
+
+        $data =  User::select('sekolah', 'divisi', 'jumlah_anak')->get();
+        return view('admin.add.create_sekolah', compact('data'));
+    }
+
+    public function store_sekolah(Request $request)
+{
+    // Validasi input
+    $validator = Validator::make($request->all(), [
+        'sekolah'     => 'required|string|max:255',
+        'jumlah_anak' => 'required|integer',
+        'divisi'      => 'required|string|max:255',
+        'password'    => 'nullable|string|min:8',
+    ]);
+
+    // Jika validasi gagal, kembalikan dengan pesan error
+    if ($validator->fails()) {
+        return redirect()->back()->withInput()->withErrors($validator);
+    }
+
+    // Siapkan data untuk disimpan
+    $data = [
+        'name'        => $request->sekolah, // Kolom 'name' diisi dengan nama sekolah
+        'sekolah'     => $request->sekolah,
+        'email'       => $request->sekolah . '@example.com',
+        'jumlah_anak' => $request->jumlah_anak,
+        'divisi'      => $request->divisi,
+        'role'        => 'sekolah',
+        'password'    => $request->password
+            ? Hash::make($request->password)
+            : bcrypt('default_password'), // Jika tidak ada password, gunakan default
+    ];
+
+    // Simpan data ke tabel 'users'
+    User::create($data);
+
+    // Redirect ke halaman jumlah sekolah dengan pesan sukses
+    return redirect()->route('admin.jumlah_sekolah')->with('success', 'Data sekolah berhasil ditambahkan.');
+    }
+
+    public function edit_sekolah(Request $request, $id) {
+        $data =  User::find($id);
+        return view('admin.add.edit_sekolah', compact('data'));
+
+    }
+    public function ubah_sekolah(Request $request, $id) {
+        $validator = Validator::make($request->all(),[
+            'sekolah'        => 'required',
+            'jumlah_anak'    => 'required',
+            'divisi'         => 'required',
+            'password'       => 'nullable',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        // Siapkan data untuk disimpan
+        $data = [
+            'name'        => $request->sekolah, // Kolom 'name' diisi dengan nama sekolah
+            'sekolah'     => $request->sekolah,
+            'email'       => $request->sekolah . '@gmail.com',
+            'jumlah_anak' => $request->jumlah_anak,
+            'divisi'      => $request->divisi,
+            'role'        => 'sekolah',
+            'password'    => $request->password
+                ? Hash::make($request->password)
+                : bcrypt('default_password'), // Jika tidak ada password, gunakan default
+        ];
+
+        // Simpan data ke tabel 'users'
+
+        User::whereId($id)->update($data);
+        return redirect()->route('admin.jumlah_sekolah');
+    }
+
+    public function delete_data(Request $request,$id){
+        $data = User::find($id);
+
+        if ($data) {
+            $data->delete();
+        }
+        return redirect()->route('admin.jumlah_sekolah');
+    }
+    public function cari_sekolah(Request $request)
+{
+    $search = $request->input('search');
+
+    $data = User::where('name', 'like', "%$search%")
+        ->orWhere('sekolah', 'like', "%$search%")
+        ->orWhere('divisi', 'like', "%$search%")
+        ->paginate(10);
+
+    return view('admin.jumlah_sekolah', compact('data'));
+}
+
+
+
+    public function index() {
+
+        $data = User::get();
+
+        return view('admin.index', compact('data'));
+    }
 
     public function create(){
         return view('create');
@@ -79,7 +358,6 @@ class HomeController extends Controller
 
         return view('auth.edit_profile',compact('data'));
     }
-
 
     public function update_profile(Request $request) {
         $validator = Validator::make($request->all(),[
@@ -133,35 +411,6 @@ class HomeController extends Controller
         ]);
     }
 
-    public function store(Request $request) {
-
-        $validator = Validator::make($request->all(),[
-            'email'    => 'required|email',
-            'name'     => 'required',
-            'divisi'   => 'required',
-            'password' => 'nullable',
-
-        ]);
-
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
-
-        $data['email']     = $request->email;
-        $data['name']      = $request->name;
-        $data['divisi']    = $request->divisi;
-
-        if ($request->password) {
-            $data['password'] = Hash::make($request->password);
-        } else {
-            // Berikan nilai default atau abaikan pengubahan password jika tidak diinput
-            $user = User::find(Auth::id());
-            $data['password'] = $user->password;  // Gunakan password lama
-        }
-
-        User::create($data);
-
-        return redirect()->route('admin.jumlah_admin');
-    }
-
     public function ubah_admin(Request $request, $id){
         $data = User::find($id);
 
@@ -204,32 +453,26 @@ class HomeController extends Controller
 
     public function update(Request $request,$id){
         $validator = Validator::make($request->all(),[
-            'photo'      => 'required|mimes:png,jpg,jpeg|max:2048',
+            'photo'     => 'required|mimes:png,jpg,jpeg|max:2048',
             'email'      => 'required|email',
             'nama'       => 'required',
             'password'   => 'nullable',
         ]);
-
         $photo                  = $request->file('photo');
         $filename               = date('Y-m-d').$photo->getClientOriginalName();
         $path                   = 'photo-user/'.$filename;
-
 
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
         $data['email']     = $request->email;
         $data['name']      = $request->nama;
-        $data['image']     =  null;//$filename;
-
         $data['image']     = $filename;
-
 
 
         if($request->password){
             $data['password']  = Hash::make($request->password);
 
-        };
-
+        }
         User::whereId($id)->update($data);
         return redirect()->route('admin.index');
     }
@@ -263,7 +506,6 @@ class HomeController extends Controller
 
         User::whereId($id)->update($data);
 
-
         return redirect()->route('writer.dashboard_user');
     }
 
@@ -273,8 +515,10 @@ class HomeController extends Controller
         if($data){
             $data->delete();
         }
+
         return redirect()->route('writer.dashboard_user');
     }
+
     public function delete_admin(Request $request,$id){
         $data = User::find($id);
 
@@ -283,4 +527,8 @@ class HomeController extends Controller
         }
         return redirect()->route('admin.jumlah_admin');
     }
+
+
+
 }
+

@@ -23,23 +23,21 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <a href="{{ route('admin.add.create_sekolah') }}" class="btn btn-primary mb-3">Tambah Data</a>
+            <a href="{{ route('admin.create-sekolah') }}" class="btn btn-primary mb-3">Tambah Data</a>
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Tabel Jumlah Sekolah</h3>
-
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
-                  </div>
+                <div class="card-header d-flex justify-content-between">
+                    <h3 class="card-title">Tabel Sekolah</h3>
+                    <form action="{{ route('admin.cari-sekolah') }}" method="GET" class="ml-auto">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="search" class="form-control" placeholder="Search" value="{{ request('search') }}">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-              </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
@@ -47,37 +45,53 @@
                     <tr>
                       <th>No</th>
                       <th>Nama Sekolah</th>
-                      <th>Jumlah</th>
+                      <th>Jumlah Anak</th>
+                      <th>Divisi</th>
                       <th>Action</th>
                     </tr>
                   </thead>
-                  <tbody>
                     <!-- Baris kosong untuk tampilan awal tanpa data -->
-                    <tr>
-                      <td colspan="5" class="text-center">Tidak ada data</td>
-                    </tr>
-                    <div class="modal fade" id="modal-hapus{{$data->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <tbody>
+                        @foreach ($data as $sekolah)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $sekolah->sekolah }}</td>
+                            <td>{{ $sekolah->jumlah_anak}}</td>
+                            <td>{{ $sekolah->divisi }}</td>
+                            <td>
+                                <a href="{{ route('admin.edit-sekolah',['id' => $sekolah->id]) }}" class="btn btn-warning"><i class="fas fa-pen"></i>
+                                    Edit
+                                </a>
+                                <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-hapus{{$sekolah->id}}"><i class="fas fa-trash"></i>
+                                    Hapus
+                                </button>
+
+                            </td>
+                        </tr>
+                        <div class="modal fade" id="modal-hapus{{$sekolah->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Konfirmasi</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                Apakah anda yakin ingin menghapus data {{$sekolah->sekolah}} ?
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{{ route('admin.delete-data',['id' => $sekolah->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                        <button type="submit" class="btn btn-danger">Ya, hapus</button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                            Apakah anda yakin ingin menghapus data {{$data->id}} ?
-                            </div>
-                            <div class="modal-footer">
-                                <form action="{{ route('writer.delete-data',['id' => $data->id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                                    <button type="submit" class="btn btn-danger">Ya, hapus</button>
-                                </form>
                             </div>
                         </div>
-                        </div>
-                    </div>
-                  </tbody>
+                        @endforeach
+                    </tbody>
+
                 </table>
               </div>
               <!-- /.card-body -->
