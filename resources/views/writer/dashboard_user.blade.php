@@ -1,5 +1,4 @@
 @extends('layout.main_user')
-
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -21,7 +20,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content" enctype="multipart/form-data">
       <div class="container-fluid">
         <div class="row">
           <div class="card">
@@ -40,6 +39,7 @@
               </div>
             </div>
             <!-- /.card-header -->
+
             <div class="card-body table-responsive p-0">
               <table class="table table-hover text-nowrap">
                 <thead>
@@ -55,7 +55,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $item)
+                    @foreach ($data as $item )
                     <tr>
                       <td><strong>{{$loop->iteration}}</strong></td>
                       <td><img src="{{ asset('storage/photo-user/' . $item->photo) }}" alt="foto" width="100"></td>
@@ -65,30 +65,49 @@
                       <td><strong>{{$item->shift}}</strong></td>
                       <td><strong>{{$item->created_at->format('d-m-Y H:i:s') }}</strong></td>
                       <td>
-                        <!-- Tombol Edit -->
-                        <a href="{{ route('aktivitas.edit', $item->id) }}" class="btn btn-primary">
-                          <i class="fas fa-pen"></i> Edit
+                        <a href="{{ route('writer.edit_user',['id' => $item->id]) }}" class="btn btn-warning"><i class="fas fa-pen"></i>
+                            Edit
                         </a>
+                        <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-hapus{{$item->id}}"><i class="fas fa-trash"></i>
+                            Hapus
+                        </button>
 
-                        <!-- Tombol Hapus -->
-                        <form action="{{ route('aktivitas.destroy', $item->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
-                          @csrf
-                          @method('DELETE')
-                          <button type="submit" class="btn btn-danger">
-                            <i class="fas fa-trash-alt"></i> Hapus
-                          </button>
-                        </form>
                       </td>
-                    </tr>
+                      </tr>
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal-hapus{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                Apakah anda yakin ingin menghapus data {{$item->id}} ?
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{{ route('writer.delete-data',['id' => $item->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                        <button type="submit" class="btn btn-danger">Ya, hapus</button>
+                                    </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
                     @endforeach
+                  <!-- Baris kosong untuk saat data belum ada -->
+                  <!-- Jika data sudah ada, ganti bagian ini dengan loop foreach untuk menampilkan data -->
                 </tbody>
               </table>
             </div>
             <!-- /.card-body -->
           </div>
-          <!-- /.card -->
+
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
     <!-- /.content -->
 </div>

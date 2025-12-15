@@ -64,5 +64,8 @@ Route::group(['prefix' => 'writer', 'middleware' => ['auth'], 'as' => 'writer.']
 
     Route::get('/tambah-aktivitas',[HomeController::class,'index'])->name('tambah-aktivitas');
     Route::post('/tambah-data-aktivitas',[HomeController::class,'aktivitas'])->name('tambah-data-aktivitas');
+    Route::get('/edit-user/{id}', [WriterController::class, 'edit_user'])->name('edit_user');
+    Route::put('/store-edit-user/{id}', [WriterController::class, 'store_edit_user'])->name('store-edit-user');
+    Route::delete('/delete-data/{id}',[WriterController::class,'delete_data'])->name('delete-data');
 
 });
